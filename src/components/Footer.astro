@@ -8,11 +8,14 @@ import site from '../data/site.json';
       <a href="/zh/">首頁</a>
       <a href="/zh/services/">兒科服務</a>
       <a href="/zh/doctors/">醫生團隊</a>
+      <a href="/zh/education/">兒科教育</a>
       <a href="/zh/contact/">關於我們</a>
     </div>
     <div>
       <h3>聯絡我們</h3>
+      <p class="label">營業時間</p>
       <p>{site.hours}</p>
+      <p class="label">診所地址</p>
       {site.locations.map((loc) => (
         <p>
           <strong>{loc.name}</strong><br />
@@ -30,28 +33,43 @@ import site from '../data/site.json';
       </a>
     </div>
   </div>
-  <div class="container copy">© 2026 {site.name} · MVP 架構演示</div>
+  <div class="container copy">© 2026 {site.name}</div>
 </footer>
 
 <style>
   .footer {
-    margin-top: 64px;
+    margin-top: 0;
     background: var(--cyan);
     color: #fff;
-    padding: 48px 0 28px;
+    padding: 52px 0 28px;
   }
   .footer-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 36px;
   }
-  .footer h3 { margin: 0 0 12px; font-size: 16px; }
-  .footer a, .footer p { display: block; margin: 0 0 8px; font-size: 14px; opacity: .95; }
-  .cta .wa-btn { margin-top: 8px; color: #111; }
-  .copy { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.25); font-size: 13px; opacity: .85; }
+  .footer h3 { margin: 0 0 14px; font-size: 16px; font-weight: 700; }
+  .footer a, .footer p { display: block; margin: 0 0 10px; font-size: 14px; line-height: 1.55; opacity: .96; }
+  .footer a:hover { opacity: 1; text-decoration: underline; }
+  .label {
+    margin: 14px 0 6px !important;
+    font-size: 12px !important;
+    letter-spacing: .04em;
+    opacity: .75 !important;
+    font-weight: 600;
+  }
+  .label:first-of-type { margin-top: 0 !important; }
+  .cta .wa-btn { margin-top: 10px; color: #111; }
+  .copy {
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.25);
+    font-size: 13px;
+    opacity: .85;
+  }
   @media (max-width: 800px) {
-    .footer { margin-top: 40px; padding: 36px 0 24px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 22px; }
+    .footer { padding: 40px 0 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
     .cta .wa-btn { width: 100%; }
   }
 </style>

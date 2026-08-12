@@ -6,21 +6,28 @@ import site from '../../../data/site.json';
   <section class="page">
     <div class="container">
       <h1>關於我們</h1>
-      <p class="lead">{site.name}兒科專科，專注兒童健康診療。</p>
-      <p class="hours">{site.hours}</p>
+      <p class="lead">{site.name}兒科專科，專注兒童健康診療。診室環境溫馨童趣，用心守護每一位孩子的健康成長。</p>
+
+      <div class="hours-box">
+        <h2>營業時間</h2>
+        <p>{site.hours}</p>
+      </div>
+
+      <h2 class="loc-title">診所地址</h2>
       <div class="grid">
         {site.locations.map((loc) => (
           <article class="card">
             <img src={loc.mapImage} alt={`${loc.name}地圖`} />
             <div>
-              <h2>{loc.name}</h2>
+              <h3>{loc.name}</h3>
               <p>{loc.address}</p>
-              <p>{loc.phone}</p>
+              <p class="phone">{loc.phone}</p>
               {loc.fax && <p>傳真 {loc.fax}</p>}
             </div>
           </article>
         ))}
       </div>
+
       <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
         <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約
       </a>
@@ -29,16 +36,36 @@ import site from '../../../data/site.json';
 </BaseLayout>
 
 <style>
-  .page { padding: 56px 0 72px; }
-  h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.4rem); }
-  .lead { margin: 12px 0 0; color: var(--muted); }
-  .hours { margin: 8px 0 28px; color: #444; font-size: 14px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px; }
-  .card {
-    background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+  .page { padding: 56px 0 80px; }
+  h1 { margin: 0; font-size: clamp(1.9rem, 4vw, 2.5rem); }
+  .lead { margin: 14px 0 28px; color: #444; max-width: 720px; line-height: 1.7; font-size: 16px; }
+  .hours-box {
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    margin-bottom: 32px;
   }
-  .card img { width: 100%; height: 160px; object-fit: cover; background: #eef3f5; }
-  .card > div { padding: 16px; }
-  .card h2 { margin: 0 0 8px; font-size: 18px; }
-  .card p { margin: 4px 0; color: #444; font-size: 14px; }
+  .hours-box h2 { margin: 0 0 8px; font-size: 16px; }
+  .hours-box p { margin: 0; color: #444; font-size: 14px; }
+  .loc-title { margin: 0 0 14px; font-size: 20px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+  }
+  .card img { width: 100%; height: 180px; object-fit: cover; background: #eef3f5; }
+  .card > div { padding: 18px; }
+  .card h3 { margin: 0 0 10px; font-size: 18px; }
+  .card p { margin: 4px 0; color: #444; font-size: 14px; line-height: 1.55; }
+  .phone { color: var(--cyan-hover); font-weight: 600; }
+  @media (max-width: 700px) {
+    .page { padding: 40px 0 56px; }
+    .grid { grid-template-columns: 1fr; }
+    .wa-btn { width: 100%; }
+  }
 </style>

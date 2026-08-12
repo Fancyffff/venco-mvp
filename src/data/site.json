@@ -17,14 +17,26 @@
       "address": "香港九龍尖沙咀彌敦道132號美麗華廣場A座16樓1603室",
       "phone": "(852) 2882 7222",
       "fax": "(852) 2882 7899",
-      "mapImage": "https://nano-cms-production.vencomedicalcentre.workers.dev/assets/desktop2-6/contact-map-mira.png"
+      "mapImage": "https://nano-cms-production.vencomedicalcentre.workers.dev/assets/desktop2-6/contact-map-mira.png",
+      "gallery": [
+        "https://img.venco.com.hk/uploads/2026/07/a28deb73-a9e6-4e60-8aee-9f8b7b29bccb---1.jpeg",
+        "https://img.venco.com.hk/uploads/2026/07/2f8fbc0b-7960-4e71-856e-8316c87805fd---2.jpeg",
+        "https://img.venco.com.hk/uploads/2026/07/d013f79c-458e-46e7-9530-3f557ae435a1---3.jpeg",
+        "https://img.venco.com.hk/uploads/2026/07/42fa294c-322d-4197-9360-b8b66e9adbba---4.jpeg"
+      ]
     },
     {
       "name": "海洋中心",
       "address": "香港九龍尖沙咀廣東道5號海港城海洋中心12樓1204-5室",
       "phone": "(852) 2151 3677",
       "fax": "(852) 2151 3577",
-      "mapImage": "https://nano-cms-production.vencomedicalcentre.workers.dev/assets/desktop2-6/contact-map-ocean.png"
+      "mapImage": "https://nano-cms-production.vencomedicalcentre.workers.dev/assets/desktop2-6/contact-map-ocean.png",
+      "gallery": [
+        "https://img.venco.com.hk/uploads/2026/07/d2edf63c-052e-4eaa-81de-cee3d8a847d4---1.jpeg",
+        "https://img.venco.com.hk/uploads/2026/07/e4fb3e98-cf09-40bb-bec5-f1e6028de665---2.jpeg",
+        "https://img.venco.com.hk/uploads/2026/07/92eaa29b-98d7-4f1f-8371-8a4ba553e065---3.jpeg",
+        "https://img.venco.com.hk/uploads/2026/07/00d59a73-f113-47b4-b6ae-dd7fc5c12bdc---4.jpeg"
+      ]
     }
   ],
   "education": [
@@ -32,19 +44,22 @@
       "title": "鼻敏感 Allergic Rhinitis",
       "excerpt": "病徵主要是鼻黏膜受到刺激，導致血管擴張。",
       "tag": "鼻敏感",
-      "href": "/zh/education/"
+      "href": "/zh/education/",
+      "image": "https://img.venco.com.hk/uploads/venco_education_allergic_rhinitis_f920ad74e2.jpg"
     },
     {
       "title": "專注力不足及過度活躍症 ADHD",
       "excerpt": "專注力不足評估與兒童行為支援。",
       "tag": "臨床遺傳科",
-      "href": "/zh/education/"
+      "href": "/zh/education/",
+      "image": "https://img.venco.com.hk/uploads/venco_education_growth_hormone_injection_800e8b9aff.jpg"
     },
     {
       "title": "呼吸道融合細胞病毒",
       "excerpt": "劉家輝醫生分享兒科專科護理重點。",
       "tag": "兒科",
-      "href": "/zh/education/"
+      "href": "/zh/education/",
+      "image": "https://img.venco.com.hk/uploads/venco_education_neonatal_flu_e4ea58f286.png"
     }
   ]
 }

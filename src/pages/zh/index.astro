@@ -53,19 +53,23 @@ const featuredDoctors = doctors.slice(0, 8);
         </div>
         <a class="text-link" href="/zh/doctors/">查看全部醫生 →</a>
       </div>
-      <div class="doctor-rail">
-        {featuredDoctors.map((d) => (
-          <a class="doctor-card" href={`/zh/doctors/#${d.id}`}>
-            <img src={d.image} alt={d.name} />
-            <div class="doctor-body">
-              <h3>{d.name}</h3>
-              <p class="en">{d.english}</p>
-              <p class="title">{d.title}</p>
-              {d.role && <p class="role">{d.role}</p>}
-              <span>了解更多</span>
-            </div>
-          </a>
-        ))}
+      <div class="rail-wrap">
+        <button class="rail-btn prev" type="button" data-rail-prev aria-label="上一組醫生">‹</button>
+        <div class="doctor-rail" data-doctor-rail>
+          {featuredDoctors.map((d) => (
+            <a class="doctor-card" href={`/zh/doctors/#${d.id}`}>
+              <img src={d.image} alt={d.name} />
+              <div class="doctor-body">
+                <h3>{d.name}</h3>
+                <p class="en">{d.english}</p>
+                <p class="title">{d.title}</p>
+                {d.role && <p class="role">{d.role}</p>}
+                <span>了解更多</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        <button class="rail-btn next" type="button" data-rail-next aria-label="下一組醫生">›</button>
       </div>
     </div>
   </section>
@@ -82,9 +86,14 @@ const featuredDoctors = doctors.slice(0, 8);
       <div class="edu-grid">
         {site.education.map((e) => (
           <a class="edu-card" href={e.href}>
-            <span class="tag">{e.tag}</span>
-            <h3>{e.title}</h3>
-            <p>{e.excerpt}</p>
+            <div class="edu-media">
+              <img src={e.image} alt="" />
+              <span class="tag">{e.tag}</span>
+            </div>
+            <div class="edu-body">
+              <h3>{e.title}</h3>
+              <p>{e.excerpt}</p>
+            </div>
           </a>
         ))}
       </div>
@@ -100,17 +109,46 @@ const featuredDoctors = doctors.slice(0, 8);
         </div>
         <a class="text-link" href="/zh/contact/">查看更多聯絡方式 →</a>
       </div>
-      <div class="clinic-grid">
-        {site.locations.map((loc) => (
-          <article class="clinic-card">
-            <img src={loc.mapImage} alt={`${loc.name}地圖`} />
-            <div>
+
+      <div class="clinic" data-clinic>
+        <div class="clinic-tabs" role="tablist" aria-label="診所分店">
+          {site.locations.map((loc, i) => (
+            <button
+              type="button"
+              class:list={['clinic-tab', { active: i === 0 }]}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+              data-clinic-tab={i}
+            >
+              {loc.name}
+            </button>
+          ))}
+        </div>
+
+        {site.locations.map((loc, i) => (
+          <div class:list={['clinic-panel', { show: i === 0 }]} data-clinic-panel={i}>
+            <div class="clinic-gallery" data-gallery>
+              <div class="gallery-main">
+                <img src={loc.gallery[0]} alt={`${loc.name}診所環境`} data-gallery-main />
+                <button type="button" class="g-btn prev" data-g-prev aria-label="上一張">‹</button>
+                <button type="button" class="g-btn next" data-g-next aria-label="下一張">›</button>
+              </div>
+              <div class="gallery-thumbs">
+                {loc.gallery.map((src, gi) => (
+                  <button type="button" class:list={['thumb', { active: gi === 0 }]} data-g-thumb={gi}>
+                    <img src={src} alt="" />
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div class="clinic-info">
               <h3>{loc.name}</h3>
               <p>{loc.address}</p>
-              <p>{loc.phone}</p>
+              <p class="phone">{loc.phone}</p>
               {loc.fax && <p>傳真 {loc.fax}</p>}
+              <img class="map" src={loc.mapImage} alt={`${loc.name}地圖`} />
             </div>
-          </article>
+          </div>
         ))}
       </div>
     </div>
@@ -132,19 +170,19 @@ const featuredDoctors = doctors.slice(0, 8);
 <style>
   .hero {
     position: relative;
-    min-height: 560px;
+    min-height: 580px;
     display: flex;
     align-items: center;
     background:
-      linear-gradient(90deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.55) 42%, rgba(255,255,255,.08) 70%),
+      linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.62) 40%, rgba(255,255,255,.1) 68%),
       var(--hero) center right / cover no-repeat;
   }
-  .hero-inner { width: 100%; padding: 56px 0; }
+  .hero-inner { width: 100%; padding: 64px 0; }
   .hero-copy { max-width: 560px; }
   .hero h1 {
     margin: 0;
-    font-size: clamp(1.85rem, 5.5vw, 3.15rem);
-    line-height: 1.15;
+    font-size: clamp(1.9rem, 5.2vw, 3.2rem);
+    line-height: 1.18;
     letter-spacing: -.02em;
   }
   .hero p {
@@ -153,120 +191,222 @@ const featuredDoctors = doctors.slice(0, 8);
     line-height: 1.75;
     font-size: 15px;
   }
-  .hero-actions { display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+  .hero-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
   .ghost {
     display: inline-flex; align-items: center; justify-content: center;
     min-height: 44px; padding: 0 18px; border-radius: 999px;
-    background: rgba(255,255,255,.9); border: 1px solid var(--line);
+    background: rgba(255,255,255,.92); border: 1px solid var(--line);
     font-weight: 600; font-size: 14px;
   }
+  .ghost:hover { border-color: var(--cyan); color: var(--cyan); }
 
-  .section { padding: 64px 0; }
-  .section.soft { background: #f5fafb; }
+  .section { padding: 72px 0; }
+  .section.soft { background: var(--soft); }
   .section-head {
     display: flex; justify-content: space-between; align-items: end;
-    gap: 16px; margin-bottom: 24px;
+    gap: 16px; margin-bottom: 28px;
   }
-  .section-head h2 { margin: 0; font-size: clamp(1.45rem, 3.5vw, 1.9rem); }
-  .section-head p { margin: 8px 0 0; color: var(--muted); }
-  .text-link { color: var(--cyan); font-weight: 600; white-space: nowrap; }
+  .section-head h2 { margin: 0; font-size: clamp(1.5rem, 3.2vw, 2rem); }
+  .section-head p { margin: 8px 0 0; color: var(--muted); font-size: 15px; }
+  .text-link { color: var(--cyan); font-weight: 600; white-space: nowrap; font-size: 14px; }
+  .text-link:hover { text-decoration: underline; }
 
   .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
   }
   .service-card {
     background: #fff;
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 18px 16px;
-    transition: transform .16s ease, box-shadow .16s ease;
+    border-radius: 18px;
+    padding: 20px 16px 18px;
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
   }
-  .service-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-  .service-card img { width: 52px; height: 52px; object-fit: contain; margin-bottom: 12px; }
-  .service-card h3 { margin: 0; font-size: 15px; }
-  .service-card p { margin: 8px 0 14px; color: var(--muted); font-size: 13px; min-height: 40px; }
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    border-color: #c5e4ea;
+  }
+  .service-card img { width: 56px; height: 56px; object-fit: contain; margin-bottom: 14px; }
+  .service-card h3 { margin: 0; font-size: 15px; line-height: 1.35; }
+  .service-card p { margin: 8px 0 16px; color: var(--muted); font-size: 13px; min-height: 42px; line-height: 1.5; }
   .service-card span { color: var(--cyan); font-size: 13px; font-weight: 600; }
 
+  .rail-wrap { position: relative; }
   .doctor-rail {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(240px, 280px);
-    gap: 14px;
+    grid-auto-columns: minmax(240px, 270px);
+    gap: 16px;
     overflow-x: auto;
-    padding-bottom: 8px;
+    padding: 4px 2px 12px;
     scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
+  .doctor-rail::-webkit-scrollbar { display: none; }
+  .rail-btn {
+    position: absolute;
+    top: 42%;
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: #fff;
+    box-shadow: var(--shadow);
+    font-size: 26px;
+    line-height: 1;
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rail-btn.prev { left: -8px; }
+  .rail-btn.next { right: -8px; }
   .doctor-card {
     scroll-snap-align: start;
     background: #fff;
     border: 1px solid var(--line);
     border-radius: 18px;
     overflow: hidden;
+    transition: box-shadow .16s ease, transform .16s ease;
   }
+  .doctor-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
   .doctor-card > img {
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
     background: #eef3f5;
   }
-  .doctor-body { padding: 14px 16px 16px; }
+  .doctor-body { padding: 14px 16px 18px; }
   .doctor-body h3 { margin: 0; font-size: 17px; }
   .doctor-body .en { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
   .doctor-body .title { margin: 8px 0 0; color: var(--cyan-hover); font-weight: 600; font-size: 13px; }
-  .doctor-body .role { margin: 4px 0 0; color: #555; font-size: 12px; }
+  .doctor-body .role { margin: 4px 0 0; color: #555; font-size: 12px; line-height: 1.45; }
   .doctor-body span { display: inline-block; margin-top: 12px; color: var(--cyan); font-size: 13px; font-weight: 600; }
 
   .edu-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 16px;
   }
   .edu-card {
     background: #fff;
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 18px;
-    min-height: 160px;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: box-shadow .16s ease, transform .16s ease;
   }
-  .edu-card .tag {
+  .edu-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+  .edu-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: #eef3f5;
+  }
+  .edu-media img { width: 100%; height: 100%; object-fit: cover; }
+  .edu-media .tag {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
     display: inline-flex;
     padding: 4px 10px;
     border-radius: 999px;
-    background: #e8f7f9;
+    background: rgba(255,255,255,.94);
     color: var(--cyan-hover);
     font-size: 12px;
     font-weight: 600;
   }
-  .edu-card h3 { margin: 12px 0 8px; font-size: 16px; line-height: 1.4; }
-  .edu-card p { margin: 0; color: var(--muted); font-size: 13px; }
+  .edu-body { padding: 16px 18px 18px; }
+  .edu-body h3 { margin: 0 0 8px; font-size: 16px; line-height: 1.4; }
+  .edu-body p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
 
-  .clinic-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+  .clinic-tabs {
+    display: inline-flex;
+    gap: 8px;
+    padding: 4px;
+    background: #e8f1f3;
+    border-radius: 999px;
+    margin-bottom: 20px;
   }
-  .clinic-card {
+  .clinic-tab {
+    min-height: 40px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #556;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .clinic-tab.active {
+    background: #fff;
+    color: var(--cyan-hover);
+    box-shadow: 0 2px 10px rgba(0,40,50,.08);
+  }
+  .clinic-panel { display: none; grid-template-columns: 1.35fr 1fr; gap: 20px; align-items: start; }
+  .clinic-panel.show { display: grid; }
+  .gallery-main {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #eef3f5;
+    aspect-ratio: 16 / 10;
+  }
+  .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+  .g-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.92);
+    color: var(--cyan);
+    font-size: 24px;
+    box-shadow: var(--shadow);
+  }
+  .g-btn.prev { left: 12px; }
+  .g-btn.next { right: 12px; }
+  .gallery-thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .thumb {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0;
+    background: #eef3f5;
+    aspect-ratio: 16 / 10;
+  }
+  .thumb.active { border-color: var(--cyan); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .clinic-info {
     background: #fff;
     border: 1px solid var(--line);
     border-radius: 18px;
-    overflow: hidden;
+    padding: 22px;
   }
-  .clinic-card img {
+  .clinic-info h3 { margin: 0 0 10px; font-size: 22px; }
+  .clinic-info p { margin: 6px 0; color: #444; font-size: 14px; line-height: 1.55; }
+  .clinic-info .phone { color: var(--cyan-hover); font-weight: 600; }
+  .clinic-info .map {
+    margin-top: 16px;
     width: 100%;
-    height: 180px;
+    border-radius: 12px;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
     background: #eef3f5;
   }
-  .clinic-card > div { padding: 16px; }
-  .clinic-card h3 { margin: 0 0 8px; font-size: 18px; }
-  .clinic-card p { margin: 4px 0; color: #444; font-size: 14px; }
 
   .cta-band {
     background: linear-gradient(90deg, #e7f9fb, #f3fcff);
     border-top: 1px solid var(--line);
-    padding: 36px 0;
+    padding: 44px 0;
   }
   .cta-inner {
     display: flex;
@@ -274,37 +414,45 @@ const featuredDoctors = doctors.slice(0, 8);
     justify-content: space-between;
     gap: 16px;
   }
-  .cta-inner h2 { margin: 0; font-size: 1.5rem; }
+  .cta-inner h2 { margin: 0; font-size: 1.55rem; }
   .cta-inner p { margin: 6px 0 0; color: var(--muted); }
 
+  @media (max-width: 1100px) {
+    .service-grid { grid-template-columns: repeat(3, 1fr); }
+  }
   @media (max-width: 900px) {
     .edu-grid { grid-template-columns: 1fr; }
-    .clinic-grid { grid-template-columns: 1fr; }
+    .clinic-panel.show { grid-template-columns: 1fr; }
+    .rail-btn { display: none; }
   }
   @media (max-width: 700px) {
     .hero {
       min-height: auto;
       align-items: flex-end;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,.86) 55%, #fff 100%),
+        linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.82) 52%, #fff 100%),
         var(--hero) 68% center / cover no-repeat;
     }
-    .hero-inner { padding: 120px 0 24px; }
+    .hero-inner { padding: 130px 0 28px; }
     .hero-copy {
-      background: rgba(255,255,255,.94);
+      background: rgba(255,255,255,.96);
       border-radius: 18px;
-      padding: 18px 16px;
+      padding: 20px 16px;
       box-shadow: var(--shadow);
     }
     .hero p { font-size: 14px; }
     .hero-actions { gap: 8px; }
     .hero-actions .wa-btn,
     .hero-actions .ghost { flex: 1 1 auto; }
-    .section { padding: 40px 0; }
-    .section-head { flex-direction: column; align-items: start; gap: 8px; }
+    .section { padding: 44px 0; }
+    .section-head { flex-direction: column; align-items: start; gap: 10px; margin-bottom: 18px; }
     .service-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .service-card { padding: 14px 12px; }
+    .service-card img { width: 44px; height: 44px; margin-bottom: 10px; }
     .service-card p { display: none; }
+    .doctor-rail { grid-auto-columns: minmax(220px, 78vw); }
+    .clinic-tabs { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+    .gallery-thumbs { grid-template-columns: repeat(4, 1fr); }
     .cta-inner { flex-direction: column; align-items: stretch; }
     .cta-inner .wa-btn { width: 100%; }
   }
@@ -312,3 +460,42 @@ const featuredDoctors = doctors.slice(0, 8);
     .service-grid { grid-template-columns: 1fr; }
   }
 </style>
+
+<script>
+  const rail = document.querySelector('[data-doctor-rail]');
+  document.querySelector('[data-rail-prev]')?.addEventListener('click', () => {
+    rail?.scrollBy({ left: -280, behavior: 'smooth' });
+  });
+  document.querySelector('[data-rail-next]')?.addEventListener('click', () => {
+    rail?.scrollBy({ left: 280, behavior: 'smooth' });
+  });
+
+  const clinic = document.querySelector('[data-clinic]');
+  clinic?.querySelectorAll('[data-clinic-tab]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const idx = btn.getAttribute('data-clinic-tab');
+      clinic.querySelectorAll('[data-clinic-tab]').forEach((b) => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      clinic.querySelectorAll('[data-clinic-panel]').forEach((panel) => {
+        panel.classList.toggle('show', panel.getAttribute('data-clinic-panel') === idx);
+      });
+    });
+  });
+
+  document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+    const main = gallery.querySelector('[data-gallery-main]');
+    const thumbs = [...gallery.querySelectorAll('[data-g-thumb]')];
+    let index = 0;
+    const show = (i) => {
+      index = (i + thumbs.length) % thumbs.length;
+      const src = thumbs[index]?.querySelector('img')?.getAttribute('src');
+      if (src && main) main.setAttribute('src', src);
+      thumbs.forEach((t, ti) => t.classList.toggle('active', ti === index));
+    };
+    gallery.querySelector('[data-g-prev]')?.addEventListener('click', () => show(index - 1));
+    gallery.querySelector('[data-g-next]')?.addEventListener('click', () => show(index + 1));
+    thumbs.forEach((t, ti) => t.addEventListener('click', () => show(ti)));
+  });
+</script>

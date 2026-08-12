@@ -23,7 +23,6 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
   <section class="hero container">
     <img class="icon" src={service.icon} alt="" />
     <div>
-      <p class="eyebrow">L2 專科頁 · 獨立路由</p>
       <h1>{service.title}</h1>
       <p>{service.desc}</p>
     </div>
@@ -31,8 +30,8 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
 
   <section class="container block">
     <div class="block-head">
-      <h2>服務細項 <span class="lvl">L3</span></h2>
-      <p>每項獨立成頁，不再擠在總覽長頁裡。</p>
+      <h2>服務細項</h2>
+      <p>選擇以下項目，了解服務詳情並預約相關醫生。</p>
     </div>
     {service.items.length > 0 ? (
       <div class="items">
@@ -41,21 +40,21 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
             <span class="dot" aria-hidden="true"></span>
             <div>
               <strong>{item.text}</strong>
-              <small>打開 L3 詳情頁 →</small>
+              <small>了解詳情 →</small>
             </div>
           </a>
         ))}
       </div>
     ) : (
-      <div class="empty">此專科暫無細項列表；可直接聯絡相關醫生預約。</div>
+      <div class="empty">此專科暫無細項列表；可直接聯絡相關醫生預約諮詢。</div>
     )}
   </section>
 
   {related.length > 0 && (
     <section class="container block">
       <div class="block-head">
-        <h2>相關醫生 <span class="lvl">L3</span></h2>
-        <p>從專科頁直達醫生個人頁錨點。</p>
+        <h2>相關醫生</h2>
+        <p>可預約此專科的醫生與護理團隊。</p>
       </div>
       <div class="doctors">
         {related.map((d) => (
@@ -94,71 +93,67 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
 <style>
   .crumb {
     display: flex; gap: 8px; align-items: center;
-    padding: 24px 0 0; color: var(--muted); font-size: 13px;
+    padding: 28px 0 0; color: var(--muted); font-size: 13px;
   }
   .crumb a { color: var(--cyan); }
   .hero {
-    display: grid; grid-template-columns: 72px 1fr; gap: 18px;
-    padding: 28px 0 12px; align-items: start;
+    display: grid; grid-template-columns: 80px 1fr; gap: 20px;
+    padding: 28px 0 8px; align-items: start;
   }
-  .icon { width: 72px; height: 72px; object-fit: contain; }
-  .eyebrow {
-    display: inline-flex; margin: 0 0 8px; padding: 4px 10px; border-radius: 999px;
-    background: #111; color: #50dde4; font-size: 12px; font-weight: 700;
-  }
-  .hero h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.6rem); }
-  .hero p { margin: 10px 0 0; color: #444; max-width: 640px; }
-  .block { padding: 28px 0; }
-  .block-head { margin-bottom: 14px; }
-  .block-head h2 { margin: 0; font-size: 22px; display: flex; align-items: center; gap: 8px; }
-  .block-head p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
-  .lvl {
-    display: inline-flex; padding: 1px 7px; border-radius: 999px;
-    background: #111; color: #50dde4; font-size: 11px; font-weight: 700;
-  }
+  .icon { width: 80px; height: 80px; object-fit: contain; }
+  .hero h1 { margin: 0; font-size: clamp(1.85rem, 4vw, 2.6rem); }
+  .hero p { margin: 12px 0 0; color: #444; max-width: 640px; line-height: 1.7; font-size: 16px; }
+  .block { padding: 32px 0; }
+  .block-head { margin-bottom: 16px; }
+  .block-head h2 { margin: 0; font-size: 22px; }
+  .block-head p { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
   .items {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
   }
   .item {
-    display: flex; gap: 10px; align-items: start;
-    padding: 16px; border-radius: 14px; background: #fff;
+    display: flex; gap: 12px; align-items: start;
+    padding: 18px; border-radius: 16px; background: #fff;
     border: 1px solid var(--line);
+    transition: border-color .15s ease, box-shadow .15s ease;
   }
   .item:hover { border-color: var(--cyan); box-shadow: var(--shadow); }
   .dot { width: 8px; height: 8px; margin-top: 7px; border-radius: 50%; background: var(--cyan); flex: 0 0 auto; }
-  .item strong { display: block; font-size: 15px; }
-  .item small { display: block; margin-top: 4px; color: var(--cyan); font-size: 12px; }
-  .empty { padding: 16px; border-radius: 12px; background: #fff; border: 1px dashed var(--line); color: var(--muted); }
+  .item strong { display: block; font-size: 15px; line-height: 1.4; }
+  .item small { display: block; margin-top: 6px; color: var(--cyan); font-size: 12px; font-weight: 600; }
+  .empty { padding: 18px; border-radius: 14px; background: var(--soft); border: 1px dashed var(--line); color: var(--muted); }
   .doctors {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 12px;
   }
   .doctor {
     display: flex; gap: 12px; align-items: center;
-    padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px;
   }
+  .doctor:hover { border-color: var(--cyan); }
   .doctor img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
   .doctor strong { display: block; font-size: 14px; }
   .doctor small { color: var(--muted); font-size: 12px; }
   .cta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 8px 0 36px; }
   .back { color: var(--cyan); font-weight: 600; }
-  .more { padding-bottom: 64px; }
+  .more { padding-bottom: 72px; }
   .more h2 { margin: 0 0 14px; font-size: 18px; }
   .more-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
   .more-grid a {
     display: flex; gap: 10px; align-items: center;
     padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 12px; font-size: 14px;
   }
+  .more-grid a:hover { border-color: var(--cyan); color: var(--cyan); }
   .more-grid img { width: 32px; height: 32px; object-fit: contain; }
   @media (max-width: 700px) {
-    .crumb { padding-top: 16px; font-size: 12px; flex-wrap: wrap; }
+    .crumb { padding-top: 18px; font-size: 12px; flex-wrap: wrap; }
     .hero { grid-template-columns: 52px 1fr; gap: 12px; padding: 20px 0 8px; }
     .icon { width: 52px; height: 52px; }
     .hero h1 { font-size: 1.55rem; }
-    .block { padding: 18px 0; }
+    .hero p { font-size: 14px; }
+    .block { padding: 20px 0; }
     .items { grid-template-columns: 1fr; }
     .doctors { grid-template-columns: 1fr; }
     .more-grid { grid-template-columns: 1fr 1fr; }

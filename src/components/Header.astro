@@ -23,10 +23,10 @@ const doctorGroups = [
         <a class:list={['nav-link', { active: path.includes('/services') }]} href="/zh/services/">
           兒科服務 <span class="caret" aria-hidden="true"></span>
         </a>
-        <div class="mega" role="menu" aria-label="兒科服務二級選單">
+        <div class="mega" role="menu" aria-label="兒科服務選單">
           <div class="mega-cols">
             <div class="mega-l2">
-              <p class="mega-label">服務分類 <span class="lvl">L2</span></p>
+              <p class="mega-label">服務分類</p>
               {services.map((s, i) => (
                 <a
                   class:list={['mega-l2-item', { first: i === 0 }]}
@@ -39,10 +39,10 @@ const doctorGroups = [
               ))}
             </div>
             <div class="mega-l3">
-              <p class="mega-label">細項 / 相關醫生 <span class="lvl">L3</span></p>
+              <p class="mega-label">服務細項 / 相關醫生</p>
               {services.map((s, i) => (
                 <div class:list={['l3-panel', { show: i === 0 }]} data-l3={s.id}>
-                  <a class="l3-title" href={`/zh/services/${s.id}/`}>{s.title} 專科頁</a>
+                  <a class="l3-title" href={`/zh/services/${s.id}/`}>{s.title} · 查看專科</a>
                   {s.items.length > 0 ? (
                     <ul class="l3-list">
                       {s.items.map((item) => (
@@ -52,7 +52,7 @@ const doctorGroups = [
                       ))}
                     </ul>
                   ) : (
-                    <p class="l3-empty">暫無細項，進入專科頁查看介紹</p>
+                    <p class="l3-empty">暫無細項列表，請進入專科頁了解詳情</p>
                   )}
                   {s.doctorIds.length > 0 && (
                     <div class="l3-doctors">
@@ -82,10 +82,10 @@ const doctorGroups = [
         <a class:list={['nav-link', { active: path.includes('/doctors') }]} href="/zh/doctors/">
           醫生團隊 <span class="caret" aria-hidden="true"></span>
         </a>
-        <div class="mega mega-doctors" role="menu" aria-label="醫生團隊二級選單">
+        <div class="mega mega-doctors" role="menu" aria-label="醫生團隊選單">
           <div class="mega-cols">
             <div class="mega-l2">
-              <p class="mega-label">團隊分類 <span class="lvl">L2</span></p>
+              <p class="mega-label">團隊分類</p>
               {doctorGroups.map((g, i) => (
                 <a
                   class:list={['mega-l2-item', { first: i === 0 }]}
@@ -97,7 +97,7 @@ const doctorGroups = [
               ))}
             </div>
             <div class="mega-l3">
-              <p class="mega-label">成員 <span class="lvl">L3</span></p>
+              <p class="mega-label">成員</p>
               {doctorGroups.map((g, i) => (
                 <div class:list={['l3-panel', { show: i === 0 }]} data-l3={g.id}>
                   <ul class="l3-list doctors">
@@ -132,7 +132,9 @@ const doctorGroups = [
         <img src="/assets/whatsapp.svg" alt="" />
         <span class="wa-text">WhatsApp 預約</span>
       </a>
-      <button class="mobile-toggle" type="button" data-mobile-open aria-label="打開選單" aria-expanded="false">☰</button>
+      <button class="mobile-toggle" type="button" data-mobile-open aria-label="打開選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 
@@ -193,75 +195,92 @@ const doctorGroups = [
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(255,255,255,.96);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(217, 232, 236, 0.8);
   }
   .header-inner {
     min-height: var(--header-h);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 16px;
   }
   .logo { flex: 0 1 auto; min-width: 0; }
-  .logo img { height: 44px; width: auto; max-width: min(200px, 46vw); object-fit: contain; }
-  .nav { display: flex; align-items: center; gap: 4px; margin-left: auto; margin-right: 8px; }
+  .logo img { height: 44px; width: auto; max-width: min(210px, 48vw); object-fit: contain; }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: auto;
+    margin-right: 12px;
+  }
   .nav-link {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 10px 12px;
-    border-radius: 999px;
-    color: #555;
+    padding: 10px 14px;
+    color: #444;
     font-size: 15px;
     font-weight: 500;
+    transition: color .15s ease;
   }
-  .nav-link.active, .nav-link:hover { color: var(--cyan); }
+  .nav-link:hover { color: var(--cyan); }
+  .nav-link.active { color: var(--cyan); font-weight: 600; }
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 2px;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--cyan);
+  }
   .caret {
     width: 0; height: 0;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 5px solid currentColor;
-    opacity: .7;
+    opacity: .65;
   }
   .nav-item { position: relative; }
   .mega {
     display: none;
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 10px);
     left: 50%;
     transform: translateX(-35%);
-    width: min(820px, calc(100vw - 32px));
+    width: min(860px, calc(100vw - 32px));
     background: #fff;
     border: 1px solid var(--line);
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-    padding: 16px;
+    border-radius: 20px;
+    box-shadow: 0 18px 50px rgba(0, 40, 50, 0.12);
+    padding: 18px;
+  }
+  .mega::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
   }
   .nav-item:hover .mega,
   .nav-item:focus-within .mega { display: block; }
-  .mega-cols { display: grid; grid-template-columns: 280px 1fr; gap: 12px; min-height: 320px; }
+  .mega-cols { display: grid; grid-template-columns: 280px 1fr; gap: 14px; min-height: 340px; }
   .mega-label {
     margin: 0 0 10px;
     font-size: 12px;
-    color: var(--muted);
+    color: #8a9aa0;
     letter-spacing: .04em;
-  }
-  .lvl {
-    display: inline-block;
-    margin-left: 6px;
-    padding: 1px 6px;
-    border-radius: 999px;
-    background: #111;
-    color: #50dde4;
-    font-size: 10px;
-    font-weight: 700;
+    font-weight: 600;
   }
   .mega-l2 {
     border-right: 1px solid var(--line);
-    padding-right: 12px;
-    max-height: 420px;
+    padding-right: 14px;
+    max-height: 440px;
     overflow: auto;
   }
   .mega-l2-item {
@@ -271,6 +290,7 @@ const doctorGroups = [
     padding: 10px 12px;
     border-radius: 12px;
     font-size: 14px;
+    color: #333;
   }
   .mega-l2-item img { width: 28px; height: 28px; object-fit: contain; }
   .mega-l2-item:hover,
@@ -283,15 +303,17 @@ const doctorGroups = [
     margin-bottom: 10px;
     color: var(--cyan);
     font-weight: 700;
+    font-size: 14px;
   }
-  .l3-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  .l3-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; max-height: 280px; overflow: auto; }
   .l3-list a {
     display: block;
     padding: 8px 10px;
     border-radius: 10px;
     font-size: 14px;
+    color: #333;
   }
-  .l3-list a:hover { background: var(--cyan-soft); }
+  .l3-list a:hover { background: var(--cyan-soft); color: var(--cyan-hover); }
   .l3-list.doctors a {
     display: flex;
     align-items: center;
@@ -301,7 +323,7 @@ const doctorGroups = [
     width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
   }
   .l3-list.doctors small { display: block; color: var(--muted); font-size: 12px; }
-  .l3-empty { color: var(--muted); font-size: 13px; }
+  .l3-empty { color: var(--muted); font-size: 13px; margin: 0; }
   .l3-doctors { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
   .l3-doctor-list { display: flex; flex-wrap: wrap; gap: 8px; }
   .l3-doctor-list a {
@@ -309,10 +331,10 @@ const doctorGroups = [
     padding: 6px 10px 6px 6px; border-radius: 999px; background: #f4fafb; font-size: 13px;
   }
   .l3-doctor-list img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
-  .actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+  .actions { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
   .lang-trigger {
     min-height: 36px;
-    padding: 4px 12px;
+    padding: 4px 14px;
     border-radius: 999px;
     border: 1px solid var(--line);
     background: #f7fafb;
@@ -324,9 +346,20 @@ const doctorGroups = [
     display: none;
     border: 1px solid var(--line);
     background: #fff;
-    border-radius: 10px;
-    width: 40px; height: 40px;
+    border-radius: 12px;
+    width: 42px; height: 42px;
     flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .mobile-toggle span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    border-radius: 2px;
+    background: #333;
   }
   .mobile-backdrop {
     position: fixed; inset: 0; z-index: 55;
@@ -335,7 +368,6 @@ const doctorGroups = [
   .mobile-backdrop[hidden],
   .mobile-panel[hidden] { display: none !important; }
 
-  /* Mobile panel — match live site style */
   .mobile-panel {
     position: fixed;
     inset: 12px;
@@ -365,7 +397,7 @@ const doctorGroups = [
     font-size: 26px;
     line-height: 1;
   }
-  .mobile-nav { display: grid; gap: 8px; }
+  .mobile-nav { display: grid; gap: 6px; flex: 1 1 auto; }
   .m-link, .m-acc > summary {
     display: block;
     padding: 14px 16px;
@@ -430,16 +462,15 @@ const doctorGroups = [
     color: #0f8a98;
   }
   .mobile-wa {
-    margin-top: auto;
+    margin-top: 20px;
     width: 100%;
     flex: 0 0 auto;
   }
-  .mobile-nav { flex: 1 1 auto; }
 
   @media (max-width: 980px) {
     .nav { display: none; }
     .lang-desk { display: none; }
-    .mobile-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    .mobile-toggle { display: inline-flex; }
     .logo img { height: 36px; }
     .header-wa { min-width: 0; padding: 0 12px; }
   }

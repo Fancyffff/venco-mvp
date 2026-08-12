@@ -31,9 +31,21 @@ import site from '../data/site.json';
         <img src="/assets/whatsapp.svg" alt="" />
         WhatsApp 預約
       </a>
+      {site.qrCode && (
+        <div class="qr">
+          <img src={site.qrCode} alt="微信二維碼" />
+          <span>請用微信掃碼關注</span>
+        </div>
+      )}
     </div>
   </div>
-  <div class="container copy">© 2026 {site.name}</div>
+  <div class="container copy">
+    <span>© 2026 {site.name}</span>
+    <nav aria-label="法律資訊">
+      <a href="/zh/disclaimer/">服務條款</a>
+      <a href="/zh/disclaimer/">用戶隱私</a>
+    </nav>
+  </div>
 </footer>
 
 <style>
@@ -60,13 +72,28 @@ import site from '../data/site.json';
   }
   .label:first-of-type { margin-top: 0 !important; }
   .cta .wa-btn { margin-top: 10px; color: #111; }
+  .qr {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 16px;
+  }
+  .qr img {
+    width: 72px; height: 72px; border-radius: 10px; background: #fff; object-fit: cover;
+  }
+  .qr span { font-size: 13px; opacity: .9; max-width: 8em; line-height: 1.4; }
   .copy {
     margin-top: 32px;
     padding-top: 18px;
     border-top: 1px solid rgba(255,255,255,.25);
     font-size: 13px;
-    opacity: .85;
+    opacity: .9;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
   }
+  .copy nav { display: flex; gap: 16px; }
+  .copy a { margin: 0; opacity: .9; }
   @media (max-width: 800px) {
     .footer { padding: 40px 0 24px; }
     .footer-grid { grid-template-columns: 1fr; gap: 28px; }

@@ -23,7 +23,8 @@
         "https://img.venco.com.hk/uploads/2026/07/2f8fbc0b-7960-4e71-856e-8316c87805fd---2.jpeg",
         "https://img.venco.com.hk/uploads/2026/07/d013f79c-458e-46e7-9530-3f557ae435a1---3.jpeg",
         "https://img.venco.com.hk/uploads/2026/07/42fa294c-322d-4197-9360-b8b66e9adbba---4.jpeg"
-      ]
+      ],
+      "receptionImage": "https://img.venco.com.hk/uploads/venco_clinic_mira_place_clinic_reception_v2_3c3b8c18c4.jpeg"
     },
     {
       "name": "海洋中心",
@@ -41,25 +42,32 @@
   ],
   "education": [
     {
-      "title": "鼻敏感 Allergic Rhinitis",
-      "excerpt": "病徵主要是鼻黏膜受到刺激，導致血管擴張。",
+      "title": "⿐敏感 Allergic Rhinitis",
+      "excerpt": "病徵-主要是鼻黏膜受到刺激，導致血管擴張",
       "tag": "鼻敏感",
-      "href": "/zh/education/",
+      "href": "/zh/education/allergic-rhinitis/",
       "image": "https://img.venco.com.hk/uploads/venco_education_allergic_rhinitis_f920ad74e2.jpg"
     },
     {
-      "title": "專注力不足及過度活躍症 ADHD",
-      "excerpt": "專注力不足評估與兒童行為支援。",
+      "title": "專注力不足及過度活躍症 Attention Deficit & Hyperactivity Disorder, ADHD",
+      "excerpt": "專注力不足評估",
       "tag": "臨床遺傳科",
-      "href": "/zh/education/",
-      "image": "https://img.venco.com.hk/uploads/venco_education_growth_hormone_injection_800e8b9aff.jpg"
+      "href": "/zh/education/adhd/",
+      "image": "https://img.venco.com.hk/uploads/venco_education_adhd_ad508cc15e.jpg"
     },
     {
-      "title": "呼吸道融合細胞病毒",
-      "excerpt": "劉家輝醫生分享兒科專科護理重點。",
-      "tag": "兒科",
-      "href": "/zh/education/",
+      "title": "BB 流感症狀，嬰兒流感症狀",
+      "excerpt": "本港正值流感高峰期，幼稚園及幼兒中心成院舍爆發重災區。但藥廠推出的流感疫苗，最細只能讓6個月大的BB接種",
+      "tag": "流感",
+      "href": "/zh/education/neonatal-flu/",
       "image": "https://img.venco.com.hk/uploads/venco_education_neonatal_flu_e4ea58f286.png"
     }
-  ]
+  ],
+  "about": [
+    "榛怡醫務中心由經驗豐富的兒科專科醫生及醫護團隊組成，提供一般兒科、專科評估、疫苗接種、兒科教育及家庭支援。",
+    "我們重視清晰溝通，讓家長了解孩子情況並作出安心選擇。"
+  ],
+  "contactHero": "https://img.venco.com.hk/uploads/venco_contact_hero_desktop6_hero_full_v2_18cdc8316b.png",
+  "qrCode": "https://img.venco.com.hk/uploads/2026/07/7ae92196-c371-4616-9b11-2b621d11721c--1.png",
+  "email": "info@venco.com.hk"
 }

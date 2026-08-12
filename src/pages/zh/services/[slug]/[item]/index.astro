@@ -2,6 +2,7 @@
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
 import services from '../../../../../data/services.json';
 import doctors from '../../../../../data/doctors.json';
+import education from '../../../../../data/education.json';
 import site from '../../../../../data/site.json';
 
 export function getStaticPaths() {
@@ -17,6 +18,9 @@ const { service, item } = Astro.props;
 const doctorMap = Object.fromEntries(doctors.map((d) => [d.id, d]));
 const related = service.doctorIds.map((id) => doctorMap[id]).filter(Boolean);
 const otherItems = service.items.filter((x) => x.slug !== item.slug);
+const relatedEdu = (item.relatedEducation || [])
+  .map((r) => education.find((e) => e.slug === r.slug))
+  .filter(Boolean);
 ---
 <BaseLayout title={`${item.text} | ${service.title} | ${site.name}`} description={`${service.title}：${item.text}`}>
   <section class="crumb container">
@@ -62,6 +66,20 @@ const otherItems = service.items.filter((x) => x.slug !== item.slug);
               <strong>{d.name}</strong>
               <small>{d.title}</small>
             </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {relatedEdu.length > 0 && (
+    <section class="container block">
+      <h2>相關兒科教育</h2>
+      <div class="edu">
+        {relatedEdu.map((e) => (
+          <a href={`/zh/education/${e.slug}/`}>
+            {e.cover && <img src={e.cover} alt="" />}
+            <span>{e.title}</span>
           </a>
         ))}
       </div>
@@ -117,6 +135,14 @@ const otherItems = service.items.filter((x) => x.slug !== item.slug);
   .doctor img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
   .doctor strong { display: block; font-size: 14px; }
   .doctor small { color: var(--muted); font-size: 12px; }
+  .edu {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;
+  }
+  .edu a {
+    display: grid; gap: 10px; padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  }
+  .edu img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 10px; background: #eef3f5; }
+  .edu span { font-size: 14px; font-weight: 600; line-height: 1.4; }
   .others { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 32px; }
   .others a {
     padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: 13px;

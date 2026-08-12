@@ -1,28 +1,54 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import site from '../../../data/site.json';
+import doctors from '../../../data/doctors.json';
 ---
-<BaseLayout title={`關於我們 | ${site.name}`}>
-  <section class="page">
+<BaseLayout title={`關於我們 | ${site.name}`} description={site.about?.[0]}>
+  <section class="hero" style={site.contactHero ? `--hero:url(${site.contactHero})` : undefined}>
     <div class="container">
       <h1>關於我們</h1>
-      <p class="lead">{site.name}兒科專科，專注兒童健康診療。診室環境溫馨童趣，用心守護每一位孩子的健康成長。</p>
+      <p class="lead">了解榛怡醫務中心，歡迎隨時聯絡我們</p>
+    </div>
+  </section>
 
-      <div class="hours-box">
-        <h2>營業時間</h2>
-        <p>{site.hours}</p>
+  <section class="page">
+    <div class="container">
+      <div class="about">
+        {(site.about || []).map((p) => <p>{p}</p>)}
       </div>
 
-      <h2 class="loc-title">診所地址</h2>
+      <div class="hours-box">
+        <h2>工作時間</h2>
+        <ul>
+          <li><span>星期一至五</span><strong>10:00-18:30</strong></li>
+          <li><span>星期六</span><strong>10:00-15:00</strong></li>
+          <li><span>星期日及公眾假期</span><strong>休息</strong></li>
+        </ul>
+      </div>
+
+      <h2 class="sec-title">WhatsApp 預約醫生</h2>
+      <div class="doc-grid">
+        {doctors.map((d) => (
+          <a class="doc" href={d.whatsapp} target="_blank" rel="noreferrer">
+            <img src={d.image} alt={d.name} />
+            <div>
+              <strong>{d.name}</strong>
+              <small>{d.english}</small>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <h2 class="sec-title loc-title">門診地址</h2>
       <div class="grid">
         {site.locations.map((loc) => (
           <article class="card">
             <img src={loc.mapImage} alt={`${loc.name}地圖`} />
             <div>
               <h3>{loc.name}</h3>
-              <p>{loc.address}</p>
-              <p class="phone">{loc.phone}</p>
-              {loc.fax && <p>傳真 {loc.fax}</p>}
+              <p>地址：{loc.address}</p>
+              <p class="phone">電話：{loc.phone}</p>
+              {loc.fax && <p>傳真：{loc.fax}</p>}
             </div>
           </article>
         ))}
@@ -36,19 +62,45 @@ import site from '../../../data/site.json';
 </BaseLayout>
 
 <style>
-  .page { padding: 56px 0 80px; }
-  h1 { margin: 0; font-size: clamp(1.9rem, 4vw, 2.5rem); }
-  .lead { margin: 14px 0 28px; color: #444; max-width: 720px; line-height: 1.7; font-size: 16px; }
+  .hero {
+    padding: 72px 0 56px;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.94), rgba(255,255,255,.45)),
+      var(--hero, none) center right / cover no-repeat;
+    background-color: #e8f7f9;
+  }
+  .hero h1 { margin: 0; font-size: clamp(2rem, 4vw, 2.8rem); }
+  .lead { margin: 12px 0 0; color: #444; font-size: 16px; }
+  .page { padding: 40px 0 80px; }
+  .about { max-width: 760px; margin-bottom: 28px; }
+  .about p { margin: 0 0 12px; color: #333; line-height: 1.75; font-size: 16px; }
   .hours-box {
-    padding: 18px 20px;
+    padding: 20px 22px;
     border-radius: 16px;
     background: var(--soft);
     border: 1px solid var(--line);
-    margin-bottom: 32px;
+    margin-bottom: 36px;
+    max-width: 520px;
   }
-  .hours-box h2 { margin: 0 0 8px; font-size: 16px; }
-  .hours-box p { margin: 0; color: #444; font-size: 14px; }
-  .loc-title { margin: 0 0 14px; font-size: 20px; }
+  .hours-box h2 { margin: 0 0 12px; font-size: 18px; }
+  .hours-box ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .hours-box li { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; color: #444; }
+  .sec-title { margin: 0 0 14px; font-size: 20px; }
+  .loc-title { margin-top: 36px; }
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .doc {
+    display: flex; gap: 12px; align-items: center;
+    padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  }
+  .doc:hover { border-color: var(--cyan); }
+  .doc img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+  .doc strong { display: block; font-size: 14px; }
+  .doc small { color: var(--muted); font-size: 12px; }
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -64,7 +116,8 @@ import site from '../../../data/site.json';
   .card p { margin: 4px 0; color: #444; font-size: 14px; line-height: 1.55; }
   .phone { color: var(--cyan-hover); font-weight: 600; }
   @media (max-width: 700px) {
-    .page { padding: 40px 0 56px; }
+    .hero { padding: 44px 0 32px; }
+    .page { padding: 28px 0 56px; }
     .grid { grid-template-columns: 1fr; }
     .wa-btn { width: 100%; }
   }

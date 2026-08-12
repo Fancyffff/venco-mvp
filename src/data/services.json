@@ -8,22 +8,30 @@
       {
         "id": "general-virus-strep-rapid-test",
         "text": "病毒及鏈球菌快速測試",
-        "slug": "virus-strep-rapid-test"
+        "slug": "virus-strep-rapid-test",
+        "relatedEducation": []
       },
       {
         "id": "general-newborn-screening",
         "text": "初生嬰兒健康篩檢",
-        "slug": "newborn-screening"
+        "slug": "newborn-screening",
+        "relatedEducation": [
+          {
+            "slug": "neonatal-flu"
+          }
+        ]
       },
       {
         "id": "general-hearing-test",
         "text": "聽力檢查",
-        "slug": "hearing-test"
+        "slug": "hearing-test",
+        "relatedEducation": []
       },
       {
         "id": "general-xray-ct",
         "text": "X光及電腦掃描",
-        "slug": "xray-ct"
+        "slug": "xray-ct",
+        "relatedEducation": []
       }
     ],
     "doctors": [
@@ -58,7 +66,8 @@
       {
         "id": "vaccine-childhood-vaccination",
         "text": "兒童疫苗接種",
-        "slug": "childhood-vaccination"
+        "slug": "childhood-vaccination",
+        "relatedEducation": []
       }
     ],
     "doctors": [],
@@ -73,52 +82,69 @@
       {
         "id": "respiratory-infant-lung-function",
         "text": "幼嬰及幼兒肺功能",
-        "slug": "infant-lung-function"
+        "slug": "infant-lung-function",
+        "relatedEducation": []
       },
       {
         "id": "respiratory-spirometry",
         "text": "肺活量檢測 (兒童及成人肺功能)",
-        "slug": "spirometry"
+        "slug": "spirometry",
+        "relatedEducation": []
       },
       {
         "id": "respiratory-fe-no-test",
         "text": "一氧化氮檢測 (呼吸道發炎評估)",
-        "slug": "fe-no-test"
+        "slug": "fe-no-test",
+        "relatedEducation": []
       },
       {
         "id": "respiratory-pulmonary-function",
         "text": "肺功能檢查",
-        "slug": "pulmonary-function"
+        "slug": "pulmonary-function",
+        "relatedEducation": []
       },
       {
         "id": "respiratory-bronchoscopy",
         "text": "支氣管光導纖維鏡檢查 (醫院內進行)",
-        "slug": "bronchoscopy"
+        "slug": "bronchoscopy",
+        "relatedEducation": []
       },
       {
         "id": "respiratory-sleep-study",
         "text": "睡眠測試 (醫院內進行)",
-        "slug": "sleep-study"
+        "slug": "sleep-study",
+        "relatedEducation": []
       },
       {
         "id": "respiratory-pediatric-sleep-apnea",
         "text": "兒童睡眠窒息症",
-        "slug": "pediatric-sleep-apnea"
+        "slug": "pediatric-sleep-apnea",
+        "relatedEducation": [
+          {
+            "slug": "sleep-apena"
+          },
+          {
+            "slug": "sleep-program-for-children"
+          }
+        ]
       },
       {
         "id": "respiratory-nasopharyngoscopy",
         "text": "鼻咽光導纖維鏡檢查 (上呼吸道評估)",
-        "slug": "nasopharyngoscopy"
+        "slug": "nasopharyngoscopy",
+        "relatedEducation": []
       },
       {
         "id": "respiratory-inhalation-therapy",
         "text": "吸入性治療",
-        "slug": "inhalation-therapy"
+        "slug": "inhalation-therapy",
+        "relatedEducation": []
       },
       {
         "id": "respiratory-asthma-care",
         "text": "哮喘診斷和治療",
-        "slug": "asthma-care"
+        "slug": "asthma-care",
+        "relatedEducation": []
       }
     ],
     "doctors": [
@@ -139,37 +165,51 @@
       {
         "id": "endocrine-development-screening",
         "text": "兒童發展篩檢",
-        "slug": "development-screening"
+        "slug": "development-screening",
+        "relatedEducation": []
       },
       {
         "id": "endocrine-growth-hormone",
         "text": "兒童生長荷爾蒙注射",
-        "slug": "growth-hormone"
+        "slug": "growth-hormone",
+        "relatedEducation": [
+          {
+            "slug": "growth-hormone"
+          },
+          {
+            "slug": "growth-children"
+          }
+        ]
       },
       {
         "id": "endocrine-puberty-disorders",
         "text": "兒童青春期疾病",
-        "slug": "puberty-disorders"
+        "slug": "puberty-disorders",
+        "relatedEducation": []
       },
       {
         "id": "endocrine-childhood-obesity",
         "text": "兒童肥胖",
-        "slug": "childhood-obesity"
+        "slug": "childhood-obesity",
+        "relatedEducation": []
       },
       {
         "id": "endocrine-thyroid-disorders",
         "text": "兒童甲狀腺疾病",
-        "slug": "thyroid-disorders"
+        "slug": "thyroid-disorders",
+        "relatedEducation": []
       },
       {
         "id": "endocrine-pediatric-diabetes",
         "text": "兒童糖尿病",
-        "slug": "pediatric-diabetes"
+        "slug": "pediatric-diabetes",
+        "relatedEducation": []
       },
       {
         "id": "endocrine-other-endocrine",
         "text": "其他內分泌失調",
-        "slug": "other-endocrine"
+        "slug": "other-endocrine",
+        "relatedEducation": []
       }
     ],
     "doctors": [
@@ -188,32 +228,38 @@
       {
         "id": "allergy-skin-prick-test",
         "text": "皮膚點刺測試",
-        "slug": "skin-prick-test"
+        "slug": "skin-prick-test",
+        "relatedEducation": []
       },
       {
         "id": "allergy-allergy-blood-test",
         "text": "過敏血液測試",
-        "slug": "allergy-blood-test"
+        "slug": "allergy-blood-test",
+        "relatedEducation": []
       },
       {
         "id": "allergy-allergy-lung-function",
         "text": "肺功能測試",
-        "slug": "allergy-lung-function"
+        "slug": "allergy-lung-function",
+        "relatedEducation": []
       },
       {
         "id": "allergy-drug-allergy-test",
         "text": "藥物過敏測試",
-        "slug": "drug-allergy-test"
+        "slug": "drug-allergy-test",
+        "relatedEducation": []
       },
       {
         "id": "allergy-biologic-injection",
         "text": "生物製劑注射治療",
-        "slug": "biologic-injection"
+        "slug": "biologic-injection",
+        "relatedEducation": []
       },
       {
         "id": "allergy-desensitization",
         "text": "脫敏治療",
-        "slug": "desensitization"
+        "slug": "desensitization",
+        "relatedEducation": []
       }
     ],
     "doctors": [],
@@ -228,52 +274,69 @@
       {
         "id": "surgery-anal-fistula",
         "text": "肛瘻管切除",
-        "slug": "anal-fistula"
+        "slug": "anal-fistula",
+        "relatedEducation": []
       },
       {
         "id": "surgery-appendectomy",
         "text": "盲腸切除",
-        "slug": "appendectomy"
+        "slug": "appendectomy",
+        "relatedEducation": []
       },
       {
         "id": "surgery-circumcision",
         "text": "割包皮",
-        "slug": "circumcision"
+        "slug": "circumcision",
+        "relatedEducation": [
+          {
+            "slug": "circumcision-surgery"
+          },
+          {
+            "slug": "circumcision"
+          }
+        ]
       },
       {
         "id": "surgery-colonoscopy",
         "text": "結腸鏡檢查",
-        "slug": "colonoscopy"
+        "slug": "colonoscopy",
+        "relatedEducation": []
       },
       {
         "id": "surgery-ercp",
         "text": "內視鏡逆行性膽胰造影術",
-        "slug": "ercp"
+        "slug": "ercp",
+        "relatedEducation": []
       },
       {
         "id": "surgery-gastroscopy",
         "text": "食道鏡檢查 / 胃鏡檢查",
-        "slug": "gastroscopy"
+        "slug": "gastroscopy",
+        "relatedEducation": []
       },
       {
         "id": "surgery-hemangioma",
         "text": "血管瘤切除",
-        "slug": "hemangioma"
+        "slug": "hemangioma",
+        "relatedEducation": []
       },
       {
         "id": "surgery-fundoplication",
         "text": "胃底折疊術",
-        "slug": "fundoplication"
+        "slug": "fundoplication",
+        "relatedEducation": []
       },
       {
         "id": "surgery-inguinal-hernia",
         "text": "腹股溝疝 (小腸氣)",
-        "slug": "inguinal-hernia"
+        "slug": "inguinal-hernia",
+        "relatedEducation": []
       },
       {
         "id": "surgery-buried-penis",
         "text": "包皮重整 (陰莖陷入)",
-        "slug": "buried-penis"
+        "slug": "buried-penis",
+        "relatedEducation": []
       }
     ],
     "doctors": [
@@ -292,22 +355,38 @@
       {
         "id": "genetics-genetic-evaluation",
         "text": "醫學遺傳評估",
-        "slug": "genetic-evaluation"
+        "slug": "genetic-evaluation",
+        "relatedEducation": []
       },
       {
         "id": "genetics-genetic-diagnosis",
         "text": "遺傳疾病診斷",
-        "slug": "genetic-diagnosis"
+        "slug": "genetic-diagnosis",
+        "relatedEducation": [
+          {
+            "slug": "genetic-disorders"
+          }
+        ]
       },
       {
         "id": "genetics-genetic-counseling",
         "text": "遺傳諮詢",
-        "slug": "genetic-counseling"
+        "slug": "genetic-counseling",
+        "relatedEducation": [
+          {
+            "slug": "paediatric-screening"
+          }
+        ]
       },
       {
         "id": "genetics-genetic-testing",
         "text": "基因檢測",
-        "slug": "genetic-testing"
+        "slug": "genetic-testing",
+        "relatedEducation": [
+          {
+            "slug": "paediatric-screening"
+          }
+        ]
       }
     ],
     "doctors": [
@@ -328,17 +407,20 @@
       {
         "id": "telemedicine-telemedicine-consult",
         "text": "遙距視像診症",
-        "slug": "telemedicine-consult"
+        "slug": "telemedicine-consult",
+        "relatedEducation": []
       },
       {
         "id": "telemedicine-follow-up",
         "text": "覆診和跟進",
-        "slug": "follow-up"
+        "slug": "follow-up",
+        "relatedEducation": []
       },
       {
         "id": "telemedicine-medicine-delivery",
         "text": "藥物送家服務",
-        "slug": "medicine-delivery"
+        "slug": "medicine-delivery",
+        "relatedEducation": []
       }
     ],
     "doctors": [],

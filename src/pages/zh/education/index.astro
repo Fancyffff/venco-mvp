@@ -1,42 +1,71 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import education from '../../../data/education.json';
+import categories from '../../../data/education-categories.json';
 import site from '../../../data/site.json';
+
+const catalog = categories.map((c) => {
+  const articles = education.filter((a) => a.category === c.id);
+  return {
+    ...c,
+    count: articles.length,
+    cover: articles.find((a) => a.cover)?.cover || '',
+    articles,
+  };
+}).filter((c) => c.count > 0);
 ---
 <BaseLayout title={`兒科教育 | ${site.name}`} description="分享實用兒童健康知識，陪伴家長安心育兒。">
-  <section class="page">
+  <section class="page-hero">
     <div class="container">
       <h1>兒科教育</h1>
-      <p class="lead">分享實用兒童健康知識，陪伴家長安心育兒。</p>
-      <div class="grid">
-        {education.map((e) => (
-          <a class="card" href={`/zh/education/${e.slug}/`}>
-            <div class="media">
-              {e.cover ? <img src={e.cover} alt="" loading="lazy" /> : <div class="ph" />}
-              {e.tag && <span>{e.tag}</span>}
-            </div>
-            <div class="body">
-              <h2>{e.title}</h2>
-              {e.lead && <p>{e.lead}</p>}
-              <div class="meta">
-                {e.doctorName && <em>{e.doctorName}</em>}
-                {e.date && <time>{e.date}</time>}
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
+      <p>先選擇主題分類，再閱讀該分類下的教育文章。</p>
+    </div>
+  </section>
+
+  <section class="container catalog">
+    <div class="intro">
+      <h2>選擇主題</h2>
+      <p>共 {catalog.length} 個主題分類，點進後只看該類文章。</p>
+    </div>
+    <div class="grid">
+      {catalog.map((c) => (
+        <a class="card" href={`/zh/education/${c.id}/`}>
+          <div class="media">
+            {c.cover ? <img src={c.cover} alt="" loading="lazy" /> : <div class="ph" />}
+            <span>{c.count} 篇</span>
+          </div>
+          <div class="body">
+            <h3>{c.title}</h3>
+            <p>{c.desc}</p>
+            <em>查看文章 →</em>
+          </div>
+        </a>
+      ))}
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .page { padding: 56px 0 80px; }
-  h1 { margin: 0; font-size: clamp(1.9rem, 4vw, 2.5rem); }
-  .lead { margin: 12px 0 28px; color: var(--muted); font-size: 16px; }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .page-hero {
+    padding: 64px 0 36px;
+    background: linear-gradient(180deg, #e8f7f9, transparent);
+  }
+  .page-hero h1 { margin: 0; font-size: clamp(1.9rem, 4vw, 2.6rem); }
+  .page-hero p { margin: 14px 0 0; color: #444; max-width: 640px; line-height: 1.7; }
+  .catalog { padding: 20px 0 80px; }
+  .intro { margin-bottom: 22px; }
+  .intro h2 { margin: 0; font-size: 24px; }
+  .intro p { margin: 8px 0 0; color: var(--muted); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
   .card {
-    background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
     transition: transform .16s ease, box-shadow .16s ease;
   }
   .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
@@ -44,29 +73,18 @@ import site from '../../../data/site.json';
   .media img, .ph { width: 100%; height: 100%; object-fit: cover; }
   .ph { background: linear-gradient(135deg, #e8f7f9, #f3f7f8); }
   .media span {
-    position: absolute; left: 12px; bottom: 12px;
+    position: absolute; right: 12px; bottom: 12px;
     display: inline-flex; padding: 4px 10px; border-radius: 999px;
     background: rgba(255,255,255,.94); color: var(--cyan-hover); font-size: 12px; font-weight: 600;
   }
   .body { padding: 16px 18px 18px; }
-  .body h2 { margin: 0 0 8px; font-size: 17px; line-height: 1.4; }
-  .body p {
-    margin: 0;
-    color: #555;
-    font-size: 14px;
-    line-height: 1.55;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .meta {
-    display: flex; flex-wrap: wrap; gap: 8px 12px;
-    margin-top: 12px; color: var(--muted); font-size: 12px;
-  }
-  .meta em { font-style: normal; color: var(--cyan-hover); font-weight: 600; }
-  @media (max-width: 900px) {
+  .body h3 { margin: 0 0 8px; font-size: 18px; }
+  .body p { margin: 0 0 12px; color: var(--muted); font-size: 14px; line-height: 1.55; min-height: 44px; }
+  .body em { font-style: normal; color: var(--cyan); font-size: 13px; font-weight: 600; }
+  @media (max-width: 700px) {
+    .page-hero { padding: 40px 0 24px; }
+    .catalog { padding: 8px 0 56px; }
     .grid { grid-template-columns: 1fr; }
-    .page { padding: 40px 0 56px; }
+    .body p { min-height: 0; }
   }
 </style>

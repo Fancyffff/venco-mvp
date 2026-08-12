@@ -1,6 +1,8 @@
 ---
 import services from '../data/services.json';
 import doctors from '../data/doctors.json';
+import education from '../data/education.json';
+import educationCategories from '../data/education-categories.json';
 import site from '../data/site.json';
 
 const path = Astro.url.pathname;
@@ -20,6 +22,14 @@ const doctorGroups = departmentOrder
     const list = doctors.filter((d) => d.department === id);
     if (!list.length) return null;
     return { id, title: list[0].departmentTitle, doctors: list };
+  })
+  .filter(Boolean);
+
+const eduGroups = educationCategories
+  .map((c) => {
+    const articles = education.filter((a) => a.category === c.id);
+    if (!articles.length) return null;
+    return { ...c, articles };
   })
   .filter(Boolean);
 ---
@@ -134,7 +144,43 @@ const doctorGroups = departmentOrder
         </div>
       </div>
 
-      <a class:list={['nav-link', { active: path.includes('/education') }]} href="/zh/education/">兒科教育</a>
+      <div class="nav-item has-menu">
+        <a class:list={['nav-link', { active: path.includes('/education') }]} href="/zh/education/">
+          兒科教育 <span class="caret" aria-hidden="true"></span>
+        </a>
+        <div class="mega mega-edu" role="menu" aria-label="兒科教育選單">
+          <div class="mega-cols">
+            <div class="mega-l2">
+              <p class="mega-label">主題分類</p>
+              {eduGroups.map((g, i) => (
+                <a
+                  class:list={['mega-l2-item', { first: i === 0 }]}
+                  href={`/zh/education/${g.id}/`}
+                  data-panel={g.id}
+                >
+                  <span>{g.title}</span>
+                </a>
+              ))}
+            </div>
+            <div class="mega-l3">
+              <p class="mega-label">分類文章</p>
+              {eduGroups.map((g, i) => (
+                <div class:list={['l3-panel', { show: i === 0 }]} data-l3={g.id}>
+                  <a class="l3-title" href={`/zh/education/${g.id}/`}>{g.title} · 查看全部</a>
+                  <ul class="l3-list">
+                    {g.articles.slice(0, 8).map((a) => (
+                      <li>
+                        <a href={`/zh/education/${g.id}/${a.slug}/`}>{a.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <a class:list={['nav-link', { active: path.includes('/contact') }]} href="/zh/contact/">關於我們</a>
     </nav>
 
@@ -184,7 +230,16 @@ const doctorGroups = departmentOrder
         </div>
       </details>
 
-      <a class:list={['m-link', { active: path.includes('/education') }]} href="/zh/education/">兒科教育</a>
+      <details class="m-acc">
+        <summary class:list={[{ active: path.includes('/education') }]}>兒科教育</summary>
+        <div class="m-sub">
+          <a href="/zh/education/">主題總覽</a>
+          {eduGroups.map((g) => (
+            <a href={`/zh/education/${g.id}/`}>{g.title}</a>
+          ))}
+        </div>
+      </details>
+
       <a class:list={['m-link', { active: path.includes('/contact') }]} href="/zh/contact/">關於我們</a>
     </nav>
 

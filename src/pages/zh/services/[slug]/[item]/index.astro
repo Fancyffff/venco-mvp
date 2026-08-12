@@ -77,7 +77,7 @@ const relatedEdu = (item.relatedEducation || [])
       <h2>相關兒科教育</h2>
       <div class="edu">
         {relatedEdu.map((e) => (
-          <a href={`/zh/education/${e.slug}/`}>
+          <a href={`/zh/education/${e.category}/${e.slug}/`}>
             {e.cover && <img src={e.cover} alt="" />}
             <span>{e.title}</span>
           </a>

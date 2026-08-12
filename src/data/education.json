@@ -54,7 +54,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_ng_sui_fun_bc612cf3a9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/adhd/"
+    "sourceUrl": "https://venco.com.hk/zh/education/adhd/",
+    "category": "clinical-genetics",
+    "categoryTitle": "臨床遺傳科"
   },
   {
     "slug": "allergic-airway",
@@ -81,7 +83,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_ka_fai_3f1b07f052.png",
     "doctorWhatsapp": "https://wa.me/85297757769",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/allergic-airway/"
+    "sourceUrl": "https://venco.com.hk/zh/education/allergic-airway/",
+    "category": "paediatrics",
+    "categoryTitle": "兒科"
   },
   {
     "slug": "allergic-rhinitis",
@@ -112,7 +116,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_yu_wai_ling_72dd4381b9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/allergic-rhinitis/"
+    "sourceUrl": "https://venco.com.hk/zh/education/allergic-rhinitis/",
+    "category": "allergic-rhinitis",
+    "categoryTitle": "鼻敏感"
   },
   {
     "slug": "autism",
@@ -182,7 +188,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_ng_sui_fun_bc612cf3a9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/autism/"
+    "sourceUrl": "https://venco.com.hk/zh/education/autism/",
+    "category": "clinical-genetics",
+    "categoryTitle": "臨床遺傳科"
   },
   {
     "slug": "baby-jaundice",
@@ -210,7 +218,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_ka_fai_3f1b07f052.png",
     "doctorWhatsapp": "https://wa.me/85297757769",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/baby-jaundice/"
+    "sourceUrl": "https://venco.com.hk/zh/education/baby-jaundice/",
+    "category": "paediatrics",
+    "categoryTitle": "兒科"
   },
   {
     "slug": "blog-bb-fever",
@@ -237,7 +247,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/blog-bb-fever/"
+    "sourceUrl": "https://venco.com.hk/zh/education/blog-bb-fever/",
+    "category": "flu",
+    "categoryTitle": "流感"
   },
   {
     "slug": "blog-chronic-cough",
@@ -279,7 +291,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_ka_fai_3f1b07f052.png",
     "doctorWhatsapp": "https://wa.me/85297757769",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/blog-chronic-cough/"
+    "sourceUrl": "https://venco.com.hk/zh/education/blog-chronic-cough/",
+    "category": "paediatrics",
+    "categoryTitle": "兒科"
   },
   {
     "slug": "blog-flu-vaccine",
@@ -306,7 +320,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/blog-flu-vaccine/"
+    "sourceUrl": "https://venco.com.hk/zh/education/blog-flu-vaccine/",
+    "category": "flu",
+    "categoryTitle": "流感"
   },
   {
     "slug": "blog-flu-vaccine-winter",
@@ -343,7 +359,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/blog-flu-vaccine-winter/"
+    "sourceUrl": "https://venco.com.hk/zh/education/blog-flu-vaccine-winter/",
+    "category": "flu",
+    "categoryTitle": "流感"
   },
   {
     "slug": "blog-premature",
@@ -370,7 +388,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/blog-premature/"
+    "sourceUrl": "https://venco.com.hk/zh/education/blog-premature/",
+    "category": "child-growth",
+    "categoryTitle": "兒童成長"
   },
   {
     "slug": "children-diarrhea",
@@ -396,7 +416,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/children-diarrhea/"
+    "sourceUrl": "https://venco.com.hk/zh/education/children-diarrhea/",
+    "category": "gastroenteritis",
+    "categoryTitle": "腸胃炎"
   },
   {
     "slug": "children-gastroenteritis",
@@ -424,7 +446,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/children-gastroenteritis/"
+    "sourceUrl": "https://venco.com.hk/zh/education/children-gastroenteritis/",
+    "category": "gastroenteritis",
+    "categoryTitle": "腸胃炎"
   },
   {
     "slug": "children-long-covid",
@@ -450,7 +474,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/children-long-covid/"
+    "sourceUrl": "https://venco.com.hk/zh/education/children-long-covid/",
+    "category": "covid-19",
+    "categoryTitle": "新冠肺炎"
   },
   {
     "slug": "children-tics",
@@ -485,7 +511,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/children-tics/"
+    "sourceUrl": "https://venco.com.hk/zh/education/children-tics/",
+    "category": "paediatrics",
+    "categoryTitle": "兒科"
   },
   {
     "slug": "circumcision",
@@ -516,7 +544,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_cheung_sing_tak_63d1f5807c.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/circumcision/"
+    "sourceUrl": "https://venco.com.hk/zh/education/circumcision/",
+    "category": "paediatric-surgery",
+    "categoryTitle": "小兒外科"
   },
   {
     "slug": "circumcision-surgery",
@@ -546,7 +576,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_cheung_sing_tak_63d1f5807c.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/circumcision-surgery/"
+    "sourceUrl": "https://venco.com.hk/zh/education/circumcision-surgery/",
+    "category": "paediatric-surgery",
+    "categoryTitle": "小兒外科"
   },
   {
     "slug": "eating-disorders-in-adolescents",
@@ -626,7 +658,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_ng_sui_fun_bc612cf3a9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/eating-disorders-in-adolescents/"
+    "sourceUrl": "https://venco.com.hk/zh/education/eating-disorders-in-adolescents/",
+    "category": "psychology",
+    "categoryTitle": "心理學"
   },
   {
     "slug": "fever-children",
@@ -663,7 +697,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/fever-children/"
+    "sourceUrl": "https://venco.com.hk/zh/education/fever-children/",
+    "category": "paediatrics",
+    "categoryTitle": "兒科"
   },
   {
     "slug": "flu-meningococcus",
@@ -694,7 +730,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/flu-meningococcus/"
+    "sourceUrl": "https://venco.com.hk/zh/education/flu-meningococcus/",
+    "category": "flu",
+    "categoryTitle": "流感"
   },
   {
     "slug": "gastroenteritis",
@@ -720,7 +758,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/gastroenteritis/"
+    "sourceUrl": "https://venco.com.hk/zh/education/gastroenteritis/",
+    "category": "gastroenteritis",
+    "categoryTitle": "腸胃炎"
   },
   {
     "slug": "genetic-disorders",
@@ -798,7 +838,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_tze_kin_91d44a5fe5.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/genetic-disorders/"
+    "sourceUrl": "https://venco.com.hk/zh/education/genetic-disorders/",
+    "category": "clinical-genetics",
+    "categoryTitle": "臨床遺傳科"
   },
   {
     "slug": "growth-children",
@@ -843,7 +885,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/growth-children/"
+    "sourceUrl": "https://venco.com.hk/zh/education/growth-children/",
+    "category": "child-growth",
+    "categoryTitle": "兒童成長"
   },
   {
     "slug": "growth-hormone",
@@ -897,7 +941,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/growth-hormone/"
+    "sourceUrl": "https://venco.com.hk/zh/education/growth-hormone/",
+    "category": "child-growth",
+    "categoryTitle": "兒童成長"
   },
   {
     "slug": "growth-hormone-injection",
@@ -947,7 +993,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/growth-hormone-injection/"
+    "sourceUrl": "https://venco.com.hk/zh/education/growth-hormone-injection/",
+    "category": "child-growth",
+    "categoryTitle": "兒童成長"
   },
   {
     "slug": "hernia",
@@ -973,7 +1021,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_cheung_sing_tak_63d1f5807c.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/hernia/"
+    "sourceUrl": "https://venco.com.hk/zh/education/hernia/",
+    "category": "paediatric-surgery",
+    "categoryTitle": "小兒外科"
   },
   {
     "slug": "measles",
@@ -1009,7 +1059,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/measles/"
+    "sourceUrl": "https://venco.com.hk/zh/education/measles/",
+    "category": "paediatrics",
+    "categoryTitle": "兒科"
   },
   {
     "slug": "neonatal-flu",
@@ -1035,7 +1087,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/neonatal-flu/"
+    "sourceUrl": "https://venco.com.hk/zh/education/neonatal-flu/",
+    "category": "flu",
+    "categoryTitle": "流感"
   },
   {
     "slug": "obesity-metabolic-syndrome",
@@ -1062,7 +1116,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/obesity-metabolic-syndrome/"
+    "sourceUrl": "https://venco.com.hk/zh/education/obesity-metabolic-syndrome/",
+    "category": "paediatrics",
+    "categoryTitle": "兒科"
   },
   {
     "slug": "paediatric-screening",
@@ -1091,7 +1147,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_tze_kin_91d44a5fe5.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/paediatric-screening/"
+    "sourceUrl": "https://venco.com.hk/zh/education/paediatric-screening/",
+    "category": "clinical-genetics",
+    "categoryTitle": "臨床遺傳科"
   },
   {
     "slug": "respiratory-syncytial-virus",
@@ -1118,7 +1176,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_ka_fai_3f1b07f052.png",
     "doctorWhatsapp": "https://wa.me/85297757769",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/respiratory-syncytial-virus/"
+    "sourceUrl": "https://venco.com.hk/zh/education/respiratory-syncytial-virus/",
+    "category": "paediatrics",
+    "categoryTitle": "兒科"
   },
   {
     "slug": "shingles",
@@ -1144,7 +1204,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/shingles/"
+    "sourceUrl": "https://venco.com.hk/zh/education/shingles/",
+    "category": "shingles",
+    "categoryTitle": "生蛇"
   },
   {
     "slug": "sleep-apena",
@@ -1177,7 +1239,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_yu_wai_ling_72dd4381b9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/sleep-apena/"
+    "sourceUrl": "https://venco.com.hk/zh/education/sleep-apena/",
+    "category": "sleep-apnea",
+    "categoryTitle": "睡眠窒息症"
   },
   {
     "slug": "sleep-program-for-children",
@@ -1232,7 +1296,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_yu_wai_ling_72dd4381b9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/sleep-program-for-children/"
+    "sourceUrl": "https://venco.com.hk/zh/education/sleep-program-for-children/",
+    "category": "psychology",
+    "categoryTitle": "心理學"
   },
   {
     "slug": "tongue-tie-baby",
@@ -1270,7 +1336,9 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_cheung_sing_tak_63d1f5807c.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/tongue-tie-baby/"
+    "sourceUrl": "https://venco.com.hk/zh/education/tongue-tie-baby/",
+    "category": "paediatric-surgery",
+    "categoryTitle": "小兒外科"
   },
   {
     "slug": "whooping-cough-vaccine",
@@ -1304,6 +1372,8 @@
     "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
-    "sourceUrl": "https://venco.com.hk/zh/education/whooping-cough-vaccine/"
+    "sourceUrl": "https://venco.com.hk/zh/education/whooping-cough-vaccine/",
+    "category": "flu",
+    "categoryTitle": "流感"
   }
 ]

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "paediatrics",
+    "title": "兒科",
+    "desc": "常見兒科健康知識、病徵說明與日常護理重點。"
+  },
+  {
+    "id": "child-growth",
+    "title": "兒童成長",
+    "desc": "生長發育、身高與荷爾蒙相關教育內容。"
+  },
+  {
+    "id": "flu",
+    "title": "流感",
+    "desc": "流感症狀、疫苗與高風險族群防護資訊。"
+  },
+  {
+    "id": "clinical-genetics",
+    "title": "臨床遺傳科",
+    "desc": "遺傳評估、基因檢測與相關兒童發展議題。"
+  },
+  {
+    "id": "paediatric-surgery",
+    "title": "小兒外科",
+    "desc": "小兒外科常見問題與手術相關說明。"
+  },
+  {
+    "id": "gastroenteritis",
+    "title": "腸胃炎",
+    "desc": "兒童腸胃不適、腹瀉與照護建議。"
+  },
+  {
+    "id": "psychology",
+    "title": "心理學",
+    "desc": "兒童情緒、行為與心理健康教育。"
+  },
+  {
+    "id": "allergic-rhinitis",
+    "title": "鼻敏感",
+    "desc": "鼻敏感病徵、誘因與日常管理。"
+  },
+  {
+    "id": "sleep-apnea",
+    "title": "睡眠窒息症",
+    "desc": "兒童睡眠呼吸問題與相關檢查說明。"
+  },
+  {
+    "id": "covid-19",
+    "title": "新冠肺炎",
+    "desc": "兒童新冠與後續健康關注。"
+  },
+  {
+    "id": "shingles",
+    "title": "生蛇",
+    "desc": "生蛇／水痘相關健康資訊。"
+  }
+]

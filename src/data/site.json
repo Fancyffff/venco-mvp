@@ -6,16 +6,45 @@
   "hours": "星期一至五 10:00-18:30｜星期六 10:00-15:00｜星期日及公眾假期 休息",
   "homeHero": "https://img.venco.com.hk/uploads/venco_home_hero_static_q96_global_hero_45_547_photo_v2_81833aa1d9.png",
   "servicesHero": "https://img.venco.com.hk/uploads/venco_services_hero_desktop2_hero_full_3x_v2_a26951bb6a.png",
+  "homeLead": [
+    "榛怡醫務中心兒科專科，專注兒童健康診療。",
+    "團隊由經驗豐富的兒科醫師組成，擅長診治小兒常見疾病、呼吸道、內分泌及敏感症的問題。同時提供高端疫苗及兒童保健、成長、語言及心理輔導等服務。",
+    "診室環境溫馨童趣，診療細緻耐心，用心守護每一位孩子的健康成長。"
+  ],
   "locations": [
     {
       "name": "美麗華廣場",
       "address": "香港九龍尖沙咀彌敦道132號美麗華廣場A座16樓1603室",
-      "phone": "(852) 2882 7222"
+      "phone": "(852) 2882 7222",
+      "fax": "(852) 2882 7899",
+      "mapImage": "https://nano-cms-production.vencomedicalcentre.workers.dev/assets/desktop2-6/contact-map-mira.png"
     },
     {
       "name": "海洋中心",
       "address": "香港九龍尖沙咀廣東道5號海港城海洋中心12樓1204-5室",
-      "phone": "(852) 2151 3677"
+      "phone": "(852) 2151 3677",
+      "fax": "(852) 2151 3577",
+      "mapImage": "https://nano-cms-production.vencomedicalcentre.workers.dev/assets/desktop2-6/contact-map-ocean.png"
+    }
+  ],
+  "education": [
+    {
+      "title": "鼻敏感 Allergic Rhinitis",
+      "excerpt": "病徵主要是鼻黏膜受到刺激，導致血管擴張。",
+      "tag": "鼻敏感",
+      "href": "/zh/education/"
+    },
+    {
+      "title": "專注力不足及過度活躍症 ADHD",
+      "excerpt": "專注力不足評估與兒童行為支援。",
+      "tag": "臨床遺傳科",
+      "href": "/zh/education/"
+    },
+    {
+      "title": "呼吸道融合細胞病毒",
+      "excerpt": "劉家輝醫生分享兒科專科護理重點。",
+      "tag": "兒科",
+      "href": "/zh/education/"
     }
   ]
 }

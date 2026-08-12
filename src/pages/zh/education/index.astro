@@ -6,15 +6,34 @@ import site from '../../../data/site.json';
   <section class="page">
     <div class="container">
       <h1>兒科教育</h1>
-      <p>MVP 範圍暫未鏡像教育文章；導航位已保留，服務/醫生三級架構為演示重點。</p>
-      <a href="/zh/services/">回到兒科服務 →</a>
+      <p class="lead">分享實用兒童健康知識，陪伴家長安心育兒。</p>
+      <div class="grid">
+        {site.education.map((e) => (
+          <article class="card">
+            <span>{e.tag}</span>
+            <h2>{e.title}</h2>
+            <p>{e.excerpt}</p>
+          </article>
+        ))}
+      </div>
+      <p class="note">完整教育文章內容可後續接 CMS；本頁先保留結構與入口。</p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .page { padding: 64px 0; }
-  h1 { margin: 0 0 12px; }
-  p { color: var(--muted); max-width: 520px; }
-  a { color: var(--cyan); font-weight: 600; }
+  .page { padding: 56px 0 72px; }
+  h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.4rem); }
+  .lead { margin: 12px 0 28px; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px;
+  }
+  .card span {
+    display: inline-flex; padding: 4px 10px; border-radius: 999px;
+    background: #e8f7f9; color: var(--cyan-hover); font-size: 12px; font-weight: 600;
+  }
+  .card h2 { margin: 12px 0 8px; font-size: 17px; }
+  .card p { margin: 0; color: #555; font-size: 14px; }
+  .note { margin-top: 24px; color: var(--muted); font-size: 13px; }
 </style>

@@ -5,10 +5,23 @@ import site from '../data/site.json';
 
 const path = Astro.url.pathname;
 const isHome = path === '/zh/' || path === '/zh';
-const doctorGroups = [
-  { id: 'team', title: '醫生團隊', doctors: doctors.filter((d) => d.group === '醫生團隊') },
-  { id: 'allied', title: '醫護團隊', doctors: doctors.filter((d) => d.group === '醫護團隊') },
+const departmentOrder = [
+  'general',
+  'respiratory',
+  'endocrine',
+  'genetics',
+  'surgery',
+  'neuro',
+  'obstetrics',
+  'psychology',
 ];
+const doctorGroups = departmentOrder
+  .map((id) => {
+    const list = doctors.filter((d) => d.department === id);
+    if (!list.length) return null;
+    return { id, title: list[0].departmentTitle, doctors: list };
+  })
+  .filter(Boolean);
 ---
 <header class="header">
   <div class="container header-inner">
@@ -85,7 +98,7 @@ const doctorGroups = [
         <div class="mega mega-doctors" role="menu" aria-label="醫生團隊選單">
           <div class="mega-cols">
             <div class="mega-l2">
-              <p class="mega-label">團隊分類</p>
+              <p class="mega-label">科室分類</p>
               {doctorGroups.map((g, i) => (
                 <a
                   class:list={['mega-l2-item', { first: i === 0 }]}
@@ -97,7 +110,7 @@ const doctorGroups = [
               ))}
             </div>
             <div class="mega-l3">
-              <p class="mega-label">成員</p>
+              <p class="mega-label">科室成員</p>
               {doctorGroups.map((g, i) => (
                 <div class:list={['l3-panel', { show: i === 0 }]} data-l3={g.id}>
                   <ul class="l3-list doctors">
@@ -163,7 +176,7 @@ const doctorGroups = [
       <details class="m-acc">
         <summary class:list={[{ active: path.includes('/doctors') }]}>醫生團隊</summary>
         <div class="m-sub">
-          <a href="/zh/doctors/">全部醫生</a>
+          <a href="/zh/doctors/">全部科室</a>
           {doctorGroups.map((g) => (
             <a href={`/zh/doctors/#group-${g.id}`}>{g.title}</a>
           ))}

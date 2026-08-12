@@ -15,7 +15,9 @@
       "英國格拉斯哥皇家醫學院內科榮授院士",
       "英國皇家內科醫學院院士",
       "卡迪夫大學實用皮膚科深造文憑"
-    ]
+    ],
+    "department": "general",
+    "departmentTitle": "一般兒科"
   },
   {
     "id": "doctor-lau-ka-fai",
@@ -35,7 +37,9 @@
       "香港中文大學外科醫學士文憑",
       "香港兒科醫學院院士",
       "香港醫學專科學院院士（兒科）"
-    ]
+    ],
+    "department": "respiratory",
+    "departmentTitle": "兒科呼吸系統"
   },
   {
     "id": "doctor-but-wai-man",
@@ -53,7 +57,9 @@
       "英國皇家兒科醫學院榮授院士",
       "英國愛丁堡皇家內科醫學院榮授院士",
       "愛爾蘭皇家醫學院兒科文憑"
-    ]
+    ],
+    "department": "endocrine",
+    "departmentTitle": "兒童內分泌科"
   },
   {
     "id": "doctor-yu-wai-ling",
@@ -69,7 +75,9 @@
       "英國皇家兒科醫學院院員",
       "香港兒科醫學院院士",
       "香港醫學專科學院院士（兒科）"
-    ]
+    ],
+    "department": "respiratory",
+    "departmentTitle": "兒科呼吸系統"
   },
   {
     "id": "doctor-lau-tze-kin",
@@ -87,7 +95,9 @@
       "英國皇家婦產科醫學院榮授院士",
       "英國皇家婦產科學院院士",
       "香港醫學專科學院院士（婦產科）"
-    ]
+    ],
+    "department": "obstetrics",
+    "departmentTitle": "婦產科"
   },
   {
     "id": "doctor-li-nga-wai",
@@ -104,7 +114,9 @@
       "英國皇家兒科醫學院兒科文憑（國際）",
       "香港兒科醫學院院士",
       "香港醫學專科學院院士（兒科）"
-    ]
+    ],
+    "department": "general",
+    "departmentTitle": "一般兒科"
   },
   {
     "id": "doctor-lo-fai-man",
@@ -121,7 +133,9 @@
       "英國皇家兒科醫學院院員",
       "香港兒科醫學院院士",
       "香港醫學專科學院院士（兒科）"
-    ]
+    ],
+    "department": "genetics",
+    "departmentTitle": "臨床遺傳科"
   },
   {
     "id": "doctor-ng-sui-fun",
@@ -139,7 +153,9 @@
       "香港兒科醫學院院士",
       "香港醫學專科學院院士(兒科)",
       "愛爾蘭皇家醫學院兒科文憑"
-    ]
+    ],
+    "department": "neuro",
+    "departmentTitle": "兒童腦神經"
   },
   {
     "id": "doctor-cheung-sing-tak",
@@ -155,7 +171,9 @@
       "香港外科醫學院院士",
       "愛丁堡皇家外科醫學院小兒外科院士",
       "香港醫學專科學院院士(外科)"
-    ]
+    ],
+    "department": "surgery",
+    "departmentTitle": "兒童外科"
   },
   {
     "id": "doctor-chu-wing-yiu",
@@ -169,7 +187,9 @@
     "creds": [
       "MGenCoun (University of Melbourne)",
       "FHGSA (Genetic Counselling)"
-    ]
+    ],
+    "department": "genetics",
+    "departmentTitle": "臨床遺傳科"
   },
   {
     "id": "doctor-heiki-lo",
@@ -188,6 +208,8 @@
       "美國Circle of Security Parenting™ Program 認可導師",
       "美國輔導心理學碩士",
       "香港社會科學心理學學士"
-    ]
+    ],
+    "department": "psychology",
+    "departmentTitle": "兒童心理科"
   }
 ]

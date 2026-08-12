@@ -3,23 +3,49 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import doctors from '../../../data/doctors.json';
 import site from '../../../data/site.json';
 
-const groups = [
-  { id: 'team', title: '醫生團隊', doctors: doctors.filter((d) => d.group === '醫生團隊') },
-  { id: 'allied', title: '醫護團隊', doctors: doctors.filter((d) => d.group === '醫護團隊') },
+const departmentOrder = [
+  'general',
+  'respiratory',
+  'endocrine',
+  'genetics',
+  'surgery',
+  'neuro',
+  'obstetrics',
+  'psychology',
 ];
+
+const groups = departmentOrder
+  .map((id) => {
+    const list = doctors.filter((d) => d.department === id);
+    if (!list.length) return null;
+    return {
+      id,
+      title: list[0].departmentTitle,
+      doctors: list,
+    };
+  })
+  .filter(Boolean);
 ---
 <BaseLayout title={`專業的醫生團隊 | ${site.name}`}>
   <section class="page-hero">
     <div class="container">
       <h1>專業的醫生團隊</h1>
-      <p>由經驗豐富的兒科醫生與護理團隊細心照顧，守護每一位孩子的健康成長。</p>
+      <p>由經驗豐富的兒科醫生與專科團隊細心照顧，按科室為您介紹各位成員。</p>
+      <nav class="dept-nav" aria-label="科室導航">
+        {groups.map((g) => (
+          <a href={`#group-${g.id}`}>{g.title}</a>
+        ))}
+      </nav>
     </div>
   </section>
 
   <div class="container">
     {groups.map((g) => (
       <section class="group" id={`group-${g.id}`}>
-        <h2>{g.title}</h2>
+        <div class="group-head">
+          <h2>{g.title}</h2>
+          <p>{g.doctors.length} 位成員</p>
+        </div>
         <div class="list">
           {g.doctors.map((d) => (
             <article class="card" id={d.id}>
@@ -46,13 +72,47 @@ const groups = [
 
 <style>
   .page-hero {
-    padding: 64px 0 36px;
+    padding: 64px 0 28px;
     background: linear-gradient(180deg, #e8f7f9, transparent);
   }
   .page-hero h1 { margin: 0; font-size: clamp(2rem, 4vw, 2.8rem); }
   .page-hero p { margin: 14px 0 0; color: #444; max-width: 640px; line-height: 1.7; }
-  .group { padding: 28px 0 48px; }
-  .group h2 { margin: 0 0 20px; font-size: 24px; }
+  .dept-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .dept-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid var(--line);
+    color: #445;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .dept-nav a:hover {
+    border-color: var(--cyan);
+    color: var(--cyan-hover);
+    background: var(--cyan-soft);
+  }
+  .group {
+    padding: 28px 0 40px;
+    scroll-margin-top: 96px;
+  }
+  .group-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .group-head h2 { margin: 0; font-size: 24px; }
+  .group-head p { margin: 0; color: var(--muted); font-size: 13px; }
   .list { display: grid; gap: 16px; }
   .card {
     display: grid; grid-template-columns: 180px 1fr; gap: 22px;
@@ -70,10 +130,12 @@ const groups = [
   ul { margin: 14px 0 18px; padding-left: 18px; color: #444; }
   li { margin: 4px 0; font-size: 14px; line-height: 1.5; }
   @media (max-width: 700px) {
-    .page-hero { padding: 40px 0 24px; }
+    .page-hero { padding: 40px 0 20px; }
     .page-hero h1 { font-size: 1.7rem; }
-    .group { padding: 18px 0 32px; }
-    .group h2 { font-size: 20px; margin-bottom: 14px; }
+    .dept-nav { gap: 6px; }
+    .dept-nav a { font-size: 12px; min-height: 32px; padding: 0 12px; }
+    .group { padding: 18px 0 28px; }
+    .group-head h2 { font-size: 20px; }
     .card {
       grid-template-columns: 96px 1fr;
       gap: 14px;

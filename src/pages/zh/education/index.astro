@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import site from '../../../data/site.json';
+---
+<BaseLayout title={`兒科教育 | ${site.name}`}>
+  <section class="page">
+    <div class="container">
+      <h1>兒科教育</h1>
+      <p>MVP 範圍暫未鏡像教育文章；導航位已保留，服務/醫生三級架構為演示重點。</p>
+      <a href="/zh/services/">回到兒科服務 →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page { padding: 64px 0; }
+  h1 { margin: 0 0 12px; }
+  p { color: var(--muted); max-width: 520px; }
+  a { color: var(--cyan); font-weight: 600; }
+</style>

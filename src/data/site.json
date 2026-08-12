@@ -1,0 +1,21 @@
+{
+  "name": "榛怡醫務中心",
+  "nameEn": "VENCO MEDICAL CENTRE",
+  "whatsapp": "https://wa.me/85290837327",
+  "phone": "(852) 2882 7222",
+  "hours": "星期一至五 10:00-18:30｜星期六 10:00-15:00｜星期日及公眾假期 休息",
+  "homeHero": "https://img.venco.com.hk/uploads/venco_home_hero_static_q96_global_hero_45_547_photo_v2_81833aa1d9.png",
+  "servicesHero": "https://img.venco.com.hk/uploads/venco_services_hero_desktop2_hero_full_3x_v2_a26951bb6a.png",
+  "locations": [
+    {
+      "name": "美麗華廣場",
+      "address": "香港九龍尖沙咀彌敦道132號美麗華廣場A座16樓1603室",
+      "phone": "(852) 2882 7222"
+    },
+    {
+      "name": "海洋中心",
+      "address": "香港九龍尖沙咀廣東道5號海港城海洋中心12樓1204-5室",
+      "phone": "(852) 2151 3677"
+    }
+  ]
+}

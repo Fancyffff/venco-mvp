@@ -1,0 +1,60 @@
+:root {
+  --cyan: #00b1c3;
+  --cyan-hover: #009bab;
+  --cyan-soft: #e8f7f9;
+  --ink: #111;
+  --muted: #666;
+  --line: #d9e8ec;
+  --bg: #eef3f5;
+  --panel: #ffffff;
+  --action: linear-gradient(90deg, #50dde4 0%, #c7f0ff 100%);
+  --shadow: 0 10px 30px rgba(0, 40, 50, 0.08);
+  --radius: 14px;
+  --header-h: 72px;
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+    "Hiragino Sans GB", "Microsoft JhengHei", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font: inherit; }
+
+.container {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.site-main { min-height: 60vh; }
+
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--action);
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.1);
+}
+.wa-btn img { width: 22px; height: 22px; }
+
+.mvp-banner {
+  background: #111;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  padding: 6px 12px;
+}
+.mvp-banner strong { color: #50dde4; }

@@ -1,0 +1,55 @@
+---
+import site from '../data/site.json';
+---
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <h3>快速鏈接</h3>
+      <a href="/zh/">首頁</a>
+      <a href="/zh/services/">兒科服務</a>
+      <a href="/zh/doctors/">醫生團隊</a>
+      <a href="/zh/contact/">關於我們</a>
+    </div>
+    <div>
+      <h3>聯絡我們</h3>
+      <p>{site.hours}</p>
+      {site.locations.map((loc) => (
+        <p>
+          <strong>{loc.name}</strong><br />
+          {loc.address}<br />
+          {loc.phone}
+        </p>
+      ))}
+    </div>
+    <div class="cta">
+      <h3>馬上聯絡我們</h3>
+      <p>我們的團隊隨時準備為您提供幫助</p>
+      <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
+        <img src="/assets/whatsapp.svg" alt="" />
+        WhatsApp 預約
+      </a>
+    </div>
+  </div>
+  <div class="container copy">© 2026 {site.name} · MVP 架構演示</div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: 64px;
+    background: var(--cyan);
+    color: #fff;
+    padding: 48px 0 28px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .footer h3 { margin: 0 0 12px; font-size: 16px; }
+  .footer a, .footer p { display: block; margin: 0 0 8px; font-size: 14px; opacity: .95; }
+  .cta .wa-btn { margin-top: 8px; color: #111; }
+  .copy { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.25); font-size: 13px; opacity: .85; }
+  @media (max-width: 800px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>

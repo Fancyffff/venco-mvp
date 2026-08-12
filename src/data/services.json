@@ -1,0 +1,382 @@
+[
+  {
+    "id": "general",
+    "title": "一般兒科疾病",
+    "desc": "常見兒科疾病診斷、快速測試及健康篩檢。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_general_icon_service_general_v2_6d97bc8606.png",
+    "items": [
+      {
+        "id": "general-virus-strep-rapid-test",
+        "text": "病毒及鏈球菌快速測試",
+        "slug": "virus-strep-rapid-test"
+      },
+      {
+        "id": "general-newborn-screening",
+        "text": "初生嬰兒健康篩檢",
+        "slug": "newborn-screening"
+      },
+      {
+        "id": "general-hearing-test",
+        "text": "聽力檢查",
+        "slug": "hearing-test"
+      },
+      {
+        "id": "general-xray-ct",
+        "text": "X光及電腦掃描",
+        "slug": "xray-ct"
+      }
+    ],
+    "doctors": [
+      "劉成志醫生",
+      "李雅慧醫生",
+      "畢慧文醫生",
+      "余慧鈴醫生",
+      "劉家輝醫生",
+      "劉子建醫生",
+      "盧輝文醫生",
+      "吳瑞芬醫生",
+      "張承德醫生"
+    ],
+    "doctorIds": [
+      "doctor-lau-shing-chi",
+      "doctor-li-nga-wai",
+      "doctor-but-wai-man",
+      "doctor-yu-wai-ling",
+      "doctor-lau-ka-fai",
+      "doctor-lau-tze-kin",
+      "doctor-lo-fai-man",
+      "doctor-ng-sui-fun",
+      "doctor-cheung-sing-tak"
+    ]
+  },
+  {
+    "id": "vaccine",
+    "title": "兒童疫苗接種",
+    "desc": "兒童疫苗計劃、接種安排及注射後護理。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_vaccine_icon_service_vaccine_v2_0b617800c8.png",
+    "items": [
+      {
+        "id": "vaccine-childhood-vaccination",
+        "text": "兒童疫苗接種",
+        "slug": "childhood-vaccination"
+      }
+    ],
+    "doctors": [],
+    "doctorIds": []
+  },
+  {
+    "id": "respiratory",
+    "title": "兒科呼吸系統",
+    "desc": "咳嗽、哮喘與睡眠呼吸問題。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_respiratory_icon_service_respiratory_v2_6cbd7c4a49.png",
+    "items": [
+      {
+        "id": "respiratory-infant-lung-function",
+        "text": "幼嬰及幼兒肺功能",
+        "slug": "infant-lung-function"
+      },
+      {
+        "id": "respiratory-spirometry",
+        "text": "肺活量檢測 (兒童及成人肺功能)",
+        "slug": "spirometry"
+      },
+      {
+        "id": "respiratory-fe-no-test",
+        "text": "一氧化氮檢測 (呼吸道發炎評估)",
+        "slug": "fe-no-test"
+      },
+      {
+        "id": "respiratory-pulmonary-function",
+        "text": "肺功能檢查",
+        "slug": "pulmonary-function"
+      },
+      {
+        "id": "respiratory-bronchoscopy",
+        "text": "支氣管光導纖維鏡檢查 (醫院內進行)",
+        "slug": "bronchoscopy"
+      },
+      {
+        "id": "respiratory-sleep-study",
+        "text": "睡眠測試 (醫院內進行)",
+        "slug": "sleep-study"
+      },
+      {
+        "id": "respiratory-pediatric-sleep-apnea",
+        "text": "兒童睡眠窒息症",
+        "slug": "pediatric-sleep-apnea"
+      },
+      {
+        "id": "respiratory-nasopharyngoscopy",
+        "text": "鼻咽光導纖維鏡檢查 (上呼吸道評估)",
+        "slug": "nasopharyngoscopy"
+      },
+      {
+        "id": "respiratory-inhalation-therapy",
+        "text": "吸入性治療",
+        "slug": "inhalation-therapy"
+      },
+      {
+        "id": "respiratory-asthma-care",
+        "text": "哮喘診斷和治療",
+        "slug": "asthma-care"
+      }
+    ],
+    "doctors": [
+      "劉家輝醫生",
+      "余慧鈴醫生"
+    ],
+    "doctorIds": [
+      "doctor-lau-ka-fai",
+      "doctor-yu-wai-ling"
+    ]
+  },
+  {
+    "id": "endocrine",
+    "title": "兒童內分泌科",
+    "desc": "生長、青春期與荷爾蒙狀況。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_endocrine_icon_service_endocrine_v2_438b992234.png",
+    "items": [
+      {
+        "id": "endocrine-development-screening",
+        "text": "兒童發展篩檢",
+        "slug": "development-screening"
+      },
+      {
+        "id": "endocrine-growth-hormone",
+        "text": "兒童生長荷爾蒙注射",
+        "slug": "growth-hormone"
+      },
+      {
+        "id": "endocrine-puberty-disorders",
+        "text": "兒童青春期疾病",
+        "slug": "puberty-disorders"
+      },
+      {
+        "id": "endocrine-childhood-obesity",
+        "text": "兒童肥胖",
+        "slug": "childhood-obesity"
+      },
+      {
+        "id": "endocrine-thyroid-disorders",
+        "text": "兒童甲狀腺疾病",
+        "slug": "thyroid-disorders"
+      },
+      {
+        "id": "endocrine-pediatric-diabetes",
+        "text": "兒童糖尿病",
+        "slug": "pediatric-diabetes"
+      },
+      {
+        "id": "endocrine-other-endocrine",
+        "text": "其他內分泌失調",
+        "slug": "other-endocrine"
+      }
+    ],
+    "doctors": [
+      "畢慧文醫生"
+    ],
+    "doctorIds": [
+      "doctor-but-wai-man"
+    ]
+  },
+  {
+    "id": "allergy",
+    "title": "兒童過敏服務",
+    "desc": "過敏測試與治療跟進。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_allergy_icon_service_allergy_v2_73f3bc3cc9.png",
+    "items": [
+      {
+        "id": "allergy-skin-prick-test",
+        "text": "皮膚點刺測試",
+        "slug": "skin-prick-test"
+      },
+      {
+        "id": "allergy-allergy-blood-test",
+        "text": "過敏血液測試",
+        "slug": "allergy-blood-test"
+      },
+      {
+        "id": "allergy-allergy-lung-function",
+        "text": "肺功能測試",
+        "slug": "allergy-lung-function"
+      },
+      {
+        "id": "allergy-drug-allergy-test",
+        "text": "藥物過敏測試",
+        "slug": "drug-allergy-test"
+      },
+      {
+        "id": "allergy-biologic-injection",
+        "text": "生物製劑注射治療",
+        "slug": "biologic-injection"
+      },
+      {
+        "id": "allergy-desensitization",
+        "text": "脫敏治療",
+        "slug": "desensitization"
+      }
+    ],
+    "doctors": [],
+    "doctorIds": []
+  },
+  {
+    "id": "surgery",
+    "title": "兒童外科服務",
+    "desc": "兒科外科評估與說明。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_surgery_icon_service_surgery_v2_d334c942a4.png",
+    "items": [
+      {
+        "id": "surgery-anal-fistula",
+        "text": "肛瘻管切除",
+        "slug": "anal-fistula"
+      },
+      {
+        "id": "surgery-appendectomy",
+        "text": "盲腸切除",
+        "slug": "appendectomy"
+      },
+      {
+        "id": "surgery-circumcision",
+        "text": "割包皮",
+        "slug": "circumcision"
+      },
+      {
+        "id": "surgery-colonoscopy",
+        "text": "結腸鏡檢查",
+        "slug": "colonoscopy"
+      },
+      {
+        "id": "surgery-ercp",
+        "text": "內視鏡逆行性膽胰造影術",
+        "slug": "ercp"
+      },
+      {
+        "id": "surgery-gastroscopy",
+        "text": "食道鏡檢查 / 胃鏡檢查",
+        "slug": "gastroscopy"
+      },
+      {
+        "id": "surgery-hemangioma",
+        "text": "血管瘤切除",
+        "slug": "hemangioma"
+      },
+      {
+        "id": "surgery-fundoplication",
+        "text": "胃底折疊術",
+        "slug": "fundoplication"
+      },
+      {
+        "id": "surgery-inguinal-hernia",
+        "text": "腹股溝疝 (小腸氣)",
+        "slug": "inguinal-hernia"
+      },
+      {
+        "id": "surgery-buried-penis",
+        "text": "包皮重整 (陰莖陷入)",
+        "slug": "buried-penis"
+      }
+    ],
+    "doctors": [
+      "張承德醫生"
+    ],
+    "doctorIds": [
+      "doctor-cheung-sing-tak"
+    ]
+  },
+  {
+    "id": "genetics",
+    "title": "臨床遺傳科",
+    "desc": "基因檢測與家庭諮詢。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_genetics_icon_service_genetics_v2_cf2f3cdb13.png",
+    "items": [
+      {
+        "id": "genetics-genetic-evaluation",
+        "text": "醫學遺傳評估",
+        "slug": "genetic-evaluation"
+      },
+      {
+        "id": "genetics-genetic-diagnosis",
+        "text": "遺傳疾病診斷",
+        "slug": "genetic-diagnosis"
+      },
+      {
+        "id": "genetics-genetic-counseling",
+        "text": "遺傳諮詢",
+        "slug": "genetic-counseling"
+      },
+      {
+        "id": "genetics-genetic-testing",
+        "text": "基因檢測",
+        "slug": "genetic-testing"
+      }
+    ],
+    "doctors": [
+      "盧輝文醫生",
+      "朱穎瑤女士"
+    ],
+    "doctorIds": [
+      "doctor-lo-fai-man",
+      "doctor-chu-wing-yiu"
+    ]
+  },
+  {
+    "id": "telemedicine",
+    "title": "遙距視像診症",
+    "desc": "適合覆診與病情跟進。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_telemedicine_icon_service_telemedicine_v2_3048b35f35.png",
+    "items": [
+      {
+        "id": "telemedicine-telemedicine-consult",
+        "text": "遙距視像診症",
+        "slug": "telemedicine-consult"
+      },
+      {
+        "id": "telemedicine-follow-up",
+        "text": "覆診和跟進",
+        "slug": "follow-up"
+      },
+      {
+        "id": "telemedicine-medicine-delivery",
+        "text": "藥物送家服務",
+        "slug": "medicine-delivery"
+      }
+    ],
+    "doctors": [],
+    "doctorIds": []
+  },
+  {
+    "id": "neuro",
+    "title": "兒童腦神經",
+    "desc": "兒童神經系統專科服務。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_neuro_icon_service_neuro_v2_5b4c1b1507.png",
+    "items": [],
+    "doctors": [
+      "吳瑞芬醫生"
+    ],
+    "doctorIds": [
+      "doctor-ng-sui-fun"
+    ]
+  },
+  {
+    "id": "psychology",
+    "title": "兒童心理科",
+    "desc": "兒童情緒、行為及心理健康支援。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_psychology_icon_service_psychology_v2_94d6673757.png",
+    "items": [],
+    "doctors": [
+      "勞靄晞女士"
+    ],
+    "doctorIds": [
+      "doctor-heiki-lo"
+    ]
+  },
+  {
+    "id": "language",
+    "title": "兒童語言",
+    "desc": "語言發展評估、溝通訓練及家長指導。",
+    "icon": "https://img.venco.com.hk/uploads/venco_service_language_icon_service_language_v2_fde0b0c6d7.png",
+    "items": [],
+    "doctors": [],
+    "doctorIds": []
+  }
+]

@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import services from '../../../../../data/services.json';
+import doctors from '../../../../../data/doctors.json';
+import site from '../../../../../data/site.json';
+
+export function getStaticPaths() {
+  return services.flatMap((s) =>
+    s.items.map((item) => ({
+      params: { slug: s.id, item: item.slug },
+      props: { service: s, item },
+    }))
+  );
+}
+
+const { service, item } = Astro.props;
+const doctorMap = Object.fromEntries(doctors.map((d) => [d.id, d]));
+const related = service.doctorIds.map((id) => doctorMap[id]).filter(Boolean);
+const otherItems = service.items.filter((x) => x.slug !== item.slug);
+---
+<BaseLayout title={`${item.text} | ${service.title} | ${site.name}`} description={`${service.title}：${item.text}`}>
+  <section class="crumb container">
+    <a href="/zh/services/">兒科服務</a>
+    <span>/</span>
+    <a href={`/zh/services/${service.id}/`}>{service.title}</a>
+    <span>/</span>
+    <strong>{item.text}</strong>
+  </section>
+
+  <section class="hero container">
+    <p class="eyebrow">L3 細項頁 · 獨立路由</p>
+    <h1>{item.text}</h1>
+    <p class="parent">所屬專科：{service.title} — {service.desc}</p>
+  </section>
+
+  <section class="container panel">
+    <h2>服務說明</h2>
+    <p>
+      本頁為 <strong>{item.text}</strong> 的獨立落地頁（MVP）。
+      線上原站把所有專科堆在同一長頁；這裡拆成
+      <code>/zh/services/</code> →
+      <code>/zh/services/{service.id}/</code> →
+      <code>/zh/services/{service.id}/{item.slug}/</code>。
+    </p>
+    <ul>
+      <li>家長可從頂欄三級選單直達此頁</li>
+      <li>內容可後續接 CMS 擴寫（流程、適應症、注意事項）</li>
+      <li>預約路徑與相關醫生已接好</li>
+    </ul>
+    <div class="actions">
+      <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
+        <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約此服務
+      </a>
+      <a class="ghost" href={`/zh/services/${service.id}/`}>返回 {service.title}</a>
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <section class="container block">
+      <h2>可預約醫生</h2>
+      <div class="doctors">
+        {related.map((d) => (
+          <a class="doctor" href={`/zh/doctors/#${d.id}`}>
+            <img src={d.image} alt={d.name} />
+            <div>
+              <strong>{d.name}</strong>
+              <small>{d.title}</small>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {otherItems.length > 0 && (
+    <section class="container block">
+      <h2>同專科其他細項</h2>
+      <div class="others">
+        {otherItems.map((x) => (
+          <a href={`/zh/services/${service.id}/${x.slug}/`}>{x.text}</a>
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .crumb {
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    padding: 24px 0 0; color: var(--muted); font-size: 13px;
+  }
+  .crumb a { color: var(--cyan); }
+  .hero { padding: 28px 0 8px; }
+  .eyebrow {
+    display: inline-flex; margin: 0 0 10px; padding: 4px 10px; border-radius: 999px;
+    background: #111; color: #50dde4; font-size: 12px; font-weight: 700;
+  }
+  .hero h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 820px; }
+  .parent { margin: 12px 0 0; color: #444; max-width: 720px; }
+  .panel {
+    margin: 20px 0; padding: 22px; background: #fff; border: 1px solid var(--line); border-radius: 18px;
+  }
+  .panel h2 { margin: 0 0 10px; font-size: 18px; }
+  .panel p, .panel li { color: #444; line-height: 1.7; }
+  .panel code {
+    display: inline-block; padding: 1px 6px; border-radius: 6px;
+    background: #f2f8fa; font-size: 12px;
+  }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; align-items: center; }
+  .ghost {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px;
+    border-radius: 999px; border: 1px solid var(--line); background: #fff; font-weight: 600; font-size: 14px;
+  }
+  .block { padding: 12px 0 36px; }
+  .block h2 { margin: 0 0 12px; font-size: 18px; }
+  .doctors {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;
+  }
+  .doctor {
+    display: flex; gap: 12px; align-items: center;
+    padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  }
+  .doctor img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+  .doctor strong { display: block; font-size: 14px; }
+  .doctor small { color: var(--muted); font-size: 12px; }
+  .others { display: flex; flex-wrap: wrap; gap: 8px; }
+  .others a {
+    padding: 8px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: 13px;
+  }
+  .others a:hover { border-color: var(--cyan); color: var(--cyan); }
+</style>

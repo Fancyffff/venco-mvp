@@ -1,0 +1,345 @@
+---
+import services from '../data/services.json';
+import doctors from '../data/doctors.json';
+import site from '../data/site.json';
+
+const path = Astro.url.pathname;
+const doctorGroups = [
+  { id: 'team', title: '醫生團隊', doctors: doctors.filter((d) => d.group === '醫生團隊') },
+  { id: 'allied', title: '醫護團隊', doctors: doctors.filter((d) => d.group === '醫護團隊') },
+];
+---
+<header class="header">
+  <div class="container header-inner">
+    <a class="logo" href="/zh/" aria-label="榛怡醫務中心首頁">
+      <img src="/assets/logo.png" alt={site.name} />
+    </a>
+
+    <nav class="nav" aria-label="主導航">
+      <a class:list={['nav-link', { active: path === '/zh/' || path === '/zh' }]} href="/zh/">首頁</a>
+
+      <!-- L1 兒科服務 -->
+      <div class="nav-item has-menu">
+        <a class:list={['nav-link', { active: path.includes('/services') }]} href="/zh/services/">
+          兒科服務 <span class="caret" aria-hidden="true"></span>
+        </a>
+        <div class="mega" role="menu" aria-label="兒科服務二級選單">
+          <div class="mega-cols">
+            <div class="mega-l2">
+              <p class="mega-label">服務分類 <span class="lvl">L2</span></p>
+              {services.map((s, i) => (
+                <a
+                  class:list={['mega-l2-item', { first: i === 0 }]}
+                  href={`/zh/services/${s.id}/`}
+                  data-panel={s.id}
+                >
+                  <img src={s.icon} alt="" width="28" height="28" />
+                  <span>{s.title}</span>
+                </a>
+              ))}
+            </div>
+            <div class="mega-l3">
+              <p class="mega-label">細項 / 相關醫生 <span class="lvl">L3</span></p>
+              {services.map((s, i) => (
+                <div class:list={['l3-panel', { show: i === 0 }]} data-l3={s.id}>
+                  <a class="l3-title" href={`/zh/services/${s.id}/`}>{s.title} 專科頁</a>
+                  {s.items.length > 0 ? (
+                    <ul class="l3-list">
+                      {s.items.map((item) => (
+                        <li>
+                          <a href={`/zh/services/${s.id}/${item.slug}/`}>{item.text}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p class="l3-empty">暫無細項，進入專科頁查看介紹</p>
+                  )}
+                  {s.doctorIds.length > 0 && (
+                    <div class="l3-doctors">
+                      <p class="mega-label">相關醫生</p>
+                      <div class="l3-doctor-list">
+                        {s.doctorIds.map((id) => {
+                          const d = doctors.find((x) => x.id === id);
+                          if (!d) return null;
+                          return (
+                            <a href={`/zh/doctors/#${d.id}`}>
+                              <img src={d.image} alt={d.name} />
+                              <span>{d.name}</span>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- L1 醫生團隊 -->
+      <div class="nav-item has-menu">
+        <a class:list={['nav-link', { active: path.includes('/doctors') }]} href="/zh/doctors/">
+          醫生團隊 <span class="caret" aria-hidden="true"></span>
+        </a>
+        <div class="mega mega-doctors" role="menu" aria-label="醫生團隊二級選單">
+          <div class="mega-cols">
+            <div class="mega-l2">
+              <p class="mega-label">團隊分類 <span class="lvl">L2</span></p>
+              {doctorGroups.map((g, i) => (
+                <a
+                  class:list={['mega-l2-item', { first: i === 0 }]}
+                  href={`/zh/doctors/#group-${g.id}`}
+                  data-panel={g.id}
+                >
+                  <span>{g.title}</span>
+                </a>
+              ))}
+            </div>
+            <div class="mega-l3">
+              <p class="mega-label">成員 <span class="lvl">L3</span></p>
+              {doctorGroups.map((g, i) => (
+                <div class:list={['l3-panel', { show: i === 0 }]} data-l3={g.id}>
+                  <ul class="l3-list doctors">
+                    {g.doctors.map((d) => (
+                      <li>
+                        <a href={`/zh/doctors/#${d.id}`}>
+                          <img src={d.image} alt="" />
+                          <span>
+                            <strong>{d.name}</strong>
+                            <small>{d.title}</small>
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link" href="/zh/education/">兒科教育</a>
+      <a class:list={['nav-link', { active: path.includes('/contact') }]} href="/zh/contact/">關於我們</a>
+    </nav>
+
+    <div class="actions">
+      <span class="lang">繁體中文</span>
+      <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
+        <img src="/assets/whatsapp.svg" alt="" />
+        WhatsApp 預約
+      </a>
+      <button class="mobile-toggle" type="button" data-mobile-open aria-label="打開選單">☰</button>
+    </div>
+  </div>
+
+  <aside class="mobile-drawer" data-mobile-drawer hidden>
+    <div class="mobile-drawer-head">
+      <strong>選單</strong>
+      <button type="button" data-mobile-close aria-label="關閉">✕</button>
+    </div>
+    <details open>
+      <summary>兒科服務 <em>L1</em></summary>
+      {services.map((s) => (
+        <details class="nested">
+          <summary>{s.title} <em>L2</em></summary>
+          <a href={`/zh/services/${s.id}/`}>專科頁</a>
+          {s.items.map((item) => (
+            <a href={`/zh/services/${s.id}/${item.slug}/`}>{item.text} <em>L3</em></a>
+          ))}
+          {s.doctorIds.map((id) => {
+            const d = doctors.find((x) => x.id === id);
+            return d ? <a href={`/zh/doctors/#${d.id}`}>{d.name} <em>L3</em></a> : null;
+          })}
+        </details>
+      ))}
+    </details>
+    <details>
+      <summary>醫生團隊 <em>L1</em></summary>
+      {doctorGroups.map((g) => (
+        <details class="nested">
+          <summary>{g.title} <em>L2</em></summary>
+          {g.doctors.map((d) => (
+            <a href={`/zh/doctors/#${d.id}`}>{d.name} <em>L3</em></a>
+          ))}
+        </details>
+      ))}
+    </details>
+    <a href="/zh/education/">兒科教育</a>
+    <a href="/zh/contact/">關於我們</a>
+  </aside>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    min-height: var(--header-h);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .logo img { height: 44px; width: auto; }
+  .nav { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    color: #555;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .nav-link.active, .nav-link:hover { color: var(--cyan); }
+  .caret {
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    opacity: .7;
+  }
+  .nav-item { position: relative; }
+  .mega {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-35%);
+    width: min(820px, calc(100vw - 32px));
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 16px;
+  }
+  .nav-item:hover .mega,
+  .nav-item:focus-within .mega { display: block; }
+  .mega-cols { display: grid; grid-template-columns: 280px 1fr; gap: 12px; min-height: 320px; }
+  .mega-label {
+    margin: 0 0 10px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+  .lvl {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: #111;
+    color: #50dde4;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .mega-l2 {
+    border-right: 1px solid var(--line);
+    padding-right: 12px;
+    max-height: 420px;
+    overflow: auto;
+  }
+  .mega-l2-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+  .mega-l2-item img { width: 28px; height: 28px; object-fit: contain; }
+  .mega-l2-item:hover,
+  .mega-l2-item.first,
+  .mega-l2-item.is-active { background: var(--cyan-soft); color: var(--cyan-hover); }
+  .l3-panel { display: none; }
+  .l3-panel.show { display: block; }
+  .l3-title {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--cyan);
+    font-weight: 700;
+  }
+  .l3-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  .l3-list a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  .l3-list a:hover { background: var(--cyan-soft); }
+  .l3-list.doctors a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .l3-list.doctors img {
+    width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+  }
+  .l3-list.doctors small { display: block; color: var(--muted); font-size: 12px; }
+  .l3-empty { color: var(--muted); font-size: 13px; }
+  .l3-doctors { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+  .l3-doctor-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .l3-doctor-list a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 10px 6px 6px; border-radius: 999px; background: #f4fafb; font-size: 13px;
+  }
+  .l3-doctor-list img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+  .actions { display: flex; align-items: center; gap: 12px; }
+  .lang { font-size: 13px; color: var(--muted); }
+  .mobile-toggle {
+    display: none;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 10px;
+    width: 40px; height: 40px;
+  }
+  .mobile-drawer {
+    position: fixed; inset: 0 auto 0 0; width: min(360px, 92vw);
+    background: #fff; border-right: 1px solid var(--line);
+    padding: 16px; overflow: auto; z-index: 60;
+  }
+  .mobile-drawer[hidden] { display: none !important; }
+  .mobile-drawer-head { display: flex; justify-content: space-between; margin-bottom: 12px; }
+  .mobile-drawer details { border-bottom: 1px solid var(--line); padding: 8px 0; }
+  .mobile-drawer summary { cursor: pointer; font-weight: 600; }
+  .mobile-drawer a { display: block; padding: 8px 0 8px 12px; font-size: 14px; color: #333; }
+  .mobile-drawer em { font-style: normal; font-size: 10px; color: var(--cyan); margin-left: 6px; }
+  .mobile-drawer .nested { margin-left: 8px; border: 0; }
+
+  @media (max-width: 980px) {
+    .nav { display: none; }
+    .lang { display: none; }
+    .mobile-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  }
+</style>
+
+<script>
+  const drawers = document.querySelectorAll('[data-mobile-drawer]');
+  document.querySelector('[data-mobile-open]')?.addEventListener('click', () => {
+    drawers.forEach((el) => el.removeAttribute('hidden'));
+  });
+  document.querySelector('[data-mobile-close]')?.addEventListener('click', () => {
+    drawers.forEach((el) => el.setAttribute('hidden', ''));
+  });
+
+  document.querySelectorAll('.mega').forEach((mega) => {
+    const items = mega.querySelectorAll('.mega-l2-item');
+    const panels = mega.querySelectorAll('.l3-panel');
+    items.forEach((item) => {
+      const activate = () => {
+        const id = item.getAttribute('data-panel');
+        items.forEach((x) => x.classList.toggle('is-active', x === item));
+        panels.forEach((p) => p.classList.toggle('show', p.getAttribute('data-l3') === id));
+      };
+      item.addEventListener('mouseenter', activate);
+      item.addEventListener('focus', activate);
+    });
+  });
+</script>

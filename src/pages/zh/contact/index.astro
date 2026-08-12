@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import site from '../../../data/site.json';
+---
+<BaseLayout title={`關於我們 | ${site.name}`}>
+  <section class="page">
+    <div class="container">
+      <h1>關於我們</h1>
+      <p class="lead">{site.name}兒科專科，專注兒童健康診療。</p>
+      <div class="grid">
+        {site.locations.map((loc) => (
+          <article class="card">
+            <h2>{loc.name}</h2>
+            <p>{loc.address}</p>
+            <p>{loc.phone}</p>
+            <p>{site.hours}</p>
+          </article>
+        ))}
+      </div>
+      <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
+        <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page { padding: 64px 0; }
+  h1 { margin: 0; font-size: 2.4rem; }
+  .lead { margin: 12px 0 28px; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .card h2 { margin: 0 0 8px; font-size: 18px; }
+  .card p { margin: 6px 0; color: #444; font-size: 14px; }
+</style>

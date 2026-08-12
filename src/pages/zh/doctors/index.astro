@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import doctors from '../../../data/doctors.json';
+import site from '../../../data/site.json';
+
+const groups = [
+  { id: 'team', title: '醫生團隊', doctors: doctors.filter((d) => d.group === '醫生團隊') },
+  { id: 'allied', title: '醫護團隊', doctors: doctors.filter((d) => d.group === '醫護團隊') },
+];
+---
+<BaseLayout title={`專業的醫生團隊 | ${site.name}`}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">L1 醫生團隊</p>
+      <h1>專業的醫生團隊</h1>
+      <p>由經驗豐富的兒科醫生與護理團隊細心照顧。頂欄 L2 分組 → L3 直達個人。</p>
+    </div>
+  </section>
+
+  <div class="container">
+    {groups.map((g) => (
+      <section class="group" id={`group-${g.id}`}>
+        <h2><span class="lvl">L2</span> {g.title}</h2>
+        <div class="list">
+          {g.doctors.map((d) => (
+            <article class="card" id={d.id}>
+              <img src={d.image} alt={d.name} />
+              <div class="body">
+                <p class="lvl-inline">L3</p>
+                <h3>{d.name}</h3>
+                <p class="en">{d.english}</p>
+                <p class="title">{d.title}</p>
+                {d.role && <p class="role">{d.role}</p>}
+                <ul>
+                  {d.creds.slice(0, 4).map((c) => <li>{c}</li>)}
+                </ul>
+                <a class="wa-btn" href={d.whatsapp} target="_blank" rel="noreferrer">
+                  <img src="/assets/whatsapp.svg" alt="" /> {d.name} WhatsApp 預約
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: 64px 0 36px; background: linear-gradient(180deg, #e8f7f9, transparent); }
+  .eyebrow {
+    display: inline-flex; margin: 0 0 10px; padding: 4px 10px; border-radius: 999px;
+    background: #111; color: #50dde4; font-size: 12px; font-weight: 700;
+  }
+  .page-hero h1 { margin: 0; font-size: clamp(2rem, 4vw, 2.8rem); }
+  .page-hero p { margin: 12px 0 0; color: #444; max-width: 640px; }
+  .group { padding: 24px 0 40px; }
+  .group h2 { margin: 0 0 18px; font-size: 24px; display: flex; align-items: center; gap: 10px; }
+  .lvl, .lvl-inline {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 28px; padding: 2px 8px; border-radius: 999px;
+    background: #111; color: #50dde4; font-size: 11px; font-weight: 700;
+  }
+  .lvl-inline { margin-bottom: 8px; }
+  .list { display: grid; gap: 16px; }
+  .card {
+    display: grid; grid-template-columns: 180px 1fr; gap: 20px;
+    background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 18px;
+    scroll-margin-top: 120px;
+  }
+  .card:target { outline: 2px solid var(--cyan); }
+  .card > img {
+    width: 180px; height: 180px; object-fit: cover; border-radius: 16px; background: #f2f2f2;
+  }
+  .body h3 { margin: 0; font-size: 22px; }
+  .en { margin: 4px 0 0; color: var(--muted); }
+  .title { margin: 8px 0 0; font-weight: 600; color: var(--cyan-hover); }
+  .role { margin: 4px 0 0; color: #444; font-size: 14px; }
+  ul { margin: 12px 0 16px; padding-left: 18px; color: #444; }
+  li { margin: 4px 0; font-size: 14px; }
+  @media (max-width: 700px) {
+    .card { grid-template-columns: 1fr; }
+    .card > img { width: 100%; height: 240px; }
+  }
+</style>

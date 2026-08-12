@@ -75,7 +75,7 @@ const doctorGroups = departmentOrder
                           const d = doctors.find((x) => x.id === id);
                           if (!d) return null;
                           return (
-                            <a href={`/zh/doctors/#${d.id}`}>
+                            <a href={`/zh/doctors/${d.department}/#${d.id}`}>
                               <img src={d.image} alt={d.name} />
                               <span>{d.name}</span>
                             </a>
@@ -102,7 +102,7 @@ const doctorGroups = departmentOrder
               {doctorGroups.map((g, i) => (
                 <a
                   class:list={['mega-l2-item', { first: i === 0 }]}
-                  href={`/zh/doctors/#group-${g.id}`}
+                  href={`/zh/doctors/${g.id}/`}
                   data-panel={g.id}
                 >
                   <span>{g.title}</span>
@@ -113,10 +113,11 @@ const doctorGroups = departmentOrder
               <p class="mega-label">科室成員</p>
               {doctorGroups.map((g, i) => (
                 <div class:list={['l3-panel', { show: i === 0 }]} data-l3={g.id}>
+                  <a class="l3-title" href={`/zh/doctors/${g.id}/`}>{g.title} · 查看科室</a>
                   <ul class="l3-list doctors">
                     {g.doctors.map((d) => (
                       <li>
-                        <a href={`/zh/doctors/#${d.id}`}>
+                        <a href={`/zh/doctors/${g.id}/#${d.id}`}>
                           <img src={d.image} alt="" />
                           <span>
                             <strong>{d.name}</strong>
@@ -176,9 +177,9 @@ const doctorGroups = departmentOrder
       <details class="m-acc">
         <summary class:list={[{ active: path.includes('/doctors') }]}>醫生團隊</summary>
         <div class="m-sub">
-          <a href="/zh/doctors/">全部科室</a>
+          <a href="/zh/doctors/">科室總覽</a>
           {doctorGroups.map((g) => (
-            <a href={`/zh/doctors/#group-${g.id}`}>{g.title}</a>
+            <a href={`/zh/doctors/${g.id}/`}>{g.title}</a>
           ))}
         </div>
       </details>

@@ -60,7 +60,7 @@ const relatedEdu = (item.relatedEducation || [])
       <h2>可預約醫生</h2>
       <div class="doctors">
         {related.map((d) => (
-          <a class="doctor" href={`/zh/doctors/#${d.id}`}>
+          <a class="doctor" href={`/zh/doctors/${d.department}/#${d.id}`}>
             <img src={d.image} alt={d.name} />
             <div>
               <strong>{d.name}</strong>

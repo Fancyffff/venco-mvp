@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import education from '../../../../data/education.json';
+import doctors from '../../../../data/doctors.json';
 import site from '../../../../data/site.json';
 
 export function getStaticPaths() {
@@ -16,6 +17,10 @@ const related = article.related
   .filter(Boolean);
 const paperImages = article.images.filter((src) => src.includes('attachment') || article.images.length > 1);
 const showPaper = paperImages.length > 0 && article.body.length < 8;
+const articleDoctor = doctors.find((d) => d.name === article.doctorName);
+const doctorHref = articleDoctor
+  ? `/zh/doctors/${articleDoctor.department}/#${articleDoctor.id}`
+  : '/zh/doctors/';
 ---
 <BaseLayout title={`${article.title} | ${site.name}`} description={article.lead || article.title}>
   <article class="page">
@@ -32,7 +37,7 @@ const showPaper = paperImages.length > 0 && article.body.length < 8;
         {article.lead && <p class="lead">{article.lead}</p>}
         <div class="meta">
           {article.doctorName && (
-            <a class="doc" href="/zh/doctors/">
+            <a class="doc" href={doctorHref}>
               {article.doctorPortrait && <img src={article.doctorPortrait} alt="" />}
               <span>
                 <strong>{article.doctorName}</strong>

@@ -58,7 +58,7 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
       </div>
       <div class="doctors">
         {related.map((d) => (
-          <a class="doctor" href={`/zh/doctors/#${d.id}`}>
+          <a class="doctor" href={`/zh/doctors/${d.department}/#${d.id}`}>
             <img src={d.image} alt={d.name} />
             <div>
               <strong>{d.name}</strong>

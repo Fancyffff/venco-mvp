@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import doctors from '../../../data/doctors.json';
+import services from '../../../data/services.json';
 import site from '../../../data/site.json';
 
 const departmentOrder = [
@@ -14,146 +15,109 @@ const departmentOrder = [
   'psychology',
 ];
 
-const groups = departmentOrder
+const serviceIcon = Object.fromEntries(services.map((s) => [s.id, s.icon]));
+const fallbackIcon = services[0]?.icon;
+
+const departments = departmentOrder
   .map((id) => {
     const list = doctors.filter((d) => d.department === id);
     if (!list.length) return null;
+    const relatedService = services.find((s) => s.id === id);
     return {
       id,
       title: list[0].departmentTitle,
+      count: list.length,
+      icon: serviceIcon[id] || fallbackIcon,
+      desc: relatedService?.desc || `${list[0].departmentTitle}專科團隊，提供評估、診療與跟進支援。`,
       doctors: list,
     };
   })
   .filter(Boolean);
 ---
-<BaseLayout title={`專業的醫生團隊 | ${site.name}`}>
+<BaseLayout title={`專業的醫生團隊 | ${site.name}`} description="按科室了解榛怡醫務中心的專科醫生與團隊成員。">
   <section class="page-hero">
     <div class="container">
       <h1>專業的醫生團隊</h1>
-      <p>由經驗豐富的兒科醫生與專科團隊細心照顧，按科室為您介紹各位成員。</p>
-      <nav class="dept-nav" aria-label="科室導航">
-        {groups.map((g) => (
-          <a href={`#group-${g.id}`}>{g.title}</a>
-        ))}
-      </nav>
+      <p>先選擇科室，再查看該科醫生與專科成員。</p>
     </div>
   </section>
 
-  <div class="container">
-    {groups.map((g) => (
-      <section class="group" id={`group-${g.id}`}>
-        <div class="group-head">
-          <h2>{g.title}</h2>
-          <p>{g.doctors.length} 位成員</p>
-        </div>
-        <div class="list">
-          {g.doctors.map((d) => (
-            <article class="card" id={d.id}>
-              <img src={d.image} alt={d.name} />
-              <div class="body">
-                <h3>{d.name}</h3>
-                <p class="en">{d.english}</p>
-                <p class="title">{d.title}</p>
-                {d.role && <p class="role">{d.role}</p>}
-                <ul>
-                  {d.creds.slice(0, 4).map((c) => <li>{c}</li>)}
-                </ul>
-                <a class="wa-btn" href={d.whatsapp} target="_blank" rel="noreferrer">
-                  <img src="/assets/whatsapp.svg" alt="" /> {d.name} WhatsApp 預約
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    ))}
-  </div>
+  <section class="container catalog">
+    <div class="intro">
+      <h2>選擇科室</h2>
+      <p>共 {departments.length} 個科室，點進後只看該科醫生。</p>
+    </div>
+    <div class="grid">
+      {departments.map((d) => (
+        <a class="card" href={`/zh/doctors/${d.id}/`}>
+          {d.icon && <img src={d.icon} alt="" />}
+          <div>
+            <h3>{d.title}</h3>
+            <p>{d.desc}</p>
+            <div class="faces">
+              {d.doctors.slice(0, 4).map((doc) => (
+                <img src={doc.image} alt="" />
+              ))}
+            </div>
+            <em>{d.count} 位成員 →</em>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
   .page-hero {
-    padding: 64px 0 28px;
+    padding: 64px 0 36px;
     background: linear-gradient(180deg, #e8f7f9, transparent);
   }
   .page-hero h1 { margin: 0; font-size: clamp(2rem, 4vw, 2.8rem); }
   .page-hero p { margin: 14px 0 0; color: #444; max-width: 640px; line-height: 1.7; }
-  .dept-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 22px;
+  .catalog { padding: 28px 0 80px; }
+  .intro { margin-bottom: 22px; }
+  .intro h2 { margin: 0; font-size: 24px; }
+  .intro p { margin: 8px 0 0; color: var(--muted); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
   }
-  .dept-nav a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 36px;
-    padding: 0 14px;
-    border-radius: 999px;
+  .card {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    padding: 20px;
     background: #fff;
     border: 1px solid var(--line);
-    color: #445;
-    font-size: 13px;
-    font-weight: 600;
+    border-radius: 18px;
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
   }
-  .dept-nav a:hover {
-    border-color: var(--cyan);
-    color: var(--cyan-hover);
-    background: var(--cyan-soft);
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: #c5e4ea;
   }
-  .group {
-    padding: 28px 0 40px;
-    scroll-margin-top: 96px;
+  .card > img { width: 56px; height: 56px; object-fit: contain; }
+  .card h3 { margin: 0; font-size: 18px; }
+  .card p { margin: 8px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.5; min-height: 42px; }
+  .faces { display: flex; gap: 6px; margin-bottom: 12px; }
+  .faces img {
+    width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+    border: 2px solid #fff; box-shadow: 0 0 0 1px var(--line);
   }
-  .group-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .group-head h2 { margin: 0; font-size: 24px; }
-  .group-head p { margin: 0; color: var(--muted); font-size: 13px; }
-  .list { display: grid; gap: 16px; }
-  .card {
-    display: grid; grid-template-columns: 180px 1fr; gap: 22px;
-    background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 20px;
-    scroll-margin-top: 100px;
-  }
-  .card:target { outline: 2px solid var(--cyan); outline-offset: 2px; }
-  .card > img {
-    width: 180px; height: 180px; object-fit: cover; border-radius: 16px; background: #f2f2f2;
-  }
-  .body h3 { margin: 0; font-size: 22px; }
-  .en { margin: 4px 0 0; color: var(--muted); }
-  .title { margin: 10px 0 0; font-weight: 600; color: var(--cyan-hover); }
-  .role { margin: 4px 0 0; color: #444; font-size: 14px; line-height: 1.5; }
-  ul { margin: 14px 0 18px; padding-left: 18px; color: #444; }
-  li { margin: 4px 0; font-size: 14px; line-height: 1.5; }
+  .card em { font-style: normal; color: var(--cyan); font-size: 13px; font-weight: 600; }
   @media (max-width: 700px) {
-    .page-hero { padding: 40px 0 20px; }
+    .page-hero { padding: 40px 0 24px; }
     .page-hero h1 { font-size: 1.7rem; }
-    .dept-nav { gap: 6px; }
-    .dept-nav a { font-size: 12px; min-height: 32px; padding: 0 12px; }
-    .group { padding: 18px 0 28px; }
-    .group-head h2 { font-size: 20px; }
+    .catalog { padding: 16px 0 56px; }
+    .grid { grid-template-columns: 1fr; gap: 10px; }
     .card {
-      grid-template-columns: 96px 1fr;
-      gap: 14px;
-      padding: 14px;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      padding: 16px;
     }
-    .card > img {
-      width: 96px; height: 96px; border-radius: 14px;
-    }
-    .body h3 { font-size: 17px; }
-    .body ul { margin: 10px 0 14px; }
-    .body .wa-btn {
-      width: 100%;
-      font-size: 13px;
-      padding: 0 12px;
-    }
-  }
-  @media (max-width: 420px) {
-    .card { grid-template-columns: 1fr; }
-    .card > img { width: 100%; height: 220px; }
+    .card > img { width: 44px; height: 44px; }
+    .card p { min-height: 0; margin: 6px 0 10px; font-size: 13px; }
   }
 </style>

@@ -185,6 +185,13 @@ const eduGroups = educationCategories
     </nav>
 
     <div class="actions">
+      <a class="search-btn" href="/zh/search/" aria-label="搜尋">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
+          <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span class="search-text">搜尋</span>
+      </a>
       <div class="lang-desk">
         <button type="button" class="lang-trigger" aria-haspopup="true">繁體中文</button>
       </div>
@@ -240,6 +247,7 @@ const eduGroups = educationCategories
         </div>
       </details>
 
+      <a class:list={['m-link', { active: path.includes('/search') }]} href="/zh/search/">搜尋</a>
       <a class:list={['m-link', { active: path.includes('/contact') }]} href="/zh/contact/">關於我們</a>
     </nav>
 
@@ -400,6 +408,20 @@ const eduGroups = educationCategories
   }
   .l3-doctor-list img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
   .actions { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+  .search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #f7fafb;
+    color: #333;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .search-btn:hover { border-color: var(--cyan); color: var(--cyan-hover); }
   .lang-trigger {
     min-height: 36px;
     padding: 4px 14px;
@@ -538,6 +560,8 @@ const eduGroups = educationCategories
   @media (max-width: 980px) {
     .nav { display: none; }
     .lang-desk { display: none; }
+    .search-text { display: none; }
+    .search-btn { width: 40px; height: 40px; min-height: 40px; padding: 0; justify-content: center; border-radius: 12px; }
     .mobile-toggle { display: inline-flex; }
     .logo img { height: 36px; }
     .header-wa { min-width: 0; padding: 0 12px; }

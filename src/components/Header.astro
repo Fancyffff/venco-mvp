@@ -42,7 +42,7 @@ const doctorGroups = departmentOrder
               <p class="mega-label">服務分類</p>
               {services.map((s, i) => (
                 <a
-                  class:list={['mega-l2-item', { first: i === 0 }]}
+                  class:list={['mega-l2-item', { 'is-active': i === 0 }]}
                   href={`/zh/services/${s.id}/`}
                   data-panel={s.id}
                 >
@@ -101,7 +101,7 @@ const doctorGroups = departmentOrder
               <p class="mega-label">科室分類</p>
               {doctorGroups.map((g, i) => (
                 <a
-                  class:list={['mega-l2-item', { first: i === 0 }]}
+                  class:list={['mega-l2-item', { 'is-active': i === 0 }]}
                   href={`/zh/doctors/${g.id}/`}
                   data-panel={g.id}
                 >
@@ -308,7 +308,6 @@ const doctorGroups = departmentOrder
   }
   .mega-l2-item img { width: 28px; height: 28px; object-fit: contain; }
   .mega-l2-item:hover,
-  .mega-l2-item.first,
   .mega-l2-item.is-active { background: var(--cyan-soft); color: var(--cyan-hover); }
   .l3-panel { display: none; }
   .l3-panel.show { display: block; }

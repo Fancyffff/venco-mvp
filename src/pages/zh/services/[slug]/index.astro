@@ -153,4 +153,16 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
     padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 12px; font-size: 14px;
   }
   .more-grid img { width: 32px; height: 32px; object-fit: contain; }
+  @media (max-width: 700px) {
+    .crumb { padding-top: 16px; font-size: 12px; flex-wrap: wrap; }
+    .hero { grid-template-columns: 52px 1fr; gap: 12px; padding: 20px 0 8px; }
+    .icon { width: 52px; height: 52px; }
+    .hero h1 { font-size: 1.55rem; }
+    .block { padding: 18px 0; }
+    .items { grid-template-columns: 1fr; }
+    .doctors { grid-template-columns: 1fr; }
+    .more-grid { grid-template-columns: 1fr 1fr; }
+    .cta { flex-direction: column; align-items: stretch; }
+    .cta .wa-btn { width: 100%; }
+  }
 </style>

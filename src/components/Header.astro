@@ -127,21 +127,24 @@ const doctorGroups = [
 
     <div class="actions">
       <span class="lang">繁體中文</span>
-      <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
+      <a class="wa-btn header-wa" href={site.whatsapp} target="_blank" rel="noreferrer">
         <img src="/assets/whatsapp.svg" alt="" />
-        WhatsApp 預約
+        <span class="wa-text">WhatsApp 預約</span>
       </a>
-      <button class="mobile-toggle" type="button" data-mobile-open aria-label="打開選單">☰</button>
+      <button class="mobile-toggle" type="button" data-mobile-open aria-label="打開選單" aria-expanded="false">☰</button>
     </div>
   </div>
 
+  <div class="mobile-backdrop" data-mobile-backdrop hidden></div>
   <aside class="mobile-drawer" data-mobile-drawer hidden>
     <div class="mobile-drawer-head">
       <strong>選單</strong>
       <button type="button" data-mobile-close aria-label="關閉">✕</button>
     </div>
+    <a class="drawer-top" href="/zh/">首頁</a>
     <details open>
       <summary>兒科服務 <em>L1</em></summary>
+      <a href="/zh/services/">服務總覽</a>
       {services.map((s) => (
         <details class="nested">
           <summary>{s.title} <em>L2</em></summary>
@@ -149,15 +152,16 @@ const doctorGroups = [
           {s.items.map((item) => (
             <a href={`/zh/services/${s.id}/${item.slug}/`}>{item.text} <em>L3</em></a>
           ))}
-          {s.doctorIds.map((id) => {
+          {s.doctorIds.slice(0, 4).map((id) => {
             const d = doctors.find((x) => x.id === id);
-            return d ? <a href={`/zh/doctors/#${d.id}`}>{d.name} <em>L3</em></a> : null;
+            return d ? <a href={`/zh/doctors/#${d.id}`}>{d.name}</a> : null;
           })}
         </details>
       ))}
     </details>
     <details>
       <summary>醫生團隊 <em>L1</em></summary>
+      <a href="/zh/doctors/">全部醫生</a>
       {doctorGroups.map((g) => (
         <details class="nested">
           <summary>{g.title} <em>L2</em></summary>
@@ -167,8 +171,12 @@ const doctorGroups = [
         </details>
       ))}
     </details>
-    <a href="/zh/education/">兒科教育</a>
-    <a href="/zh/contact/">關於我們</a>
+    <a class="drawer-top" href="/zh/education/">兒科教育</a>
+    <a class="drawer-top" href="/zh/contact/">關於我們</a>
+    <a class="wa-btn drawer-wa" href={site.whatsapp} target="_blank" rel="noreferrer">
+      <img src="/assets/whatsapp.svg" alt="" />
+      WhatsApp 預約
+    </a>
   </aside>
 </header>
 
@@ -177,7 +185,7 @@ const doctorGroups = [
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(255,255,255,.92);
+    background: rgba(255,255,255,.96);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
@@ -185,10 +193,12 @@ const doctorGroups = [
     min-height: var(--header-h);
     display: flex;
     align-items: center;
-    gap: 24px;
+    justify-content: space-between;
+    gap: 12px;
   }
-  .logo img { height: 44px; width: auto; }
-  .nav { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+  .logo { flex: 0 1 auto; min-width: 0; }
+  .logo img { height: 44px; width: auto; max-width: min(200px, 46vw); object-fit: contain; }
+  .nav { display: flex; align-items: center; gap: 4px; margin-left: auto; margin-right: 8px; }
   .nav-link {
     display: inline-flex;
     align-items: center;
@@ -291,7 +301,7 @@ const doctorGroups = [
     padding: 6px 10px 6px 6px; border-radius: 999px; background: #f4fafb; font-size: 13px;
   }
   .l3-doctor-list img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
-  .actions { display: flex; align-items: center; gap: 12px; }
+  .actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
   .lang { font-size: 13px; color: var(--muted); }
   .mobile-toggle {
     display: none;
@@ -299,35 +309,82 @@ const doctorGroups = [
     background: #fff;
     border-radius: 10px;
     width: 40px; height: 40px;
+    flex: 0 0 auto;
   }
-  .mobile-drawer {
-    position: fixed; inset: 0 auto 0 0; width: min(360px, 92vw);
-    background: #fff; border-right: 1px solid var(--line);
-    padding: 16px; overflow: auto; z-index: 60;
+  .mobile-backdrop {
+    position: fixed; inset: 0; z-index: 55;
+    background: rgba(0,0,0,.35);
   }
+  .mobile-backdrop[hidden],
   .mobile-drawer[hidden] { display: none !important; }
-  .mobile-drawer-head { display: flex; justify-content: space-between; margin-bottom: 12px; }
-  .mobile-drawer details { border-bottom: 1px solid var(--line); padding: 8px 0; }
-  .mobile-drawer summary { cursor: pointer; font-weight: 600; }
-  .mobile-drawer a { display: block; padding: 8px 0 8px 12px; font-size: 14px; color: #333; }
+  .mobile-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(360px, 88vw);
+    background: #fff;
+    border-left: 1px solid var(--line);
+    padding: 16px 16px 32px;
+    overflow: auto;
+    z-index: 60;
+    box-shadow: -12px 0 40px rgba(0,0,0,.12);
+  }
+  .mobile-drawer-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  .mobile-drawer-head button {
+    width: 36px; height: 36px; border: 1px solid var(--line);
+    border-radius: 10px; background: #fff;
+  }
+  .mobile-drawer details { border-bottom: 1px solid var(--line); padding: 4px 0; }
+  .mobile-drawer summary {
+    cursor: pointer; font-weight: 600; padding: 12px 0;
+    list-style: none;
+  }
+  .mobile-drawer summary::-webkit-details-marker { display: none; }
+  .mobile-drawer a { display: block; padding: 10px 0 10px 12px; font-size: 14px; color: #333; }
+  .mobile-drawer .drawer-top {
+    padding: 14px 0; font-weight: 600; border-bottom: 1px solid var(--line);
+  }
   .mobile-drawer em { font-style: normal; font-size: 10px; color: var(--cyan); margin-left: 6px; }
-  .mobile-drawer .nested { margin-left: 8px; border: 0; }
+  .mobile-drawer .nested { margin-left: 8px; border: 0; border-bottom: 1px solid #f0f4f5; }
+  .drawer-wa { width: 100%; margin-top: 20px; }
 
   @media (max-width: 980px) {
     .nav { display: none; }
     .lang { display: none; }
     .mobile-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    .logo img { height: 36px; }
+    .header-wa { min-width: 0; padding: 0 12px; }
+  }
+  @media (max-width: 420px) {
+    .header-wa .wa-text { display: none; }
+    .header-wa { width: 40px; height: 40px; min-height: 40px; padding: 0; border-radius: 12px; }
   }
 </style>
 
 <script>
-  const drawers = document.querySelectorAll('[data-mobile-drawer]');
-  document.querySelector('[data-mobile-open]')?.addEventListener('click', () => {
-    drawers.forEach((el) => el.removeAttribute('hidden'));
-  });
-  document.querySelector('[data-mobile-close]')?.addEventListener('click', () => {
-    drawers.forEach((el) => el.setAttribute('hidden', ''));
-  });
+  const openBtn = document.querySelector('[data-mobile-open]');
+  const closeBtn = document.querySelector('[data-mobile-close]');
+  const drawer = document.querySelector('[data-mobile-drawer]');
+  const backdrop = document.querySelector('[data-mobile-backdrop]');
+
+  const openDrawer = () => {
+    drawer?.removeAttribute('hidden');
+    backdrop?.removeAttribute('hidden');
+    document.body.classList.add('drawer-open');
+    openBtn?.setAttribute('aria-expanded', 'true');
+  };
+  const closeDrawer = () => {
+    drawer?.setAttribute('hidden', '');
+    backdrop?.setAttribute('hidden', '');
+    document.body.classList.remove('drawer-open');
+    openBtn?.setAttribute('aria-expanded', 'false');
+  };
+
+  openBtn?.addEventListener('click', openDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+  backdrop?.addEventListener('click', closeDrawer);
+  drawer?.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeDrawer));
 
   document.querySelectorAll('.mega').forEach((mega) => {
     const items = mega.querySelectorAll('.mega-l2-item');

@@ -17,6 +17,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; }
 body {
   margin: 0;
   font-family: var(--font);
@@ -24,12 +25,13 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
 }
+body.drawer-open { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font: inherit; }
 
 .container {
-  width: min(1180px, calc(100% - 40px));
+  width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
 }
 
@@ -47,8 +49,9 @@ button { font: inherit; }
   font-weight: 600;
   font-size: 14px;
   box-shadow: 0 1px 6px rgba(0,0,0,.1);
+  white-space: nowrap;
 }
-.wa-btn img { width: 22px; height: 22px; }
+.wa-btn img { width: 22px; height: 22px; flex: 0 0 auto; }
 
 .mvp-banner {
   background: #111;
@@ -56,5 +59,17 @@ button { font: inherit; }
   font-size: 12px;
   text-align: center;
   padding: 6px 12px;
+  line-height: 1.4;
 }
 .mvp-banner strong { color: #50dde4; }
+
+@media (max-width: 700px) {
+  :root { --header-h: 60px; }
+  .container { width: calc(100% - 24px); }
+  .mvp-banner { font-size: 11px; padding: 8px 10px; }
+  .wa-btn {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+}

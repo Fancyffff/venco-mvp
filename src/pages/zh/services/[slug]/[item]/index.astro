@@ -128,4 +128,13 @@ const otherItems = service.items.filter((x) => x.slug !== item.slug);
     padding: 8px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: 13px;
   }
   .others a:hover { border-color: var(--cyan); color: var(--cyan); }
+  @media (max-width: 700px) {
+    .hero { padding: 18px 0 4px; }
+    .hero h1 { font-size: 1.5rem; }
+    .panel { padding: 16px; margin: 14px 0; }
+    .panel code { word-break: break-all; font-size: 11px; }
+    .actions { flex-direction: column; align-items: stretch; }
+    .actions .wa-btn, .actions .ghost { width: 100%; justify-content: center; }
+    .doctors { grid-template-columns: 1fr; }
+  }
 </style>

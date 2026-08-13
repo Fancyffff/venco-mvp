@@ -174,17 +174,14 @@ const featuredDoctors = doctors.slice(0, 8);
     display: flex;
     align-items: center;
     background:
-      linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.78) 52%, rgba(255,255,255,.55) 100%),
+      linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.62) 42%, rgba(255,255,255,.12) 68%, rgba(255,255,255,0) 82%),
       var(--hero) center right / cover no-repeat;
   }
   .hero-inner {
     width: 100%;
     padding: 64px 0;
-    display: flex;
-    justify-content: center;
-    text-align: center;
   }
-  .hero-copy { max-width: 720px; }
+  .hero-copy { max-width: 560px; }
   .hero h1 {
     margin: 0;
     font-size: clamp(1.9rem, 5.2vw, 3.2rem);
@@ -202,7 +199,6 @@ const featuredDoctors = doctors.slice(0, 8);
     gap: 12px;
     margin-top: 28px;
     flex-wrap: wrap;
-    justify-content: center;
   }
   .ghost {
     display: inline-flex; align-items: center; justify-content: center;

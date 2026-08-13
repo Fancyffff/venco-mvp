@@ -21,6 +21,7 @@ const locations = site.locations.map((loc, i) => ({
 
   <section class="page" id="about">
     <div class="container">
+      <h2>{ui.about}</h2>
       <div class="about">
         {about.map((p) => <p>{p}</p>)}
       </div>
@@ -30,7 +31,7 @@ const locations = site.locations.map((loc, i) => ({
   <section class="env" id="environment">
     <div class="container">
       <h2>{ui.clinicEnv}</h2>
-      <p class="env-lead">Two Tsim Sha Tsui clinics, with environment, address, and hours below.</p>
+      <p class="env-lead">The two clinics are listed one after another for easier comparison.</p>
 
       {locations.map((loc) => (
         <article class="clinic-block">
@@ -62,10 +63,24 @@ const locations = site.locations.map((loc, i) => ({
                 ))}
               </div>
             </div>
-            {loc.mapImage && <img class="map" src={loc.mapImage} alt={`${loc.name} map`} />}
           </div>
         </article>
       ))}
+
+      <h3 class="map-title">Clinic locations</h3>
+      <div class="map-grid">
+        {locations.map((loc) => (
+          loc.mapImage && (
+            <article class="map-card">
+              <img src={loc.mapImage} alt={`${loc.name} map`} />
+              <div>
+                <h4>{loc.name}</h4>
+                <p>{loc.address}</p>
+              </div>
+            </article>
+          )
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -125,18 +140,33 @@ const locations = site.locations.map((loc, i) => ({
   }
   .thumb.active { border-color: var(--cyan); }
   .thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .map {
-    margin-top: 10px;
+  .map-title { margin: 8px 0 16px; font-size: 1.25rem; }
+  .map-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .map-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .map-card img {
     width: 100%;
-    border-radius: 12px;
-    aspect-ratio: 16 / 10;
+    height: 240px;
     object-fit: cover;
     background: #eef3f5;
   }
+  .map-card > div { padding: 16px 18px 18px; }
+  .map-card h4 { margin: 0 0 6px; font-size: 17px; }
+  .map-card p { margin: 0; color: #444; font-size: 14px; line-height: 1.55; }
   @media (max-width: 800px) {
     .hero { padding: 44px 0 32px; }
     .page, .env { padding: 32px 0; }
     .clinic-block { grid-template-columns: 1fr; padding: 18px; }
+    .map-grid { grid-template-columns: 1fr; }
+    .map-card img { height: 200px; }
   }
 </style>
 

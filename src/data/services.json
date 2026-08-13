@@ -121,7 +121,7 @@
         "slug": "pediatric-sleep-apnea",
         "relatedEducation": [
           {
-            "slug": "sleep-apena"
+            "slug": "sleep-apnea"
           },
           {
             "slug": "sleep-program-for-children"
@@ -453,10 +453,10 @@
     ]
   },
   {
-    "id": "language",
-    "title": "兒童語言",
-    "desc": "語言發展評估、溝通訓練及家長指導。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_language_icon_service_language_v2_fde0b0c6d7.png",
+    "id": "nephrology",
+    "title": "兒童腎科",
+    "desc": "兒童腎臟及泌尿相關評估、跟進與專科諮詢。",
+    "icon": "/assets/icon-nephrology.svg",
     "items": [],
     "doctors": [],
     "doctorIds": []

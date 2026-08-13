@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import site from '../../../data/site.json';
+import disclaimer from '../../../data/disclaimer.json';
+---
+<BaseLayout title={`Disclaimer & Privacy | ${site.nameEn}`}>
+  <section class="page">
+    <div class="container">
+      <h1>{disclaimer.title}</h1>
+      {disclaimer.sections.map((s) => (
+        <section class="block">
+          <h2>{s.heading}</h2>
+          {s.paragraphs.map((p) => <p>{p}</p>)}
+        </section>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page { padding: 56px 0 80px; }
+  h1 { margin: 0 0 28px; font-size: clamp(1.8rem, 4vw, 2.4rem); }
+  .block { margin-bottom: 28px; max-width: 760px; }
+  .block h2 { margin: 0 0 12px; font-size: 1.15rem; }
+  .block p { margin: 0 0 10px; color: #444; line-height: 1.75; font-size: 15px; }
+  @media (max-width: 700px) {
+    .page { padding: 40px 0 56px; }
+  }
+</style>

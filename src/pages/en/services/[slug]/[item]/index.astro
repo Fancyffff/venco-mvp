@@ -4,6 +4,9 @@ import services from '../../../../../data/services.json';
 import doctors from '../../../../../data/doctors.json';
 import education from '../../../../../data/education.json';
 import site from '../../../../../data/site.json';
+import { t, serviceTitle } from '../../../../../lib/i18n';
+
+const ui = t('en');
 
 export function getStaticPaths() {
   return services.flatMap((s) =>
@@ -22,42 +25,42 @@ const relatedEdu = (item.relatedEducation || [])
   .map((r) => education.find((e) => e.slug === r.slug))
   .filter(Boolean);
 ---
-<BaseLayout title={`${item.text} | ${service.title} | ${site.name}`} description={`${service.title}：${item.text}`}>
+<BaseLayout title={`${item.text} | ${serviceTitle('en', service.id, service.title)} | ${site.nameEn}`} description={`${service.title}：${item.text}`}>
   <section class="crumb container">
-    <a href="/zh/services/">兒科服務</a>
+    <a href="/en/services/">{ui.services}</a>
     <span>/</span>
-    <a href={`/zh/services/${service.id}/`}>{service.title}</a>
+    <a href={`/en/services/${service.id}/`}>{service.title}</a>
     <span>/</span>
     <strong>{item.text}</strong>
   </section>
 
   <section class="hero container">
     <h1>{item.text}</h1>
-    <p class="parent">所屬專科：{service.title}</p>
+    <p class="parent">Specialty: {serviceTitle('en', service.id, service.title)}</p>
     <p class="desc">{service.desc}</p>
   </section>
 
   <section class="container panel">
-    <h2>如何預約</h2>
+    <h2>{ui.howToBook}</h2>
     <ul>
-      <li>經 WhatsApp 說明孩子情況與希望預約的服務項目，方便安排合適時段</li>
-      <li>如需進一步檢查或轉介，醫生會於診症時詳細解釋</li>
-      <li>家長如有疑問，可先預約此專科相關醫生諮詢</li>
+      <li>Message us on WhatsApp with your child’s situation and the service you need</li>
+      <li>Further tests or referrals will be explained during the consultation</li>
+      <li>You can also book a related doctor from this specialty first</li>
     </ul>
     <div class="actions">
       <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
-        <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約此服務
+        <img src="/assets/whatsapp.svg" alt="" /> {ui.bookThisService}
       </a>
-      <a class="ghost" href={`/zh/services/${service.id}/`}>返回 {service.title}</a>
+      <a class="ghost" href={`/en/services/${service.id}/`}>{ui.backToSpecialty}: {serviceTitle('en', service.id, service.title)}</a>
     </div>
   </section>
 
   {related.length > 0 && (
     <section class="container block">
-      <h2>可預約醫生</h2>
+      <h2>{ui.relatedDoctors}</h2>
       <div class="doctors">
         {related.map((d) => (
-          <a class="doctor" href={`/zh/doctors/${d.department}/#${d.id}`}>
+          <a class="doctor" href={`/en/doctors/${d.department}/#${d.id}`}>
             <img src={d.image} alt={d.name} />
             <div>
               <strong>{d.name}</strong>
@@ -71,10 +74,10 @@ const relatedEdu = (item.relatedEducation || [])
 
   {relatedEdu.length > 0 && (
     <section class="container block">
-      <h2>相關兒科教育</h2>
+      <h2>{ui.relatedEducation}</h2>
       <div class="edu">
         {relatedEdu.map((e) => (
-          <a href={`/zh/education/${e.category}/${e.slug}/`}>
+          <a href={`/en/education/${e.category}/${e.slug}/`}>
             {e.cover && <img src={e.cover} alt="" />}
             <span>{e.title}</span>
           </a>
@@ -85,10 +88,10 @@ const relatedEdu = (item.relatedEducation || [])
 
   {otherItems.length > 0 && (
     <section class="container block">
-      <h2>同專科其他細項</h2>
+      <h2>{ui.otherItems}</h2>
       <div class="others">
         {otherItems.map((x) => (
-          <a href={`/zh/services/${service.id}/${x.slug}/`}>{x.text}</a>
+          <a href={`/en/services/${service.id}/${x.slug}/`}>{x.text}</a>
         ))}
       </div>
     </section>

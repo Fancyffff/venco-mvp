@@ -3,37 +3,40 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import services from '../../../data/services.json';
 import site from '../../../data/site.json';
 import documents from '../../../data/documents.json';
+import { t, serviceTitle, serviceDesc } from '../../../lib/i18n';
+
+const ui = t('en');
 ---
-<BaseLayout title={`全面的兒科服務 | ${site.name}`} description="涵蓋診療、預防與健康管理，守護孩子成長。">
+<BaseLayout title={`${ui.servicesHeadline} | ${site.nameEn}`} description={ui.servicesLead}>
   <section class="page-hero" style={`background-image:linear-gradient(90deg,rgba(255,255,255,.94),rgba(255,255,255,.35)),url(${site.servicesHero})`}>
     <div class="container">
-      <h1>全面的兒科服務</h1>
-      <p>涵蓋診療、預防與健康管理。選擇專科後可進一步查看服務細項與相關醫生。</p>
+      <h1>{ui.servicesHeadline}</h1>
+      <p>{ui.servicesLead}. Choose a specialty to view service items and related doctors.</p>
       <a class="doc-entry" href="#documents">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8"/>
           <path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8"/>
         </svg>
-        瀏覽文件
+        {ui.browseFiles}
       </a>
     </div>
   </section>
 
   <section class="container catalog">
     <div class="intro">
-      <h2>選擇專科</h2>
-      <p>共 {services.length} 個專科，點進後可查看該專科服務細項與醫生資訊。</p>
+      <h2>Choose a specialty</h2>
+      <p>{services.length} specialties — open one to see items and doctors.</p>
     </div>
     <div class="grid">
       {services.map((s) => (
-        <a class="card" href={`/zh/services/${s.id}/`}>
+        <a class="card" href={`/en/services/${s.id}/`}>
           <img src={s.icon} alt="" />
           <div>
-            <h3>{s.title}</h3>
-            <p>{s.desc}</p>
+            <h3>{serviceTitle('en', s.id, s.title)}</h3>
+            <p>{serviceDesc('en', s.id, s.desc)}</p>
             <em>
-              {s.items.length > 0 ? `${s.items.length} 個服務細項` : '專科介紹'}
-              {s.doctorIds.length > 0 ? ` · ${s.doctorIds.length} 位相關醫生` : ''}
+              {s.items.length > 0 ? ui.itemsCount(s.items.length) : ui.specialtyIntro}
+              {s.doctorIds.length > 0 ? ` · ${ui.doctorsCount(s.doctorIds.length)}` : ''}
               →
             </em>
           </div>
@@ -45,23 +48,23 @@ import documents from '../../../data/documents.json';
   <section class="container docs" id="documents">
     <div class="docs-head">
       <div>
-        <h2>{documents.title}</h2>
-        <p>{documents.lead}</p>
+        <h2>{documents.titleEn}</h2>
+        <p>{documents.leadEn}</p>
       </div>
-      <a class="doc-entry solid" href="#documents">瀏覽文件</a>
+      <a class="doc-entry solid" href="#documents">{ui.browseFiles}</a>
     </div>
     {documents.files.length > 0 ? (
       <ul class="file-list">
         {documents.files.map((file) => (
           <li>
-            <span>{file.name}</span>
-            <a href={file.href} download>下載</a>
+            <span>{file.nameEn || file.name}</span>
+            <a href={file.href} download>{ui.downloadFile}</a>
           </li>
         ))}
       </ul>
     ) : (
       <div class="file-empty">
-        <p>文件即將上載。日後可在此瀏覽或下載門診表格與指引。</p>
+        <p>{ui.noFilesYet}</p>
       </div>
     )}
   </section>

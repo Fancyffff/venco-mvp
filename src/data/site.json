@@ -24,7 +24,17 @@
         "https://img.venco.com.hk/uploads/2026/07/d013f79c-458e-46e7-9530-3f557ae435a1---3.jpeg",
         "https://img.venco.com.hk/uploads/2026/07/42fa294c-322d-4197-9360-b8b66e9adbba---4.jpeg"
       ],
-      "receptionImage": "https://img.venco.com.hk/uploads/venco_clinic_mira_place_clinic_reception_v2_3c3b8c18c4.jpeg"
+      "receptionImage": "https://img.venco.com.hk/uploads/venco_clinic_mira_place_clinic_reception_v2_3c3b8c18c4.jpeg",
+      "hoursRows": [
+        { "days": "星期一至五", "time": "10:00-18:30" },
+        { "days": "星期六", "time": "10:00-15:00" },
+        { "days": "星期日及公眾假期", "time": "休息" }
+      ],
+      "hoursRowsEn": [
+        { "days": "Mon–Fri", "time": "10:00-18:30" },
+        { "days": "Saturday", "time": "10:00-15:00" },
+        { "days": "Sun & public holidays", "time": "Closed" }
+      ]
     },
     {
       "name": "海洋中心",
@@ -37,12 +47,22 @@
         "https://img.venco.com.hk/uploads/2026/07/e4fb3e98-cf09-40bb-bec5-f1e6028de665---2.jpeg",
         "https://img.venco.com.hk/uploads/2026/07/92eaa29b-98d7-4f1f-8371-8a4ba553e065---3.jpeg",
         "https://img.venco.com.hk/uploads/2026/07/00d59a73-f113-47b4-b6ae-dd7fc5c12bdc---4.jpeg"
+      ],
+      "hoursRows": [
+        { "days": "星期一至五", "time": "10:00-18:30" },
+        { "days": "星期六", "time": "10:00-15:00" },
+        { "days": "星期日及公眾假期", "time": "休息" }
+      ],
+      "hoursRowsEn": [
+        { "days": "Mon–Fri", "time": "10:00-18:30" },
+        { "days": "Saturday", "time": "10:00-15:00" },
+        { "days": "Sun & public holidays", "time": "Closed" }
       ]
     }
   ],
   "education": [
     {
-      "title": "⿐敏感 Allergic Rhinitis",
+      "title": "鼻敏感 Allergic Rhinitis",
       "excerpt": "病徵-主要是鼻黏膜受到刺激，導致血管擴張",
       "tag": "鼻敏感",
       "href": "/zh/education/allergic-rhinitis/allergic-rhinitis/",
@@ -64,10 +84,34 @@
     }
   ],
   "about": [
-    "榛怡醫務中心由經驗豐富的兒科專科醫生及醫護團隊組成，提供一般兒科、專科評估、疫苗接種、兒科教育及家庭支援。",
-    "我們重視清晰溝通，讓家長了解孩子情況並作出安心選擇。"
+    "榛怡醫務中心致力為兒童及家庭提供全面的兒科專科服務。除診治常見及複雜的兒科疾病外，我們亦重視兒童健康管理與疾病預防，務求以細緻、安心的方式守護每位孩子的成長。",
+    "中心由經驗豐富的兒科專科醫生及醫護團隊組成，提供一般兒科、呼吸系統、內分泌、過敏、外科、臨床遺傳、腦神經、腎科、心理輔導、疫苗接種及遙距診症等服務。診室環境溫馨童趣，讓家長與孩子在舒適的空間接受照顧。",
+    "我們重視清晰溝通，讓家長充分了解孩子的情況，並與專科團隊一起作出安心選擇。"
   ],
   "contactHero": "https://img.venco.com.hk/uploads/venco_contact_hero_desktop6_hero_full_v2_18cdc8316b.png",
   "qrCode": "https://img.venco.com.hk/uploads/2026/07/7ae92196-c371-4616-9b11-2b621d11721c--1.png",
-  "email": "info@venco.com.hk"
+  "email": "info@venco.com.hk",
+  "homeLeadEn": [
+    "Venco Medical Centre provides specialist paediatric care for children.",
+    "Our experienced paediatricians care for common childhood illnesses, respiratory, endocrine, and allergy concerns, with vaccination, growth support, and counselling services.",
+    "Warm clinic spaces and attentive care for every child’s healthy growth."
+  ],
+  "aboutEn": [
+    "Venco Medical Centre provides comprehensive specialist paediatric care for children and families. Beyond treating common and complex childhood conditions, we emphasise prevention and ongoing health management, so every child can grow with attentive, reassuring care.",
+    "Our team of experienced paediatricians and clinicians offers general paediatrics, respiratory, endocrine, allergy, surgical, genetic, neurology, nephrology, counselling, vaccination, and telemedicine services in a warm, child-friendly clinic setting.",
+    "We value clear communication so parents understand their child’s situation and can make confident decisions with our specialist team."
+  ],
+  "hoursEn": "Mon–Fri 10:00–18:30｜Sat 10:00–15:00｜Sun & public holidays closed",
+  "locationsEn": [
+    {
+      "name": "Mira Place",
+      "address": "Room 1603, 16/F, Mira Place Tower A, 132 Nathan Road, Tsim Sha Tsui, Kowloon, Hong Kong",
+      "phone": "(852) 2882 7222"
+    },
+    {
+      "name": "Ocean Centre",
+      "address": "Rooms 1204-5, 12/F, Ocean Centre, Harbour City, 5 Canton Road, Tsim Sha Tsui, Kowloon, Hong Kong",
+      "phone": "(852) 2151 3677"
+    }
+  ]
 }

@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import education from '../../../../data/education.json';
+import categories from '../../../../data/education-categories.json';
+import site from '../../../../data/site.json';
+import { t, categoryCopyEn } from '../../../../lib/i18n';
+
+const ui = t('en');
+
+export function getStaticPaths() {
+  return categories.map((category) => {
+    const articles = education.filter((a) => a.category === category.id);
+    return {
+      params: { category: category.id },
+      props: { category, articles },
+    };
+  }).filter((p) => p.props.articles.length > 0);
+}
+
+const { category, articles } = Astro.props;
+const catTitle = categoryCopyEn[category.id]?.title || category.title;
+const catDesc = categoryCopyEn[category.id]?.desc || category.desc;
+const siblings = categories
+  .filter((c) => c.id !== category.id)
+  .map((c) => ({
+    ...c,
+    title: categoryCopyEn[c.id]?.title || c.title,
+    count: education.filter((a) => a.category === c.id).length,
+  }))
+  .filter((c) => c.count > 0)
+  .slice(0, 6);
+---
+<BaseLayout title={`${catTitle} | ${ui.education} | ${site.nameEn}`} description={catDesc}>
+  <section class="crumb container">
+    <a href="/en/education/">{ui.education}</a>
+    <span>/</span>
+    <strong>{catTitle}</strong>
+  </section>
+
+  <section class="hero container">
+    <h1>{catTitle}</h1>
+    <p>{catDesc}</p>
+    <p class="count">{articles.length} articles</p>
+  </section>
+
+  <section class="container list-wrap">
+    <div class="grid">
+      {articles.map((e) => (
+        <a class="card" href={`/en/education/${category.id}/${e.slug}/`}>
+          <div class="media">
+            {e.cover ? <img src={e.cover} alt="" loading="lazy" /> : <div class="ph" />}
+          </div>
+          <div class="body">
+            <h2>{e.title}</h2>
+            {e.lead && <p>{e.lead}</p>}
+            <div class="meta">
+              {e.doctorName && <em>{e.doctorName}</em>}
+              {e.date && <time>{e.date}</time>}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container more">
+    <a class="back" href="/en/education/">← Back to topics</a>
+    {siblings.length > 0 && (
+      <>
+        <h2>Other topics</h2>
+        <div class="more-grid">
+          {siblings.map((s) => (
+            <a href={`/en/education/${s.id}/`}>
+              <strong>{s.title}</strong>
+              <span>{s.count}  articles</span>
+            </a>
+          ))}
+        </div>
+      </>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .crumb {
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    padding: 28px 0 0; color: var(--muted); font-size: 13px;
+  }
+  .crumb a { color: var(--cyan); }
+  .hero { padding: 24px 0 8px; max-width: 720px; }
+  .hero h1 { margin: 0; font-size: clamp(1.85rem, 4vw, 2.5rem); }
+  .hero p { margin: 12px 0 0; color: #444; line-height: 1.7; font-size: 16px; }
+  .count { color: var(--muted) !important; font-size: 14px !important; }
+  .list-wrap { padding: 24px 0 20px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    transition: transform .16s ease, box-shadow .16s ease;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .media { aspect-ratio: 16 / 10; background: #eef3f5; }
+  .media img, .ph { width: 100%; height: 100%; object-fit: cover; }
+  .ph { background: linear-gradient(135deg, #e8f7f9, #f3f7f8); }
+  .body { padding: 16px 18px 18px; }
+  .body h2 { margin: 0 0 8px; font-size: 17px; line-height: 1.4; }
+  .body p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px 12px;
+    margin-top: 12px; color: var(--muted); font-size: 12px;
+  }
+  .meta em { font-style: normal; color: var(--cyan-hover); font-weight: 600; }
+  .more { padding-bottom: 72px; }
+  .back { display: inline-block; margin-bottom: 28px; color: var(--cyan); font-weight: 600; }
+  .more h2 { margin: 0 0 14px; font-size: 18px; }
+  .more-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .more-grid a {
+    display: grid; gap: 4px;
+    padding: 14px; background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  }
+  .more-grid a:hover { border-color: var(--cyan); }
+  .more-grid strong { font-size: 14px; }
+  .more-grid span { color: var(--muted); font-size: 12px; }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 1.55rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>

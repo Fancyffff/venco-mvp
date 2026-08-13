@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import site from '../../../data/site.json';
+import { t } from '../../../lib/i18n';
+
+const ui = t('en');
+const about = site.aboutEn || site.about || [];
+const locations = site.locations.map((loc, i) => ({
+  ...loc,
+  ...(site.locationsEn?.[i] || {}),
+  hoursRows: loc.hoursRowsEn || loc.hoursRows,
+}));
+---
+<BaseLayout title={`${ui.about} | ${site.nameEn}`} description={about[0] || ui.siteDesc}>
+  <section class="hero" style={site.contactHero ? `--hero:url(${site.contactHero})` : undefined}>
+    <div class="container">
+      <h1>{ui.about}</h1>
+      <p class="lead">Learn about Venco Medical Centre and our two clinic spaces.</p>
+    </div>
+  </section>
+
+  <section class="page" id="about">
+    <div class="container">
+      <h2>{ui.about}</h2>
+      <div class="about">
+        {about.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="env" id="environment">
+    <div class="container">
+      <h2>{ui.clinicEnv}</h2>
+      <p class="env-lead">The two clinics are listed one after another for easier comparison.</p>
+
+      {locations.map((loc) => (
+        <article class="clinic-block">
+          <div class="clinic-copy">
+            <h3>{loc.name}</h3>
+            <p>{loc.address}</p>
+            <p class="phone">{loc.phone}</p>
+            {loc.fax && <p>Fax {loc.fax}</p>}
+            {loc.hoursRows && (
+              <ul class="hours">
+                {loc.hoursRows.map((row) => (
+                  <li><span>{row.days}</span><strong>{row.time}</strong></li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div class="clinic-media">
+            <div class="gallery" data-gallery>
+              <div class="gallery-main">
+                <img src={loc.gallery[0]} alt={`${loc.name} clinic`} data-gallery-main />
+                <button type="button" class="g-btn prev" data-g-prev aria-label="Previous photo">‹</button>
+                <button type="button" class="g-btn next" data-g-next aria-label="Next photo">›</button>
+              </div>
+              <div class="gallery-thumbs">
+                {loc.gallery.map((src, gi) => (
+                  <button type="button" class:list={['thumb', { active: gi === 0 }]} data-g-thumb={gi}>
+                    <img src={src} alt="" />
+                  </button>
+                ))}
+              </div>
+            </div>
+            {loc.mapImage && <img class="map" src={loc.mapImage} alt={`${loc.name} map`} />}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 72px 0 56px;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.94), rgba(255,255,255,.45)),
+      var(--hero, none) center right / cover no-repeat;
+    background-color: #e8f7f9;
+  }
+  .hero h1 { margin: 0; font-size: clamp(2rem, 4vw, 2.8rem); }
+  .lead { margin: 12px 0 0; color: #444; font-size: 16px; }
+  .page, .env { padding: 48px 0; }
+  .env { background: var(--soft); }
+  #about, #environment { scroll-margin-top: 88px; }
+  h2 { margin: 0 0 16px; font-size: clamp(1.4rem, 3vw, 1.85rem); }
+  .about { max-width: 760px; }
+  .about p { margin: 0 0 14px; color: #333; line-height: 1.8; font-size: 16px; }
+  .env-lead { margin: -4px 0 28px; color: var(--muted); }
+  .clinic-block {
+    display: grid;
+    grid-template-columns: 0.9fr 1.2fr;
+    gap: 28px;
+    padding: 28px;
+    margin-bottom: 24px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+  }
+  .clinic-copy h3 { margin: 0 0 12px; font-size: 1.45rem; }
+  .clinic-copy p { margin: 6px 0; color: #444; font-size: 15px; line-height: 1.6; }
+  .phone { color: var(--cyan-hover); font-weight: 600; }
+  .hours { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 8px; }
+  .hours li { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: #444; }
+  .gallery-main {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #eef3f5;
+    aspect-ratio: 16 / 10;
+  }
+  .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+  .g-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 40px; height: 40px; border: 0; border-radius: 50%;
+    background: rgba(255,255,255,.92); color: var(--cyan); font-size: 24px;
+    box-shadow: var(--shadow);
+  }
+  .g-btn.prev { left: 12px; }
+  .g-btn.next { right: 12px; }
+  .gallery-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+  .thumb {
+    border: 2px solid transparent; border-radius: 10px; overflow: hidden; padding: 0;
+    background: #eef3f5; aspect-ratio: 16 / 10; cursor: pointer;
+  }
+  .thumb.active { border-color: var(--cyan); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .map {
+    margin-top: 12px; width: 100%; border-radius: 12px; aspect-ratio: 16 / 10;
+    object-fit: cover; background: #eef3f5;
+  }
+  @media (max-width: 800px) {
+    .hero { padding: 44px 0 32px; }
+    .page, .env { padding: 32px 0; }
+    .clinic-block { grid-template-columns: 1fr; padding: 18px; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+    const main = gallery.querySelector('[data-gallery-main]');
+    const thumbs = [...gallery.querySelectorAll('[data-g-thumb]')];
+    let index = 0;
+    const show = (i) => {
+      index = (i + thumbs.length) % thumbs.length;
+      const src = thumbs[index]?.querySelector('img')?.getAttribute('src');
+      if (src && main) main.setAttribute('src', src);
+      thumbs.forEach((t, ti) => t.classList.toggle('active', ti === index));
+    };
+    gallery.querySelector('[data-g-prev]')?.addEventListener('click', () => show(index - 1));
+    gallery.querySelector('[data-g-next]')?.addEventListener('click', () => show(index + 1));
+    thumbs.forEach((t, ti) => t.addEventListener('click', () => show(ti)));
+  });
+</script>

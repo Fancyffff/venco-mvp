@@ -3,6 +3,9 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import services from '../../../../data/services.json';
 import doctors from '../../../../data/doctors.json';
 import site from '../../../../data/site.json';
+import { t, serviceTitle, serviceDesc } from '../../../../lib/i18n';
+
+const ui = t('en');
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { slug: s.id }, props: { service: s } }));
@@ -13,26 +16,26 @@ const doctorMap = Object.fromEntries(doctors.map((d) => [d.id, d]));
 const related = service.doctorIds.map((id) => doctorMap[id]).filter(Boolean);
 const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
 ---
-<BaseLayout title={`${service.title} | ${site.name}`} description={service.desc}>
+<BaseLayout title={`${serviceTitle('en', service.id, service.title)} | ${site.nameEn}`} description={serviceDesc('en', service.id, service.desc)}>
   <section class="crumb container">
-    <a href="/zh/services/">兒科服務</a>
+    <a href="/en/services/">{ui.services}</a>
     <span>/</span>
-    <strong>{service.title}</strong>
+    <strong>{serviceTitle('en', service.id, service.title)}</strong>
   </section>
 
   <section class="hero container">
     <img class="icon" src={service.icon} alt="" />
     <div>
-      <h1>{service.title}</h1>
-      <p>{service.desc}</p>
+      <h1>{serviceTitle('en', service.id, service.title)}</h1>
+      <p>{serviceDesc('en', service.id, service.desc)}</p>
     </div>
   </section>
 
   {service.items.length > 0 ? (
     <section class="container block">
       <div class="block-head">
-        <h2>服務細項</h2>
-        <p>以下為本專科常見項目，可經 WhatsApp 預約相關醫生。</p>
+        <h2>Service items</h2>
+        <p>Common items in this specialty — book a related doctor via WhatsApp.</p>
       </div>
       <div class="items">
         {service.items.map((item) => (
@@ -48,12 +51,12 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
   {related.length > 0 && (
     <section class="container block">
       <div class="block-head">
-        <h2>相關醫生</h2>
-        <p>可預約此專科的醫生與護理團隊。</p>
+        <h2>Related doctors</h2>
+        <p>Clinicians you can book for this specialty.</p>
       </div>
       <div class="doctors">
         {related.map((d) => (
-          <a class="doctor" href={`/zh/doctors/${d.department}/#${d.id}`}>
+          <a class="doctor" href={`/en/doctors/${d.department}/#${d.id}`}>
             <img src={d.image} alt={d.name} />
             <div>
               <strong>{d.name}</strong>
@@ -67,18 +70,18 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
 
   <section class="container cta">
     <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
-      <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約
+      <img src="/assets/whatsapp.svg" alt="" /> {ui.bookWhatsapp}
     </a>
-    <a class="back" href="/zh/services/">← 返回服務總覽</a>
+    <a class="back" href="/en/services/">← Back to services</a>
   </section>
 
   <section class="container more">
-    <h2>其他專科</h2>
+    <h2>Other specialties</h2>
     <div class="more-grid">
       {siblings.map((s) => (
-        <a href={`/zh/services/${s.id}/`}>
+        <a href={`/en/services/${s.id}/`}>
           <img src={s.icon} alt="" />
-          <span>{s.title}</span>
+          <span>{serviceTitle('en', s.id, s.title)}</span>
         </a>
       ))}
     </div>

@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import doctors from '../../../../data/doctors.json';
+import services from '../../../../data/services.json';
+import site from '../../../../data/site.json';
+import { t, deptTitleEn, serviceDesc } from '../../../../lib/i18n';
+
+const ui = t('en');
+
+const departmentOrder = [
+  'general',
+  'respiratory',
+  'endocrine',
+  'genetics',
+  'surgery',
+  'neuro',
+  'obstetrics',
+  'psychology',
+];
+
+export function getStaticPaths() {
+  const ids = [...new Set(doctors.map((d) => d.department))];
+  return ids.map((dept) => {
+    const list = doctors.filter((d) => d.department === dept);
+    return {
+      params: { dept },
+      props: {
+        department: {
+          id: dept,
+          title: list[0].departmentTitle,
+          doctors: list,
+        },
+      },
+    };
+  });
+}
+
+const { department } = Astro.props;
+const deptTitle = deptTitleEn[department.id] || department.title;
+const relatedService = services.find((s) => s.id === department.id);
+const siblings = departmentOrder
+  .filter((id) => id !== department.id)
+  .map((id) => {
+    const list = doctors.filter((d) => d.department === id);
+    if (!list.length) return null;
+    return { id, title: deptTitleEn[id] || list[0].departmentTitle, count: list.length };
+  })
+  .filter(Boolean)
+  .slice(0, 6);
+---
+<BaseLayout title={`${deptTitle} | ${ui.doctors} | ${site.nameEn}`} description={`${deptTitle} team profiles and booking.`}>
+  <section class="crumb container">
+    <a href="/en/doctors/">{ui.doctors}</a>
+    <span>/</span>
+    <strong>{deptTitle}</strong>
+  </section>
+
+  <section class="hero container">
+    <div>
+      <h1>{deptTitle}</h1>
+      <p>
+        {relatedService
+          ? serviceDesc('en', relatedService.id, relatedService.desc)
+          : `${deptTitle} specialist team for assessment and follow-up.`}
+        {' '}
+        {department.doctors.length} team member{department.doctors.length === 1 ? '' : 's'} on this page.
+      </p>
+      {relatedService && (
+        <a class="service-link" href={`/en/services/${relatedService.id}/`}>View related services →</a>
+      )}
+    </div>
+  </section>
+
+  <div class="container list-wrap">
+    <div class="list">
+      {department.doctors.map((d) => (
+        <article class="card" id={d.id}>
+          <img src={d.image} alt={d.english || d.name} />
+          <div class="body">
+            <h2>{d.english || d.name}</h2>
+            <p class="en">{d.name}</p>
+            <p class="title">{d.title}</p>
+            {d.role && <p class="role">{d.role}</p>}
+            <ul>
+              {d.creds.slice(0, 5).map((c) => <li>{c}</li>)}
+            </ul>
+            <a class="wa-btn" href={d.whatsapp} target="_blank" rel="noreferrer">
+              <img src="/assets/whatsapp.svg" alt="" /> {ui.bookWhatsapp}
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <section class="container more">
+    <a class="back" href="/en/doctors/">← Back to departments</a>
+    {siblings.length > 0 && (
+      <>
+        <h2>Other departments</h2>
+        <div class="more-grid">
+          {siblings.map((s) => (
+            <a href={`/en/doctors/${s.id}/`}>
+              <strong>{s.title}</strong>
+              <span>{s.count} members</span>
+            </a>
+          ))}
+        </div>
+      </>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .crumb {
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    padding: 28px 0 0; color: var(--muted); font-size: 13px;
+  }
+  .crumb a { color: var(--cyan); }
+  .hero { padding: 24px 0 8px; max-width: 760px; }
+  .hero h1 { margin: 0; font-size: clamp(1.85rem, 4vw, 2.6rem); }
+  .hero p { margin: 12px 0 0; color: #444; line-height: 1.7; font-size: 16px; }
+  .service-link {
+    display: inline-block;
+    margin-top: 14px;
+    color: var(--cyan);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .list-wrap { padding: 24px 0 20px; }
+  .list { display: grid; gap: 16px; }
+  .card {
+    display: grid; grid-template-columns: 180px 1fr; gap: 22px;
+    background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 20px;
+    scroll-margin-top: 100px;
+  }
+  .card:target { outline: 2px solid var(--cyan); outline-offset: 2px; }
+  .card > img {
+    width: 180px; height: 180px; object-fit: cover; border-radius: 16px; background: #f2f2f2;
+  }
+  .body h2 { margin: 0; font-size: 22px; }
+  .en { margin: 4px 0 0; color: var(--muted); }
+  .title { margin: 10px 0 0; font-weight: 600; color: var(--cyan-hover); }
+  .role { margin: 4px 0 0; color: #444; font-size: 14px; line-height: 1.5; }
+  ul { margin: 14px 0 18px; padding-left: 18px; color: #444; }
+  li { margin: 4px 0; font-size: 14px; line-height: 1.5; }
+  .more { padding-bottom: 72px; }
+  .back { display: inline-block; margin-bottom: 28px; color: var(--cyan); font-weight: 600; }
+  .more h2 { margin: 0 0 14px; font-size: 18px; }
+  .more-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .more-grid a {
+    display: grid; gap: 4px;
+    padding: 14px; background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  }
+  .more-grid a:hover { border-color: var(--cyan); }
+  .more-grid strong { font-size: 14px; }
+  .more-grid span { color: var(--muted); font-size: 12px; }
+  @media (max-width: 700px) {
+    .crumb { padding-top: 18px; font-size: 12px; }
+    .hero h1 { font-size: 1.55rem; }
+    .hero p { font-size: 14px; }
+    .card {
+      grid-template-columns: 96px 1fr;
+      gap: 14px;
+      padding: 14px;
+    }
+    .card > img { width: 96px; height: 96px; border-radius: 14px; }
+    .body h2 { font-size: 17px; }
+    .body .wa-btn { width: 100%; font-size: 13px; padding: 0 12px; }
+  }
+  @media (max-width: 420px) {
+    .card { grid-template-columns: 1fr; }
+    .card > img { width: 100%; height: 220px; }
+  }
+</style>

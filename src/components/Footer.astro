@@ -1,22 +1,47 @@
 ---
 import site from '../data/site.json';
+import { getLocale, t, localePath } from '../lib/i18n';
+
+const locale = getLocale(Astro.url.pathname);
+const ui = t(locale);
+const lp = (p = '') => localePath(locale, p);
+const locations = locale === 'en' && site.locationsEn
+  ? site.locationsEn.map((loc, i) => ({
+      name: loc.name,
+      address: loc.address,
+      phone: loc.phone || site.locations[i]?.phone,
+    }))
+  : site.locations;
 ---
 <footer class="footer">
   <div class="container footer-grid">
     <div>
-      <h3>快速鏈接</h3>
-      <a href="/zh/">首頁</a>
-      <a href="/zh/services/">兒科服務</a>
-      <a href="/zh/doctors/">醫生團隊</a>
-      <a href="/zh/education/">兒科教育</a>
-      <a href="/zh/contact/">關於我們</a>
+      <h3>{ui.quickLinks}</h3>
+      <a href={lp()}>{ui.home}</a>
+      <a href={lp('services')}>{ui.services}</a>
+      <a href={lp('doctors')}>{ui.doctors}</a>
+      <a href={lp('education')}>{ui.education}</a>
+      <a href={lp('about')}>{ui.about}</a>
+      <a href={lp('contact')}>{ui.contactNav}</a>
     </div>
     <div>
-      <h3>聯絡我們</h3>
-      <p class="label">營業時間</p>
-      <p>{site.hours}</p>
-      <p class="label">診所地址</p>
-      {site.locations.map((loc) => (
+      <h3>{ui.contactUs}</h3>
+      <p class="label">{ui.hours}</p>
+      {locations.map((loc, i) => {
+        const rows = locale === 'en'
+          ? (site.locations[i]?.hoursRowsEn || site.locations[i]?.hoursRows)
+          : site.locations[i]?.hoursRows;
+        return (
+          <p>
+            <strong>{loc.name}</strong><br />
+            {(rows || []).map((row) => (
+              <>{row.days} {row.time}<br /></>
+            ))}
+          </p>
+        );
+      })}
+      <p class="label">{ui.address}</p>
+      {locations.map((loc) => (
         <p>
           <strong>{loc.name}</strong><br />
           {loc.address}<br />
@@ -25,25 +50,24 @@ import site from '../data/site.json';
       ))}
     </div>
     <div class="cta">
-      <h3>馬上聯絡我們</h3>
-      <p>我們的團隊隨時準備為您提供幫助</p>
+      <h3>{ui.contactCta}</h3>
+      <p>{ui.contactCtaLead}</p>
       <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
         <img src="/assets/whatsapp.svg" alt="" />
-        WhatsApp 預約
+        {ui.bookWhatsapp}
       </a>
       {site.qrCode && (
         <div class="qr">
-          <img src={site.qrCode} alt="微信二維碼" />
-          <span>請用微信掃碼關注</span>
+          <img src={site.qrCode} alt="WeChat QR" />
+          <span>{ui.wechatQr}</span>
         </div>
       )}
     </div>
   </div>
   <div class="container copy">
-    <span>© 2026 {site.name}</span>
-    <nav aria-label="法律資訊">
-      <a href="/zh/disclaimer/">服務條款</a>
-      <a href="/zh/disclaimer/">用戶隱私</a>
+    <span>© 2026 {locale === 'en' ? site.nameEn : site.name}</span>
+    <nav aria-label={locale === 'en' ? 'Legal' : '法律資訊'}>
+      <a href={lp('disclaimer')}>{locale === 'en' ? 'Disclaimer & Privacy' : '免責聲明及私隱政策'}</a>
     </nav>
   </div>
 </footer>

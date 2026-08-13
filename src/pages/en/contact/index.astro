@@ -2,20 +2,28 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import site from '../../../data/site.json';
 import doctors from '../../../data/doctors.json';
+import { t } from '../../../lib/i18n';
+
+const ui = t('en');
+const locations = site.locations.map((loc, i) => ({
+  ...loc,
+  ...(site.locationsEn?.[i] || {}),
+  hoursRows: loc.hoursRowsEn || loc.hoursRows,
+}));
 ---
-<BaseLayout title={`聯絡我們 | ${site.name}`} description="榛怡醫務中心聯絡方式、工作時間與門診地址。">
+<BaseLayout title={`${ui.contactNav} | ${site.nameEn}`} description="Contact Venco Medical Centre for appointments and clinic hours.">
   <section class="hero" style={site.contactHero ? `--hero:url(${site.contactHero})` : undefined}>
     <div class="container">
-      <h1>聯絡我們</h1>
-      <p class="lead">歡迎隨時聯絡我們預約或查詢</p>
+      <h1>{ui.contactNav}</h1>
+      <p class="lead">We welcome your enquiry and booking</p>
     </div>
   </section>
 
   <section class="page">
     <div class="container">
-      <h2 class="sec-title">工作時間</h2>
+      <h2 class="sec-title">{ui.hours}</h2>
       <div class="hours-grid">
-        {site.locations.map((loc) => (
+        {locations.map((loc) => (
           <div class="hours-box">
             <h3>{loc.name}</h3>
             <ul>
@@ -28,36 +36,36 @@ import doctors from '../../../data/doctors.json';
         ))}
       </div>
 
-      <h2 class="sec-title">WhatsApp 預約醫生</h2>
+      <h2 class="sec-title">Book a doctor on WhatsApp</h2>
       <div class="doc-grid">
         {doctors.map((d) => (
           <a class="doc" href={d.whatsapp} target="_blank" rel="noreferrer">
-            <img src={d.image} alt={d.name} />
+            <img src={d.image} alt={d.english || d.name} />
             <div>
-              <strong>{d.name}</strong>
-              <small>{d.english}</small>
+              <strong>{d.english || d.name}</strong>
+              <small>{d.name}</small>
             </div>
           </a>
         ))}
       </div>
 
-      <h2 class="sec-title loc-title">門診地址</h2>
+      <h2 class="sec-title loc-title">Clinic locations</h2>
       <div class="grid">
-        {site.locations.map((loc) => (
+        {locations.map((loc) => (
           <article class="card">
-            <img src={loc.mapImage} alt={`${loc.name}地圖`} />
+            <img src={loc.mapImage} alt={`${loc.name} map`} />
             <div>
               <h3>{loc.name}</h3>
-              <p>地址：{loc.address}</p>
-              <p class="phone">電話：{loc.phone}</p>
-              {loc.fax && <p>傳真：{loc.fax}</p>}
+              <p>Address: {loc.address}</p>
+              <p class="phone">Tel: {loc.phone}</p>
+              {loc.fax && <p>Fax: {loc.fax}</p>}
             </div>
           </article>
         ))}
       </div>
 
       <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
-        <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約
+        <img src="/assets/whatsapp.svg" alt="" /> {ui.bookWhatsapp}
       </a>
     </div>
   </section>

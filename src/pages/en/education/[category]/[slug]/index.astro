@@ -4,6 +4,9 @@ import education from '../../../../../data/education.json';
 import doctors from '../../../../../data/doctors.json';
 import site from '../../../../../data/site.json';
 import { blocksFromBody } from '../../../../../lib/education-body';
+import { t, categoryCopyEn } from '../../../../../lib/i18n';
+
+const ui = t('en');
 
 export function getStaticPaths() {
   return education.map((article) => ({
@@ -20,25 +23,27 @@ const paperImages = article.images.filter((src) => src.includes('attachment') ||
 const showPaper = paperImages.length > 0 && article.body.length < 8;
 const articleDoctor = doctors.find((d) => d.name === article.doctorName);
 const doctorHref = articleDoctor
-  ? `/zh/doctors/${articleDoctor.department}/#${articleDoctor.id}`
-  : '/zh/doctors/';
-const categoryHref = `/zh/education/${article.category}/`;
+  ? `/en/doctors/${articleDoctor.department}/#${articleDoctor.id}`
+  : '/en/doctors/';
+const categoryHref = `/en/education/${article.category}/`;
 const bodyBlocks = blocksFromBody(article.body || []);
+const catTitle = categoryCopyEn[article.category]?.title || article.categoryTitle || article.tag;
+
 ---
-<BaseLayout title={`${article.title} | ${site.name}`} description={article.lead || article.title}>
+<BaseLayout title={`${article.title} | ${site.nameEn}`} description={article.lead || article.title}>
   <article class="page">
     <div class="container">
       <p class="crumb">
-        <a href="/zh/education/">兒科教育</a>
+        <a href="/en/education/">{ui.education}</a>
         <span>/</span>
-        <a href={categoryHref}>{article.categoryTitle || article.tag}</a>
+        <a href={categoryHref}>{catTitle}</a>
         <span>/</span>
-        <strong>文章</strong>
+        <strong>Article</strong>
       </p>
 
       <header class="head">
         {(article.categoryTitle || article.tag) && (
-          <a class="tag" href={categoryHref}>{article.categoryTitle || article.tag}</a>
+          <a class="tag" href={categoryHref}>{catTitle}</a>
         )}
         <h1>{article.title}</h1>
         {article.lead && <p class="lead">{article.lead}</p>}
@@ -91,7 +96,7 @@ const bodyBlocks = blocksFromBody(article.body || []);
             return <p>{block.text}</p>;
           })}
           {bodyBlocks.length === 0 && article.videos.length > 0 && (
-            <p class="media-note">本篇以影片介紹為主，歡迎觀看上方內容。</p>
+            <p class="media-note">This article is mainly a video — please watch above.</p>
           )}
           {!showPaper && article.images.filter((s) => s !== article.cover).map((src) => (
             <img class="inline-img" src={src} alt="" loading="lazy" />
@@ -101,17 +106,17 @@ const bodyBlocks = blocksFromBody(article.body || []);
 
       <div class="actions">
         <a class="wa-btn" href={article.doctorWhatsapp || site.whatsapp} target="_blank" rel="noreferrer">
-          <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約
+          <img src="/assets/whatsapp.svg" alt="" /> {ui.bookWhatsapp}
         </a>
-        <a class="ghost" href={categoryHref}>← 返回{article.categoryTitle || '主題'}</a>
+        <a class="ghost" href={categoryHref}>← Back to topic</a>
       </div>
 
       {related.length > 0 && (
         <section class="related">
-          <h2>相關文章</h2>
+          <h2>Related articles</h2>
           <div class="rel-grid">
             {related.map((e) => (
-              <a href={`/zh/education/${e.category}/${e.slug}/`}>
+              <a href={`/en/education/${e.category}/${e.slug}/`}>
                 {e.cover && <img src={e.cover} alt="" loading="lazy" />}
                 <span>{e.title}</span>
               </a>

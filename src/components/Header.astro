@@ -4,9 +4,23 @@ import doctors from '../data/doctors.json';
 import education from '../data/education.json';
 import educationCategories from '../data/education-categories.json';
 import site from '../data/site.json';
+import {
+  getLocale,
+  t,
+  localePath,
+  switchLocalePath,
+  serviceTitle,
+  deptTitleEn,
+  categoryCopyEn,
+} from '../lib/i18n';
 
 const path = Astro.url.pathname;
-const isHome = path === '/zh/' || path === '/zh';
+const locale = getLocale(path);
+const ui = t(locale);
+const lp = (p = '') => localePath(locale, p);
+const otherLocale = locale === 'en' ? 'zh' : 'en';
+const otherHref = switchLocalePath(path, otherLocale);
+const isHome = path === lp() || path === lp().replace(/\/$/, '');
 const departmentOrder = [
   'general',
   'respiratory',
@@ -21,7 +35,8 @@ const doctorGroups = departmentOrder
   .map((id) => {
     const list = doctors.filter((d) => d.department === id);
     if (!list.length) return null;
-    return { id, title: list[0].departmentTitle, doctors: list };
+    const title = locale === 'en' ? (deptTitleEn[id] || list[0].departmentTitle) : list[0].departmentTitle;
+    return { id, title, doctors: list };
   })
   .filter(Boolean);
 
@@ -29,65 +44,66 @@ const eduGroups = educationCategories
   .map((c) => {
     const articles = education.filter((a) => a.category === c.id);
     if (!articles.length) return null;
-    return { ...c, articles };
+    const title = locale === 'en' ? (categoryCopyEn[c.id]?.title || c.title) : c.title;
+    return { ...c, title, articles };
   })
   .filter(Boolean);
 ---
 <header class="header">
   <div class="container header-inner">
-    <a class="logo" href="/zh/" aria-label="榛怡醫務中心首頁">
-      <img src="/assets/logo.png" alt={site.name} />
+    <a class="logo" href={lp()} aria-label={locale === 'en' ? site.nameEn : site.name}>
+      <img src="/assets/logo.png" alt={locale === 'en' ? site.nameEn : site.name} />
     </a>
 
-    <nav class="nav" aria-label="主導航">
-      <a class:list={['nav-link', { active: isHome }]} href="/zh/">首頁</a>
+    <nav class="nav" aria-label={locale === 'en' ? 'Main' : '主導航'}>
+      <a class:list={['nav-link', { active: isHome }]} href={lp()}>{ui.home}</a>
 
       <div class="nav-item has-menu">
-        <a class:list={['nav-link', { active: path.includes('/services') }]} href="/zh/services/">
-          兒科服務 <span class="caret" aria-hidden="true"></span>
+        <a class:list={['nav-link', { active: path.includes('/services') }]} href={lp("services")}>
+          {ui.services} <span class="caret" aria-hidden="true"></span>
         </a>
-        <div class="mega" role="menu" aria-label="兒科服務選單">
+        <div class="mega" role="menu" aria-label={ui.services}>
           <div class="mega-cols">
             <div class="mega-l2">
-              <p class="mega-label">服務分類</p>
+              <p class="mega-label">{ui.serviceCategories}</p>
               {services.map((s, i) => (
                 <a
                   class:list={['mega-l2-item', { 'is-active': i === 0 }]}
-                  href={`/zh/services/${s.id}/`}
+                  href={lp(`services/${s.id}`)}
                   data-panel={s.id}
                 >
                   <img src={s.icon} alt="" width="28" height="28" />
-                  <span>{s.title}</span>
+                  <span>{serviceTitle(locale, s.id, s.title)}</span>
                 </a>
               ))}
             </div>
             <div class="mega-l3">
-              <p class="mega-label">服務細項 / 相關醫生</p>
+              <p class="mega-label">{ui.serviceItems}</p>
               {services.map((s, i) => (
                 <div class:list={['l3-panel', { show: i === 0 }]} data-l3={s.id}>
-                  <a class="l3-title" href={`/zh/services/${s.id}/`}>{s.title} · 查看專科</a>
+                  <a class="l3-title" href={lp(`services/${s.id}`)}>{serviceTitle(locale, s.id, s.title)} · {ui.viewSpecialty}</a>
                   {s.items.length > 0 ? (
                     <ul class="l3-list">
                       {s.items.map((item) => (
                         <li>
-                          <a href={`/zh/services/${s.id}/${item.slug}/`}>{item.text}</a>
+                          <span class="l3-static">{item.text}</span>
                         </li>
                       ))}
                     </ul>
-                  ) : (
-                    <p class="l3-empty">暫無細項列表，請進入專科頁了解詳情</p>
-                  )}
+                  ) : s.doctorIds.length === 0 ? (
+                    <p class="l3-empty">{ui.noItemsWithDoctors}</p>
+                  ) : null}
                   {s.doctorIds.length > 0 && (
                     <div class="l3-doctors">
-                      <p class="mega-label">相關醫生</p>
+                      <p class="mega-label">{ui.relatedDoctors}</p>
                       <div class="l3-doctor-list">
                         {s.doctorIds.map((id) => {
                           const d = doctors.find((x) => x.id === id);
                           if (!d) return null;
                           return (
-                            <a href={`/zh/doctors/${d.department}/#${d.id}`}>
-                              <img src={d.image} alt={d.name} />
-                              <span>{d.name}</span>
+                            <a href={`${lp(`doctors/${d.department}`)}#${d.id}`}>
+                              <img src={d.image} alt={locale === 'en' ? (d.english || d.name) : d.name} />
+                              <span>{locale === 'en' ? (d.english || d.name) : d.name}</span>
                             </a>
                           );
                         })}
@@ -102,17 +118,17 @@ const eduGroups = educationCategories
       </div>
 
       <div class="nav-item has-menu">
-        <a class:list={['nav-link', { active: path.includes('/doctors') }]} href="/zh/doctors/">
-          醫生團隊 <span class="caret" aria-hidden="true"></span>
+        <a class:list={['nav-link', { active: path.includes('/doctors') }]} href={lp("doctors")}>
+          {ui.doctors} <span class="caret" aria-hidden="true"></span>
         </a>
-        <div class="mega mega-doctors" role="menu" aria-label="醫生團隊選單">
+        <div class="mega mega-doctors" role="menu" aria-label={ui.doctors}>
           <div class="mega-cols">
             <div class="mega-l2">
-              <p class="mega-label">科室分類</p>
+              <p class="mega-label">{ui.deptCategories}</p>
               {doctorGroups.map((g, i) => (
                 <a
                   class:list={['mega-l2-item', { 'is-active': i === 0 }]}
-                  href={`/zh/doctors/${g.id}/`}
+                  href={lp(`doctors/${g.id}`)}
                   data-panel={g.id}
                 >
                   <span>{g.title}</span>
@@ -120,18 +136,18 @@ const eduGroups = educationCategories
               ))}
             </div>
             <div class="mega-l3">
-              <p class="mega-label">科室成員</p>
+              <p class="mega-label">{ui.deptMembers}</p>
               {doctorGroups.map((g, i) => (
                 <div class:list={['l3-panel', { show: i === 0 }]} data-l3={g.id}>
-                  <a class="l3-title" href={`/zh/doctors/${g.id}/`}>{g.title} · 查看科室</a>
+                  <a class="l3-title" href={lp(`doctors/${g.id}`)}>{g.title} · {ui.viewDept}</a>
                   <ul class="l3-list doctors">
                     {g.doctors.map((d) => (
                       <li>
-                        <a href={`/zh/doctors/${g.id}/#${d.id}`}>
+                        <a href={`${lp(`doctors/${g.id}`)}#${d.id}`}>
                           <img src={d.image} alt="" />
                           <span>
-                            <strong>{d.name}</strong>
-                            <small>{d.title}</small>
+                            <strong>{locale === 'en' ? (d.english || d.name) : d.name}</strong>
+                            <small>{locale === 'en' ? d.name : d.title}</small>
                           </span>
                         </a>
                       </li>
@@ -145,17 +161,17 @@ const eduGroups = educationCategories
       </div>
 
       <div class="nav-item has-menu">
-        <a class:list={['nav-link', { active: path.includes('/education') }]} href="/zh/education/">
-          兒科教育 <span class="caret" aria-hidden="true"></span>
+        <a class:list={['nav-link', { active: path.includes('/education') }]} href={lp("education")}>
+          {ui.education} <span class="caret" aria-hidden="true"></span>
         </a>
-        <div class="mega mega-edu" role="menu" aria-label="兒科教育選單">
+        <div class="mega mega-edu" role="menu" aria-label={ui.education}>
           <div class="mega-cols">
             <div class="mega-l2">
-              <p class="mega-label">主題分類</p>
+              <p class="mega-label">{ui.eduTopics}</p>
               {eduGroups.map((g, i) => (
                 <a
-                  class:list={['mega-l2-item', { first: i === 0 }]}
-                  href={`/zh/education/${g.id}/`}
+                  class:list={['mega-l2-item', { 'is-active': i === 0 }]}
+                  href={lp(`education/${g.id}`)}
                   data-panel={g.id}
                 >
                   <span>{g.title}</span>
@@ -163,14 +179,14 @@ const eduGroups = educationCategories
               ))}
             </div>
             <div class="mega-l3">
-              <p class="mega-label">分類文章</p>
+              <p class="mega-label">{ui.eduArticles}</p>
               {eduGroups.map((g, i) => (
                 <div class:list={['l3-panel', { show: i === 0 }]} data-l3={g.id}>
-                  <a class="l3-title" href={`/zh/education/${g.id}/`}>{g.title} · 查看全部</a>
+                  <a class="l3-title" href={lp(`education/${g.id}`)}>{g.title} · {ui.viewAll}</a>
                   <ul class="l3-list">
                     {g.articles.slice(0, 8).map((a) => (
                       <li>
-                        <a href={`/zh/education/${g.id}/${a.slug}/`}>{a.title}</a>
+                        <a href={lp(`education/${g.id}/${a.slug}`)}>{a.title}</a>
                       </li>
                     ))}
                   </ul>
@@ -181,25 +197,35 @@ const eduGroups = educationCategories
         </div>
       </div>
 
-      <a class:list={['nav-link', { active: path.includes('/contact') }]} href="/zh/contact/">關於我們</a>
+      <div class="nav-item has-menu">
+        <a class:list={['nav-link', { active: path.includes('/about') }]} href={lp("about")}>
+          {ui.about} <span class="caret" aria-hidden="true"></span>
+        </a>
+        <div class="mega mega-simple" role="menu" aria-label={ui.about}>
+          <a href={`${lp('about')}#about`}>{ui.about}</a>
+          <a href={`${lp('about')}#environment`}>{ui.clinicEnv}</a>
+        </div>
+      </div>
+
+      <a class:list={['nav-link', { active: path.includes('/contact') }]} href={lp("contact")}>{ui.contactNav}</a>
     </nav>
 
     <div class="actions">
-      <a class="search-btn" href="/zh/search/" aria-label="搜尋">
+      <a class="search-btn" href={lp("search")} aria-label={ui.search}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
           <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
-        <span class="search-text">搜尋</span>
+        <span class="search-text">{ui.search}</span>
       </a>
       <div class="lang-desk">
-        <button type="button" class="lang-trigger" aria-haspopup="true">繁體中文</button>
+        <a class="lang-trigger" href={otherHref}>{ui.langLabel}<span class="lang-swap"> · {ui.langOther}</span></a>
       </div>
       <a class="wa-btn header-wa" href={site.whatsapp} target="_blank" rel="noreferrer">
         <img src="/assets/whatsapp.svg" alt="" />
-        <span class="wa-text">WhatsApp 預約</span>
+        <span class="wa-text">{ui.bookWhatsapp}</span>
       </a>
-      <button class="mobile-toggle" type="button" data-mobile-open aria-label="打開選單" aria-expanded="false">
+      <button class="mobile-toggle" type="button" data-mobile-open aria-label={ui.openMenu} aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -208,61 +234,68 @@ const eduGroups = educationCategories
   <div class="mobile-backdrop" data-mobile-backdrop hidden></div>
   <aside class="mobile-panel" data-mobile-drawer hidden>
     <div class="mobile-panel-top">
-      <a class="logo" href="/zh/" aria-label="首頁">
-        <img src="/assets/logo.png" alt={site.name} />
+      <a class="logo" href={lp()} aria-label={ui.home}>
+        <img src="/assets/logo.png" alt={locale === 'en' ? site.nameEn : site.name} />
       </a>
-      <button type="button" class="mobile-close" data-mobile-close aria-label="關閉">✕</button>
+      <button type="button" class="mobile-close" data-mobile-close aria-label={ui.closeMenu}>✕</button>
     </div>
 
-    <nav class="mobile-nav" aria-label="手機選單">
-      <a class:list={['m-link', { active: isHome }]} href="/zh/">首頁</a>
+    <nav class="mobile-nav" aria-label={locale === 'en' ? 'Mobile' : '手機選單'}>
+      <a class:list={['m-link', { active: isHome }]} href={lp()}>{ui.home}</a>
 
       <details class="m-acc">
-        <summary class:list={[{ active: path.includes('/services') }]}>兒科服務</summary>
+        <summary class:list={[{ active: path.includes('/services') }]}>{ui.services}</summary>
         <div class="m-sub">
-          <a href="/zh/services/">服務總覽</a>
+          <a href={lp("services")}>{ui.services}</a>
           {services.map((s) => (
-            <a href={`/zh/services/${s.id}/`}>{s.title}</a>
+            <a href={lp(`services/${s.id}`)}>{serviceTitle(locale, s.id, s.title)}</a>
           ))}
         </div>
       </details>
 
       <details class="m-acc">
-        <summary class:list={[{ active: path.includes('/doctors') }]}>醫生團隊</summary>
+        <summary class:list={[{ active: path.includes('/doctors') }]}>{ui.doctors}</summary>
         <div class="m-sub">
-          <a href="/zh/doctors/">科室總覽</a>
+          <a href={lp("doctors")}>{ui.doctors}</a>
           {doctorGroups.map((g) => (
-            <a href={`/zh/doctors/${g.id}/`}>{g.title}</a>
+            <a href={lp(`doctors/${g.id}`)}>{g.title}</a>
           ))}
         </div>
       </details>
 
       <details class="m-acc">
-        <summary class:list={[{ active: path.includes('/education') }]}>兒科教育</summary>
+        <summary class:list={[{ active: path.includes('/education') }]}>{ui.education}</summary>
         <div class="m-sub">
-          <a href="/zh/education/">主題總覽</a>
+          <a href={lp("education")}>{ui.education}</a>
           {eduGroups.map((g) => (
-            <a href={`/zh/education/${g.id}/`}>{g.title}</a>
+            <a href={lp(`education/${g.id}`)}>{g.title}</a>
           ))}
         </div>
       </details>
 
-      <a class:list={['m-link', { active: path.includes('/search') }]} href="/zh/search/">搜尋</a>
-      <a class:list={['m-link', { active: path.includes('/contact') }]} href="/zh/contact/">關於我們</a>
+      <details class="m-acc">
+        <summary class:list={[{ active: path.includes('/about') }]}>{ui.about}</summary>
+        <div class="m-sub">
+          <a href={`${lp('about')}#about`}>{ui.about}</a>
+          <a href={`${lp('about')}#environment`}>{ui.clinicEnv}</a>
+        </div>
+      </details>
+
+      <a class:list={['m-link', { active: path.includes('/search') }]} href={lp("search")}>{ui.search}</a>
+      <a class:list={['m-link', { active: path.includes('/contact') }]} href={lp("contact")}>{ui.contactNav}</a>
     </nav>
 
     <div class="mobile-lang">
-      <p>語言切換</p>
+      <p>{ui.langSwitch}</p>
       <div class="lang-row">
-        <span class="lang-chip active">繁體中文</span>
-        <span class="lang-chip">简体中文</span>
-        <span class="lang-chip">English</span>
+        <a class:list={['lang-chip', { active: locale === 'zh' }]} href={switchLocalePath(path, 'zh')}>繁體中文</a>
+        <a class:list={['lang-chip', { active: locale === 'en' }]} href={switchLocalePath(path, 'en')}>English</a>
       </div>
     </div>
 
     <a class="wa-btn mobile-wa" href={site.whatsapp} target="_blank" rel="noreferrer">
       <img src="/assets/whatsapp.svg" alt="" />
-      WhatsApp 預約
+      {ui.bookWhatsapp}
     </a>
   </aside>
 </header>
@@ -390,6 +423,34 @@ const eduGroups = educationCategories
     color: #333;
   }
   .l3-list a:hover { background: var(--cyan-soft); color: var(--cyan-hover); }
+  .l3-static {
+    display: block;
+    padding: 7px 10px;
+    font-size: 13.5px;
+    color: #8a9aa0;
+    font-weight: 400;
+    cursor: default;
+    user-select: text;
+  }
+  .mega-simple {
+    width: min(240px, calc(100vw - 32px));
+    transform: translateX(-20%);
+    padding: 10px;
+    display: none;
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .nav-item:hover .mega-simple,
+  .nav-item:focus-within .mega-simple { display: grid; }
+  .mega-simple a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+  }
+  .mega-simple a:hover { background: var(--cyan-soft); color: var(--cyan-hover); }
   .l3-list.doctors a {
     display: flex;
     align-items: center;
@@ -423,6 +484,8 @@ const eduGroups = educationCategories
   }
   .search-btn:hover { border-color: var(--cyan); color: var(--cyan-hover); }
   .lang-trigger {
+    display: inline-flex;
+    align-items: center;
     min-height: 36px;
     padding: 4px 14px;
     border-radius: 999px;
@@ -432,6 +495,8 @@ const eduGroups = educationCategories
     font-weight: 600;
     color: #333;
   }
+  .lang-trigger:hover { border-color: var(--cyan); color: var(--cyan-hover); }
+  .lang-swap { color: var(--muted); font-weight: 500; }
   .mobile-toggle {
     display: none;
     border: 1px solid var(--line);

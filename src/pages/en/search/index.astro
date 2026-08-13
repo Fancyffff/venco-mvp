@@ -3,28 +3,28 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import site from '../../../data/site.json';
 import { buildSearchIndex } from '../../../lib/search';
 
-const index = buildSearchIndex('zh');
+const index = buildSearchIndex('en');
 const initialQ = Astro.url.searchParams.get('q') || '';
 ---
-<BaseLayout title={`搜尋 | ${site.name}`} description="搜尋兒科服務、醫生團隊與兒科教育內容。">
+<BaseLayout title={`Search | ${site.nameEn}`} description="Search pediatric services, doctors, and education.">
   <section class="page">
     <div class="container">
-      <h1>搜尋</h1>
-      <p class="lead">可搜尋專科服務、服務細項、醫生，以及兒科教育主題與文章。</p>
+      <h1>Search</h1>
+      <p class="lead">Search specialties, service items, doctors, and education topics.</p>
 
-      <form class="search-form" action="/zh/search/" method="get" role="search">
-        <label class="sr-only" for="q">搜尋關鍵字</label>
+      <form class="search-form" action="/en/search/" method="get" role="search">
+        <label class="sr-only" for="q">Search keywords</label>
         <input
           id="q"
           name="q"
           type="search"
           value={initialQ}
-          placeholder="例如：哮喘、劉家輝、鼻敏感、疫苗…"
+          placeholder="e.g. asthma, Lau Ka Fai, allergy, vaccine…"
           autocomplete="off"
           autofocus
           data-search-input
         />
-        <button type="submit" class="wa-btn submit">搜尋</button>
+        <button type="submit" class="wa-btn submit">Search</button>
       </form>
 
       <p class="status" data-search-status></p>
@@ -43,7 +43,7 @@ const initialQ = Astro.url.searchParams.get('q') || '';
   function run(query) {
     const q = (query || '').trim().toLowerCase();
     if (!q) {
-      statusEl.textContent = '輸入關鍵字後即可即時顯示結果。';
+      statusEl.textContent = 'Type a keyword to see results instantly.';
       resultsEl.innerHTML = '';
       return;
     }
@@ -66,7 +66,7 @@ const initialQ = Astro.url.searchParams.get('q') || '';
     scored.sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title, 'zh-Hant'));
     const hits = scored.slice(0, 40).map((s) => s.item);
 
-    statusEl.textContent = hits.length ? `找到 ${hits.length} 項結果` : '沒有符合的結果，可試試更短的關鍵字。';
+    statusEl.textContent = hits.length ? `Found ${hits.length} result${hits.length === 1 ? '' : 's'}` : 'No matches — try a shorter keyword.';
 
     const groups = new Map();
     for (const item of hits) {

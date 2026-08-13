@@ -22,7 +22,7 @@ import documents from '../../../data/documents.json';
   <section class="container catalog">
     <div class="intro">
       <h2>選擇專科</h2>
-      <p>共 {services.length} 個專科，點進後可查看該專科服務細項與醫生資訊。</p>
+      <p>選擇專科後可查看該專科的服務細項與醫生資訊。</p>
     </div>
     <div class="grid">
       {services.map((s) => (
@@ -48,7 +48,6 @@ import documents from '../../../data/documents.json';
         <h2>{documents.title}</h2>
         <p>{documents.lead}</p>
       </div>
-      <a class="doc-entry solid" href="#documents">瀏覽文件</a>
     </div>
     {documents.files.length > 0 ? (
       <ul class="file-list">
@@ -61,7 +60,7 @@ import documents from '../../../data/documents.json';
       </ul>
     ) : (
       <div class="file-empty">
-        <p>文件即將上載。日後可在此瀏覽或下載門診表格與指引。</p>
+        <p>文件即將上載，請稍後再查看。</p>
       </div>
     )}
   </section>

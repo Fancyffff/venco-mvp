@@ -25,7 +25,7 @@ const ui = t('en');
   <section class="container catalog">
     <div class="intro">
       <h2>Choose a specialty</h2>
-      <p>{services.length} specialties — open one to see items and doctors.</p>
+      <p>Open a specialty to see service items and related doctors.</p>
     </div>
     <div class="grid">
       {services.map((s) => (
@@ -51,7 +51,6 @@ const ui = t('en');
         <h2>{documents.titleEn}</h2>
         <p>{documents.leadEn}</p>
       </div>
-      <a class="doc-entry solid" href="#documents">{ui.browseFiles}</a>
     </div>
     {documents.files.length > 0 ? (
       <ul class="file-list">

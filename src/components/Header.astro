@@ -56,7 +56,16 @@ const eduGroups = educationCategories
     </a>
 
     <nav class="nav" aria-label={locale === 'en' ? 'Main' : '主導航'}>
-      <a class:list={['nav-link', { active: isHome }]} href={lp()}>{ui.home}</a>
+      <div class="nav-item has-menu">
+        <a class:list={['nav-link', { active: isHome || path.includes('/about') }]} href={lp()}>
+          {ui.home} <span class="caret" aria-hidden="true"></span>
+        </a>
+        <div class="mega mega-simple" role="menu" aria-label={ui.home}>
+          <a href={lp()}>{ui.home}</a>
+          <a href={`${lp('about')}#about`}>{ui.about}</a>
+          <a href={`${lp('about')}#environment`}>{ui.clinicEnv}</a>
+        </div>
+      </div>
 
       <div class="nav-item has-menu">
         <a class:list={['nav-link', { active: path.includes('/services') }]} href={lp("services")}>
@@ -197,16 +206,6 @@ const eduGroups = educationCategories
         </div>
       </div>
 
-      <div class="nav-item has-menu">
-        <a class:list={['nav-link', { active: path.includes('/about') }]} href={lp("about")}>
-          {ui.about} <span class="caret" aria-hidden="true"></span>
-        </a>
-        <div class="mega mega-simple" role="menu" aria-label={ui.about}>
-          <a href={`${lp('about')}#about`}>{ui.about}</a>
-          <a href={`${lp('about')}#environment`}>{ui.clinicEnv}</a>
-        </div>
-      </div>
-
       <a class:list={['nav-link', { active: path.includes('/contact') }]} href={lp("contact")}>{ui.contactNav}</a>
     </nav>
 
@@ -241,7 +240,14 @@ const eduGroups = educationCategories
     </div>
 
     <nav class="mobile-nav" aria-label={locale === 'en' ? 'Mobile' : '手機選單'}>
-      <a class:list={['m-link', { active: isHome }]} href={lp()}>{ui.home}</a>
+      <details class="m-acc">
+        <summary class:list={[{ active: isHome || path.includes('/about') }]}>{ui.home}</summary>
+        <div class="m-sub">
+          <a href={lp()}>{ui.home}</a>
+          <a href={`${lp('about')}#about`}>{ui.about}</a>
+          <a href={`${lp('about')}#environment`}>{ui.clinicEnv}</a>
+        </div>
+      </details>
 
       <details class="m-acc">
         <summary class:list={[{ active: path.includes('/services') }]}>{ui.services}</summary>
@@ -270,14 +276,6 @@ const eduGroups = educationCategories
           {eduGroups.map((g) => (
             <a href={lp(`education/${g.id}`)}>{g.title}</a>
           ))}
-        </div>
-      </details>
-
-      <details class="m-acc">
-        <summary class:list={[{ active: path.includes('/about') }]}>{ui.about}</summary>
-        <div class="m-sub">
-          <a href={`${lp('about')}#about`}>{ui.about}</a>
-          <a href={`${lp('about')}#environment`}>{ui.clinicEnv}</a>
         </div>
       </details>
 
@@ -315,25 +313,30 @@ const eduGroups = educationCategories
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    flex-wrap: nowrap;
   }
   .logo { flex: 0 1 auto; min-width: 0; }
   .logo img { height: 44px; width: auto; max-width: min(210px, 48vw); object-fit: contain; }
   .nav {
     display: flex;
     align-items: center;
-    gap: 2px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 0;
     margin-left: auto;
-    margin-right: 12px;
+    margin-right: 8px;
   }
   .nav-link {
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 10px 14px;
+    gap: 5px;
+    padding: 10px 11px;
     color: #444;
     font-size: 15px;
     font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
     transition: color .15s ease;
   }
   .nav-link:hover { color: var(--cyan); }
@@ -341,8 +344,8 @@ const eduGroups = educationCategories
   .nav-link.active::after {
     content: "";
     position: absolute;
-    left: 14px;
-    right: 14px;
+    left: 11px;
+    right: 11px;
     bottom: 2px;
     height: 3px;
     border-radius: 999px;
@@ -355,7 +358,7 @@ const eduGroups = educationCategories
     border-top: 5px solid currentColor;
     opacity: .65;
   }
-  .nav-item { position: relative; }
+  .nav-item { position: relative; flex-shrink: 0; }
   .mega {
     display: none;
     position: absolute;

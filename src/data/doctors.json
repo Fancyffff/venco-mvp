@@ -5,7 +5,7 @@
     "english": "Dr. Lau Shing Chi Steve",
     "title": "兒科專科醫生",
     "group": "醫生團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "image": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "whatsapp": "https://wa.me/85263931069",
     "role": "香港仁安醫院兒科部主管",
     "creds": [
@@ -25,7 +25,7 @@
     "english": "Dr. Lau Ka Fai Tony",
     "title": "兒童呼吸科專科醫生",
     "group": "醫生團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_lau_ka_fai_3f1b07f052.png",
+    "image": "/assets/img/venco_doctor_lau_ka_fai_3f1b07f052.png",
     "whatsapp": "https://wa.me/85297757769",
     "role": "浸會醫院兒科名譽顧問醫生",
     "creds": [
@@ -47,7 +47,7 @@
     "english": "Dr. But Wai Man Betty",
     "title": "兒童內分泌科專科醫生",
     "group": "醫生團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
+    "image": "/assets/img/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "whatsapp": "https://wa.me/85290607212",
     "role": "香港中文大學兒科學系名譽臨床副教授｜香港大學兒童及青少年科學系名譽臨床副教授",
     "creds": [
@@ -67,7 +67,7 @@
     "english": "Dr. Yu Wai Ling Michelle",
     "title": "兒科呼吸專科醫生",
     "group": "醫生團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_yu_wai_ling_72dd4381b9.png",
+    "image": "/assets/img/venco_doctor_yu_wai_ling_72dd4381b9.png",
     "whatsapp": "https://wa.me/85290837327",
     "role": "香港中文大學兒科學系名譽臨床副教授｜仁安醫院專科門診",
     "creds": [
@@ -85,7 +85,7 @@
     "english": "Dr. Lau Tze Kin",
     "title": "婦產科專科醫生",
     "group": "醫生團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_lau_tze_kin_91d44a5fe5.png",
+    "image": "/assets/img/venco_doctor_lau_tze_kin_91d44a5fe5.png",
     "whatsapp": "https://wa.me/85290837327",
     "role": "",
     "creds": [
@@ -105,7 +105,7 @@
     "english": "Dr. Li Nga Wai Agnes",
     "title": "兒科專科醫生",
     "group": "醫生團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_li_nga_wai_1d837a97f2.png",
+    "image": "/assets/img/venco_doctor_li_nga_wai_1d837a97f2.png",
     "whatsapp": "https://wa.me/85290837327",
     "role": "仁安醫院顧問兒科醫生",
     "creds": [
@@ -124,7 +124,7 @@
     "english": "Dr. Lo Fai Man Ivan",
     "title": "遺傳學及基因組學專科(兒科)",
     "group": "醫生團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_lo_fai_man_11c85a8813.png",
+    "image": "/assets/img/venco_doctor_lo_fai_man_11c85a8813.png",
     "whatsapp": "https://wa.me/85290837327",
     "role": "香港中文大學兒科學系榮譽臨床副教授",
     "creds": [
@@ -143,7 +143,7 @@
     "english": "Dr. Ng Sui Fun Grace",
     "title": "兒童腦神經科專科醫生",
     "group": "醫生團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_ng_sui_fun_bc612cf3a9.png",
+    "image": "/assets/img/venco_doctor_ng_sui_fun_bc612cf3a9.png",
     "whatsapp": "https://wa.me/85290837327",
     "role": "",
     "creds": [
@@ -163,7 +163,7 @@
     "english": "Dr. Cheung Sing Tak Gloria",
     "title": "小兒外科專科醫生",
     "group": "醫生團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_cheung_sing_tak_63d1f5807c.png",
+    "image": "/assets/img/venco_doctor_cheung_sing_tak_63d1f5807c.png",
     "whatsapp": "https://wa.me/85290837327",
     "role": "仁安醫院外科",
     "creds": [
@@ -181,7 +181,7 @@
     "english": "Ms. Chu Wing Yiu Yoyo",
     "title": "認證遺傳諮詢師",
     "group": "醫護團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_chu_wing_yiu_80853142f6.png",
+    "image": "/assets/img/venco_doctor_chu_wing_yiu_80853142f6.png",
     "whatsapp": "https://wa.me/85298885648",
     "role": "香港中文大學兒科學系榮譽臨床副教授",
     "creds": [
@@ -197,7 +197,7 @@
     "english": "Ms. Heiki Lo",
     "title": "註冊輔導心理學家兒童心理學專科",
     "group": "醫護團隊",
-    "image": "https://img.venco.com.hk/uploads/venco_doctor_heiki_lo_7c8f8975a6.png",
+    "image": "/assets/img/venco_doctor_heiki_lo_7c8f8975a6.png",
     "whatsapp": "https://wa.me/85260184565",
     "role": "",
     "creds": [

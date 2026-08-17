@@ -5,10 +5,10 @@
     "lead": "專注力不足評估",
     "date": "2026年7月28日",
     "tag": "臨床遺傳科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_adhd_ad508cc15e.jpg",
+    "cover": "/assets/img/venco_education_adhd_ad508cc15e.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_adhd_attachment_1_7bec70a8c2.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_adhd_attachment_2_76c4e37b3b.jpg"
+      "/assets/img/venco_education_adhd_attachment_1_7bec70a8c2.jpg",
+      "/assets/img/venco_education_adhd_attachment_2_76c4e37b3b.jpg"
     ],
     "body": [
       "雖然過度活躍的行為特徵與頑皮非常相似,但是引起的原因卻不一樣。",
@@ -49,7 +49,7 @@
     "videos": [],
     "doctorName": "吳瑞芬醫生",
     "doctorEnglish": "Dr. Ng Sui Fun Grace",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_ng_sui_fun_bc612cf3a9.png",
+    "doctorPortrait": "/assets/img/venco_doctor_ng_sui_fun_bc612cf3a9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/adhd/",
@@ -62,9 +62,9 @@
     "lead": "",
     "date": "2026年7月28日",
     "tag": "兒科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_allergic_airway_83b4683849.png",
+    "cover": "/assets/img/venco_education_allergic_airway_83b4683849.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_allergic_airway_83b4683849.png"
+      "/assets/img/venco_education_allergic_airway_83b4683849.png"
     ],
     "body": [],
     "videos": [
@@ -75,7 +75,7 @@
     ],
     "doctorName": "劉家輝醫生",
     "doctorEnglish": "Dr. Lau Ka Fai Tony",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_ka_fai_3f1b07f052.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_ka_fai_3f1b07f052.png",
     "doctorWhatsapp": "https://wa.me/85297757769",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/allergic-airway/",
@@ -88,13 +88,13 @@
     "lead": "病徵-主要是鼻黏膜受到刺激，導致血管擴張",
     "date": "2026年8月6日",
     "tag": "鼻敏感",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_allergic_rhinitis_f920ad74e2.jpg",
+    "cover": "/assets/img/venco_education_allergic_rhinitis_f920ad74e2.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_allergic_rhinitis_attachment_1_41206b3b9a.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_allergic_rhinitis_attachment_2_3da44c3c98.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_allergic_rhinitis_attachment_3_26b205df04.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_allergic_rhinitis_attachment_4_b75a362b8b.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_allergic_rhinitis_attachment_5_15e7542190.jpg"
+      "/assets/img/venco_education_allergic_rhinitis_attachment_1_41206b3b9a.jpg",
+      "/assets/img/venco_education_allergic_rhinitis_attachment_2_3da44c3c98.jpg",
+      "/assets/img/venco_education_allergic_rhinitis_attachment_3_26b205df04.jpg",
+      "/assets/img/venco_education_allergic_rhinitis_attachment_4_b75a362b8b.jpg",
+      "/assets/img/venco_education_allergic_rhinitis_attachment_5_15e7542190.jpg"
     ],
     "body": [],
     "videos": [
@@ -105,7 +105,7 @@
     ],
     "doctorName": "余慧鈴醫生",
     "doctorEnglish": "Dr. Yu Wai Ling Michelle",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_yu_wai_ling_72dd4381b9.png",
+    "doctorPortrait": "/assets/img/venco_doctor_yu_wai_ling_72dd4381b9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/allergic-rhinitis/",
@@ -118,10 +118,10 @@
     "lead": "自閉症特徵, 自閉症幼兒特徵, 自閉症嬰兒特徵",
     "date": "2026年7月28日",
     "tag": "臨床遺傳科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_autism_aa27b2cd1c.jpg",
+    "cover": "/assets/img/venco_education_autism_aa27b2cd1c.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_autism_attachment_1_d9ca7afc61.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_autism_attachment_2_911fd59e7e.jpg"
+      "/assets/img/venco_education_autism_attachment_1_d9ca7afc61.jpg",
+      "/assets/img/venco_education_autism_attachment_2_911fd59e7e.jpg"
     ],
     "body": [
       "自閉症譜系症狀 9 個月至 3 歲兒童",
@@ -175,7 +175,7 @@
     "videos": [],
     "doctorName": "吳瑞芬醫生",
     "doctorEnglish": "Dr. Ng Sui Fun Grace",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_ng_sui_fun_bc612cf3a9.png",
+    "doctorPortrait": "/assets/img/venco_doctor_ng_sui_fun_bc612cf3a9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/autism/",
@@ -188,9 +188,9 @@
     "lead": "足月順產的寶寶，媽媽餵哺母乳，為寶寶做最好的準備。然而，人生卻另有不同的安排。以下的個案令筆者深刻難忘。",
     "date": "2026年7月28日",
     "tag": "兒科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_baby_jaundice_a17020b8b1.png",
+    "cover": "/assets/img/venco_education_baby_jaundice_a17020b8b1.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_baby_jaundice_a17020b8b1.png"
+      "/assets/img/venco_education_baby_jaundice_a17020b8b1.png"
     ],
     "body": [
       "足月順產的寶寶，媽媽餵哺母乳，為寶寶做最好的準備。然而，人生卻另有不同的安排。以下的個案令筆者深刻難忘。最初，寶寶一直進食良好，體重增加，大小便正常，一切看似健康成長，只是皮膚及眼白泛黃。黃疸超過六星期仍未退，到底是甚麼原因？由於寶寶吃人奶，會不會是母乳引起的延長性黃疸？",
@@ -203,7 +203,7 @@
     "videos": [],
     "doctorName": "劉家輝醫生",
     "doctorEnglish": "Dr. Lau Ka Fai Tony",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_ka_fai_3f1b07f052.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_ka_fai_3f1b07f052.png",
     "doctorWhatsapp": "https://wa.me/85297757769",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/baby-jaundice/",
@@ -216,9 +216,9 @@
     "lead": "",
     "date": "2026年7月28日",
     "tag": "流感",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_blog_bb_fever_41c83d3a01.png",
+    "cover": "/assets/img/venco_education_blog_bb_fever_41c83d3a01.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_blog_bb_fever_41c83d3a01.png"
+      "/assets/img/venco_education_blog_bb_fever_41c83d3a01.png"
     ],
     "body": [],
     "videos": [
@@ -229,7 +229,7 @@
     ],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/blog-bb-fever/",
@@ -242,9 +242,9 @@
     "lead": "久咳的成因及如何處理？ 天氣轉涼，秋風起是咳嗽的誘發因素，如果小朋友有少許咳，但不影響睡眠及正常作息的情况，建議家長不用太擔心，但若果小朋友咳了一段長時間，應如何處理？ 如果持續咳嗽為 7天，我們會定義為短的咳嗽，例如傷風感冒很快痊愈，這種",
     "date": "2026年7月28日",
     "tag": "兒科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_blog_chronic_cough_8d46b2a6c8.png",
+    "cover": "/assets/img/venco_education_blog_chronic_cough_8d46b2a6c8.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_blog_chronic_cough_8d46b2a6c8.png"
+      "/assets/img/venco_education_blog_chronic_cough_8d46b2a6c8.png"
     ],
     "body": [
       "久咳的成因及如何處理？",
@@ -271,7 +271,7 @@
     ],
     "doctorName": "劉家輝醫生",
     "doctorEnglish": "Dr. Lau Ka Fai Tony",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_ka_fai_3f1b07f052.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_ka_fai_3f1b07f052.png",
     "doctorWhatsapp": "https://wa.me/85297757769",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/blog-chronic-cough/",
@@ -284,9 +284,9 @@
     "lead": "",
     "date": "2026年7月28日",
     "tag": "流感",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_blog_flu_vaccine_90d336c770.png",
+    "cover": "/assets/img/venco_education_blog_flu_vaccine_90d336c770.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_blog_flu_vaccine_90d336c770.png"
+      "/assets/img/venco_education_blog_flu_vaccine_90d336c770.png"
     ],
     "body": [],
     "videos": [
@@ -297,7 +297,7 @@
     ],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/blog-flu-vaccine/",
@@ -310,9 +310,9 @@
     "lead": "冬季流感持續肆虐本港，累計奪去95人性命，包括兩名兒童，多間幼稚園及小學爆發。",
     "date": "2026年7月28日",
     "tag": "流感",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_blog_flu_vaccine_winter_dfa3462a0f.png",
+    "cover": "/assets/img/venco_education_blog_flu_vaccine_winter_dfa3462a0f.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_blog_flu_vaccine_winter_dfa3462a0f.png"
+      "/assets/img/venco_education_blog_flu_vaccine_winter_dfa3462a0f.png"
     ],
     "body": [
       "冬季流感持續肆虐本港，累計奪去95人性命，包括兩名兒童，多間幼稚園及小學爆發。 流感疫苗近一個月奇缺，私家診所「一針難求」。今日（2日）起有一批共2萬劑四價流感疫苗陸續抵港，其中沙田一間診所獲首批補貨。私人執業兒科醫生劉成志表示，自1月開始，流感求診個案不斷上升，家長亦頗緊張。今年更出現「奇怪」現象，不少內地家長亦主動提出為子女打流感疫苗。以他為例，近期每日也有1、2名內地兒童接種流感疫苗。",
@@ -334,7 +334,7 @@
     ],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/blog-flu-vaccine-winter/",
@@ -347,9 +347,9 @@
     "lead": "",
     "date": "2026年7月28日",
     "tag": "兒童成長",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_blog_premature_780cdeb882.png",
+    "cover": "/assets/img/venco_education_blog_premature_780cdeb882.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_blog_premature_780cdeb882.png"
+      "/assets/img/venco_education_blog_premature_780cdeb882.png"
     ],
     "body": [],
     "videos": [
@@ -360,7 +360,7 @@
     ],
     "doctorName": "畢慧文醫生",
     "doctorEnglish": "Dr. But Wai Man Betty",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
+    "doctorPortrait": "/assets/img/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/blog-premature/",
@@ -373,9 +373,9 @@
     "lead": "媽媽帶6歲孩子來看醫生，小男生屙嘔發燒，面青口唇白的樣子，我見猶憐。臨床診斷他患上腸胃炎",
     "date": "2026年7月28日",
     "tag": "腸胃炎",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_children_diarrhea_6b0b130c2f.png",
+    "cover": "/assets/img/venco_education_children_diarrhea_6b0b130c2f.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_children_diarrhea_6b0b130c2f.png"
+      "/assets/img/venco_education_children_diarrhea_6b0b130c2f.png"
     ],
     "body": [
       "媽媽帶6歲孩子來看醫生，小男生屙嘔發燒，面青口唇白的樣子，我見猶憐。臨床診斷他患上腸胃炎，給他開止瀉藥，豈料他媽媽聽到後，卻如臨大敵，堅持不肯讓兒子止瀉，她的理解是：「唔屙清毒素，細菌排不走！」",
@@ -386,7 +386,7 @@
     "videos": [],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/children-diarrhea/",
@@ -399,9 +399,9 @@
     "lead": "衞生署近日發現本港急性腸胃炎開始肆虐，尤其幼兒與老人家更成為侵襲的對象。兒科專科醫生指出，入春時份各種疾病乘勢而起，其中諾如病毒是近期最活躍的急性腸胃炎疾病，患者會出現嚴重屙嘔，基本上這病毒一年四季都會出現，沒有所謂的高峰或低潮時刻，大家稍",
     "date": "2026年7月28日",
     "tag": "腸胃炎",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_children_gastroenteritis_f72872b423.png",
+    "cover": "/assets/img/venco_education_children_gastroenteritis_f72872b423.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_children_gastroenteritis_f72872b423.png"
+      "/assets/img/venco_education_children_gastroenteritis_f72872b423.png"
     ],
     "body": [
       "衞生署近日發現本港急性腸胃炎開始肆虐，尤其幼兒與老人家更成為侵襲的對象。兒科專科醫生指出，入春時份各種疾病乘勢而起，其中諾如病毒是近期最活躍的急性腸胃炎疾病，患者會出現嚴重屙嘔，基本上這病毒一年四季都會出現，沒有所謂的高峰或低潮時刻，大家稍一不慎就會中招。感染諾如病毒後，患者即使康復也沒有抵抗力，可以中完又中。",
@@ -414,7 +414,7 @@
     "videos": [],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/children-gastroenteritis/",
@@ -427,9 +427,9 @@
     "lead": "新冠肺炎疫情持續，有一家三口在2月29日乘坐國泰航空CX250由倫敦來港，夫婦確診後",
     "date": "2026年7月28日",
     "tag": "新冠肺炎",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_children_long_covid_6af9392509.png",
+    "cover": "/assets/img/venco_education_children_long_covid_6af9392509.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_children_long_covid_6af9392509.png"
+      "/assets/img/venco_education_children_long_covid_6af9392509.png"
     ],
     "body": [
       "有兒科專科醫生表示，目前臨床數據顯示小朋友感染後病情較輕，不用服食抗病毒藥物亦可自癒，料病毒對小朋友的傷害性較低。",
@@ -440,7 +440,7 @@
     "videos": [],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/children-long-covid/",
@@ -453,9 +453,9 @@
     "lead": "抽動症是一種在兒童身上頗常見的運動功能失調症。 抽動是指一些不由自主、重覆而短促的小動作或發聲。",
     "date": "2026年7月28日",
     "tag": "兒科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_children_tics_1a4d61cc4f.png",
+    "cover": "/assets/img/venco_education_children_tics_1a4d61cc4f.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_children_tics_attachment_1_fab8e0912f.png"
+      "/assets/img/venco_education_children_tics_attachment_1_fab8e0912f.png"
     ],
     "body": [
       "抽動症或抽動障礙是一種在兒童身上頗常見的神經系統疾病。 抽動是指一些不由自主、重覆而短促的小動作或發聲。",
@@ -475,7 +475,7 @@
     "videos": [],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/children-tics/",
@@ -488,9 +488,9 @@
     "lead": "小胖子割包皮先評估 包皮不宜割得深",
     "date": "2026年7月28日",
     "tag": "小兒外科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_circumcision_fb4756a04c.png",
+    "cover": "/assets/img/venco_education_circumcision_fb4756a04c.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_circumcision_attachment_1_e5a35561e9.png"
+      "/assets/img/venco_education_circumcision_attachment_1_e5a35561e9.png"
     ],
     "body": [
       "不少家長也面對男童不懂自己翻開包皮清洗皮垢的問題，為免反覆發炎，多選擇替其割包皮以除後顧，但小兒外科醫生指出，並非所有男童也適合割包皮的，尤其是一些因恥骨積累過多脂肪造成部分隱藏性陰莖的小胖子。",
@@ -506,7 +506,7 @@
     "videos": [],
     "doctorName": "張承德醫生",
     "doctorEnglish": "Dr. Cheung Sing Tak Gloria",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_cheung_sing_tak_63d1f5807c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_cheung_sing_tak_63d1f5807c.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/circumcision/",
@@ -519,9 +519,9 @@
     "lead": "需要割包皮 決定於有無發炎",
     "date": "2026年7月28日",
     "tag": "小兒外科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_circumcision_surgery_9b52f5eb25.jpg",
+    "cover": "/assets/img/venco_education_circumcision_surgery_9b52f5eb25.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_circumcision_surgery_attachment_1_2f344f5c67.jpg"
+      "/assets/img/venco_education_circumcision_surgery_attachment_1_2f344f5c67.jpg"
     ],
     "body": [
       "再過兩個月學校便陸續放暑假，不少父母已開始為子女安排暑期活動。原來漫長暑假也是父母安排兒子接受割包皮手術的旺季。究竟是不是「係男仔都要割包皮? 是不是愈早割愈好 ? 」小兒外科專科醫生為拆解迷思指出，「包皮不是人割我割，也沒有愈早割愈好的道理，割與不割關鍵指標之一是有否發炎。」",
@@ -536,7 +536,7 @@
     "videos": [],
     "doctorName": "張承德醫生",
     "doctorEnglish": "Dr. Cheung Sing Tak Gloria",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_cheung_sing_tak_63d1f5807c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_cheung_sing_tak_63d1f5807c.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/circumcision-surgery/",
@@ -549,11 +549,11 @@
     "lead": "飲食失調是嚴重的心理健康疾病，會影響個體的飲食行為和對自身身體的認知。",
     "date": "2026年7月28日",
     "tag": "心理學",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_eating_disorders_in_adolescents_114933c636.png",
+    "cover": "/assets/img/venco_education_eating_disorders_in_adolescents_114933c636.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_eating_disorders_in_adolescents_attachment_2_d2cff44327.png",
-      "https://img.venco.com.hk/uploads/venco_education_eating_disorders_in_adolescents_attachment_3_aa5f5823bd.png",
-      "https://img.venco.com.hk/uploads/venco_education_eating_disorders_in_adolescents_attachment_4_93b65b10ae.png"
+      "/assets/img/venco_education_eating_disorders_in_adolescents_attachment_2_d2cff44327.png",
+      "/assets/img/venco_education_eating_disorders_in_adolescents_attachment_3_aa5f5823bd.png",
+      "/assets/img/venco_education_eating_disorders_in_adolescents_attachment_4_93b65b10ae.png"
     ],
     "body": [
       "什麼是飲食失調？",
@@ -616,7 +616,7 @@
     "videos": [],
     "doctorName": "吳瑞芬醫生",
     "doctorEnglish": "Dr. Ng Sui Fun Grace",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_ng_sui_fun_bc612cf3a9.png",
+    "doctorPortrait": "/assets/img/venco_doctor_ng_sui_fun_bc612cf3a9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/eating-disorders-in-adolescents/",
@@ -629,9 +629,9 @@
     "lead": "容易發燒是因為幼兒的抵抗力較弱，體內細胞容易受到感染，產生一種稱為「 熱原質」的物質。 當熱原質出現，體內的溫度就會隨即上升，讓幼兒的體溫高於正常水平。",
     "date": "2026年7月28日",
     "tag": "兒科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_fever_children_3267ca97ce.png",
+    "cover": "/assets/img/venco_education_fever_children_3267ca97ce.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_fever_children_attachment_1_2130627ce8.png"
+      "/assets/img/venco_education_fever_children_attachment_1_2130627ce8.png"
     ],
     "body": [
       "為什麼幼兒會較容易發燒?",
@@ -653,7 +653,7 @@
     "videos": [],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/fever-children/",
@@ -666,9 +666,9 @@
     "lead": "轉季一個唔留神，就好容易會患上流感！有啲流感徵狀同感染腦膜炎雙球菌後嘅徵狀好相似；",
     "date": "2026年7月28日",
     "tag": "流感",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_flu_meningococcus_9b58874fc7.png",
+    "cover": "/assets/img/venco_education_flu_meningococcus_9b58874fc7.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_flu_meningococcus_9b58874fc7.png"
+      "/assets/img/venco_education_flu_meningococcus_9b58874fc7.png"
     ],
     "body": [
       "如何分辨流感症狀及腦膜炎雙球菌症狀？",
@@ -684,7 +684,7 @@
     ],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/flu-meningococcus/",
@@ -697,9 +697,9 @@
     "lead": "十五歲少女求診，她面青唇白，面容枯槁，樣子病懨懨，跟夏天是充滿活力的季節成強烈對比。",
     "date": "2026年7月28日",
     "tag": "腸胃炎",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_gastroenteritis_2514abb91a.png",
+    "cover": "/assets/img/venco_education_gastroenteritis_2514abb91a.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_gastroenteritis_2514abb91a.png"
+      "/assets/img/venco_education_gastroenteritis_2514abb91a.png"
     ],
     "body": [
       "十五歲少女求診，她面青唇白，面容枯槁，樣子病懨懨，跟夏天是充滿活力的季節成強烈對比。筆者問症始知她「嘔到七彩」，一日嘔吐八、九次，亦有發燒，臨床判斷她是病毒感染的腸胃炎。由於她出現脫水徵狀，因此留院吊葡萄糖水，並為她進行了病毒測試。",
@@ -710,7 +710,7 @@
     "videos": [],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/gastroenteritis/",
@@ -723,10 +723,10 @@
     "lead": "我們為受遺傳疾病影響或有遺傳風險的個人及家庭，提供專業的臨床評估、基因診斷、遺傳輔導及支援服務。憑藉遺傳學及基因組學領域的專業知識，幫助您做出明智的健康決策。",
     "date": "2026年7月28日",
     "tag": "臨床遺傳科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_genetic_disorders_8ae37c477b.jpg",
+    "cover": "/assets/img/venco_education_genetic_disorders_8ae37c477b.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_genetic_disorders_attachment_2_2b0d336d8e.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_genetic_disorders_attachment_3_7d27e2101c.jpg"
+      "/assets/img/venco_education_genetic_disorders_attachment_2_2b0d336d8e.jpg",
+      "/assets/img/venco_education_genetic_disorders_attachment_3_7d27e2101c.jpg"
     ],
     "body": [
       "服務對象",
@@ -788,7 +788,7 @@
     "videos": [],
     "doctorName": "劉子建醫生",
     "doctorEnglish": "Dr. Lau Tze Kin",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_tze_kin_91d44a5fe5.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_tze_kin_91d44a5fe5.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/genetic-disorders/",
@@ -801,9 +801,9 @@
     "lead": "作為父母，當然希望孩子快高長大，亦會憂心他們的身形較同齡人矮小。身形矮小通常是指身高低於同齡及同性別中3-5% 最矮小的兒童",
     "date": "2026年7月28日",
     "tag": "兒童成長",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_growth_children_5e994a5029.png",
+    "cover": "/assets/img/venco_education_growth_children_5e994a5029.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_growth_children_5e994a5029.png"
+      "/assets/img/venco_education_growth_children_5e994a5029.png"
     ],
     "body": [
       "作為父母，當然希望孩子快高長大，亦會憂心他們的身形較同齡人矮小。身形矮小通常是指身高低於同齡及同性別中3-5% 最矮小的兒童¹。家長能如何及早察覺孩子生長緩慢的信號？現時又有甚麼治療方法？兒童內分泌科專科醫生畢慧文醫生認為，家長應持續紀錄兒童身高，若持續低於標準或生長緩慢就應及早求診，避免錯過治療的黃金機會。",
@@ -833,7 +833,7 @@
     "videos": [],
     "doctorName": "畢慧文醫生",
     "doctorEnglish": "Dr. But Wai Man Betty",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
+    "doctorPortrait": "/assets/img/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/growth-children/",
@@ -846,9 +846,9 @@
     "lead": "作為父母，我們常常希望孩子長高，擔心孩子身形矮小。身材矮小通常是指兒童的身高遠低於同齡人的平均身高",
     "date": "2026年7月28日",
     "tag": "兒童成長",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_growth_hormone_68d7b30dd2.png",
+    "cover": "/assets/img/venco_education_growth_hormone_68d7b30dd2.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_growth_hormone_68d7b30dd2.png"
+      "/assets/img/venco_education_growth_hormone_68d7b30dd2.png"
     ],
     "body": [
       "身材矮小，兒童生長激素治療",
@@ -887,7 +887,7 @@
     ],
     "doctorName": "畢慧文醫生",
     "doctorEnglish": "Dr. But Wai Man Betty",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
+    "doctorPortrait": "/assets/img/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/growth-hormone/",
@@ -900,9 +900,9 @@
     "lead": "As parents, we often want our child to grow taller and worry about short stature. Short stature generally describes a co",
     "date": "2026年7月28日",
     "tag": "兒童成長",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_growth_hormone_injection_800e8b9aff.jpg",
+    "cover": "/assets/img/venco_education_growth_hormone_injection_800e8b9aff.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_growth_hormone_injection_attachment_1_d0fccd39f9.jpg"
+      "/assets/img/venco_education_growth_hormone_injection_attachment_1_d0fccd39f9.jpg"
     ],
     "body": [
       "As parents, we often want our child to grow taller and worry about short stature. Short stature generally describes a condition in which a child’s height is well below the mean of his or her peers; it means the height is below that of the shortest 3-5 percent of children of the same age and sex. Normally, children grow fast in the first two years of life. Their growth then slows down until they go through puberty with rapid increase in height again. Final height is reached when the growth plates within bone fuse which is around bone age of 14 years in girls and 16 years in boys. If parents worry their child is short, the child should be seen by paediatric endocrinologist or paediatric doctor for timely diagnosis and treatment. Height cannot be gained further once the growth plates have fused.",
@@ -937,7 +937,7 @@
     "videos": [],
     "doctorName": "畢慧文醫生",
     "doctorEnglish": "Dr. But Wai Man Betty",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
+    "doctorPortrait": "/assets/img/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/growth-hormone-injection/",
@@ -950,9 +950,9 @@
     "lead": "兒童小腸氣",
     "date": "2026年7月28日",
     "tag": "小兒外科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_hernia_ea5946448e.jpg",
+    "cover": "/assets/img/venco_education_hernia_ea5946448e.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_hernia_attachment_1_f6a51df778.jpg"
+      "/assets/img/venco_education_hernia_attachment_1_f6a51df778.jpg"
     ],
     "body": [
       "不少家長也忽略子女小腸氣問題，誤以為在「大脾罅」脹氣「谷」一個小波波時有回縮，表示小腸氣問題已自行痊癒，因而沒有及早求醫，至小腸卡住弄致腸壞死才後悔莫及。有本地研究更顯示，本港分別有小孩因為小腸氣令其睪丸、卵巢壞死須切除。",
@@ -963,7 +963,7 @@
     "videos": [],
     "doctorName": "張承德醫生",
     "doctorEnglish": "Dr. Cheung Sing Tak Gloria",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_cheung_sing_tak_63d1f5807c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_cheung_sing_tak_63d1f5807c.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/hernia/",
@@ -976,9 +976,9 @@
     "lead": "是否每個人都需要接種麻疹疫苗？ 對於是否每個人都需要接種麻疹疫苗，其實視乎個人工作環境會否經常接觸容易帶有麻疹的人。另外，如果你本身沒有麻疹抗體而需要到高危的地方，例如到口岸或接觸一些外來人士，那些人就要比較小心。 誰是高風險人士？",
     "date": "2026年7月28日",
     "tag": "兒科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_measles_d5f205228b.png",
+    "cover": "/assets/img/venco_education_measles_d5f205228b.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_measles_d5f205228b.png"
+      "/assets/img/venco_education_measles_d5f205228b.png"
     ],
     "body": [
       "是否每個人都需要接種麻疹疫苗？",
@@ -999,7 +999,7 @@
     ],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/measles/",
@@ -1012,9 +1012,9 @@
     "lead": "本港正值流感高峰期，幼稚園及幼兒中心成院舍爆發重災區。但藥廠推出的流感疫苗，最細只能讓6個月大的BB接種",
     "date": "2026年7月28日",
     "tag": "流感",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_neonatal_flu_e4ea58f286.png",
+    "cover": "/assets/img/venco_education_neonatal_flu_e4ea58f286.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_neonatal_flu_e4ea58f286.png"
+      "/assets/img/venco_education_neonatal_flu_e4ea58f286.png"
     ],
     "body": [
       "本港正值流感高峰期，幼稚園及幼兒中心成院舍爆發重災區。但藥廠推出的流感疫苗，最細只能讓6個月大的BB接種。家長不禁會問：「細過6個月的嬰兒，應如何保護以減低感染流感風險？」筆者最近接連收到兩個細過6個月的嬰兒求診個案，寶寶A僅得個半月大，出現流感徵狀，快速測試證實中招。另一個寶寶B，亦只得8周大，出現發燒和咳嗽病徵，快速測試確診後，須立即服用特敏福治療。",
@@ -1025,7 +1025,7 @@
     "videos": [],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/neonatal-flu/",
@@ -1038,9 +1038,9 @@
     "lead": "",
     "date": "2026年7月28日",
     "tag": "兒科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_obesity_metabolic_syndrome_e96c8ba259.png",
+    "cover": "/assets/img/venco_education_obesity_metabolic_syndrome_e96c8ba259.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_obesity_metabolic_syndrome_e96c8ba259.png"
+      "/assets/img/venco_education_obesity_metabolic_syndrome_e96c8ba259.png"
     ],
     "body": [],
     "videos": [
@@ -1051,7 +1051,7 @@
     ],
     "doctorName": "畢慧文醫生",
     "doctorEnglish": "Dr. But Wai Man Betty",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_but_wai_man_fc4ebd1e84.png",
+    "doctorPortrait": "/assets/img/venco_doctor_but_wai_man_fc4ebd1e84.png",
     "doctorWhatsapp": "https://wa.me/85290607212",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/obesity-metabolic-syndrome/",
@@ -1064,10 +1064,10 @@
     "lead": "臨床遺傳科基因檢測",
     "date": "2026年7月28日",
     "tag": "臨床遺傳科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_paediatric_screening_68c6013303.jpg",
+    "cover": "/assets/img/venco_education_paediatric_screening_68c6013303.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_paediatric_screening_attachment_1_8fe1f2ad83.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_paediatric_screening_attachment_2_3c18163412.jpg"
+      "/assets/img/venco_education_paediatric_screening_attachment_1_8fe1f2ad83.jpg",
+      "/assets/img/venco_education_paediatric_screening_attachment_2_3c18163412.jpg"
     ],
     "body": [
       "遺傳性疾病並不罕見。然而，受影響的患者及其家庭往往難以尋求適當的診斷和諮詢服務。臨床遺傳科成立的目的是為了填補這一服務空白，通過提供臨床評估、基因檢測及遺傳諮詢，幫助受遺傳性疾病影響的患者及其家庭。"
@@ -1080,7 +1080,7 @@
     ],
     "doctorName": "劉子建醫生",
     "doctorEnglish": "Dr. Lau Tze Kin",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_tze_kin_91d44a5fe5.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_tze_kin_91d44a5fe5.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/paediatric-screening/",
@@ -1093,9 +1093,9 @@
     "lead": "",
     "date": "2026年7月28日",
     "tag": "兒科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_respiratory_syncytial_virus_7ee707dc84.png",
+    "cover": "/assets/img/venco_education_respiratory_syncytial_virus_7ee707dc84.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_respiratory_syncytial_virus_7ee707dc84.png"
+      "/assets/img/venco_education_respiratory_syncytial_virus_7ee707dc84.png"
     ],
     "body": [],
     "videos": [
@@ -1106,7 +1106,7 @@
     ],
     "doctorName": "劉家輝醫生",
     "doctorEnglish": "Dr. Lau Ka Fai Tony",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_ka_fai_3f1b07f052.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_ka_fai_3f1b07f052.png",
     "doctorWhatsapp": "https://wa.me/85297757769",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/respiratory-syncytial-virus/",
@@ -1119,9 +1119,9 @@
     "lead": "「生蛇」屬帶狀疱疹病毒，跟水痘屬同一病毒。出過水痘的人，病毒仍潛伏於脊髓神經，身體抵抗力差時",
     "date": "2026年7月28日",
     "tag": "生蛇",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_shingles_dfafcd0bb5.png",
+    "cover": "/assets/img/venco_education_shingles_dfafcd0bb5.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_shingles_dfafcd0bb5.png"
+      "/assets/img/venco_education_shingles_dfafcd0bb5.png"
     ],
     "body": [
       "生蛇屬帶狀疱疹病毒，跟水痘屬同一病毒。出過水痘的人，病毒仍潛伏於脊髓神經，身體抵抗力差時，水痘病毒活躍，突襲身體的免疫系統，引致生蛇。病毒一圈圈走出來，除了腰部，也會影響身體其他部分，但沒有出過水痘的，則不會生蛇。",
@@ -1132,7 +1132,7 @@
     "videos": [],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/shingles/",
@@ -1145,15 +1145,15 @@
     "lead": "兒童睡眠時有鼻鼾是十分常見的。每一百個兒童之中，就有十至十五個有持續性鼻鼾。不過，每四個有持續性鼻鼾的兒童之中，就有一個患有兒童睡眠窒息症。",
     "date": "2026年7月28日",
     "tag": "睡眠窒息症",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_sleep_apena_75d816ebee.jpg",
+    "cover": "/assets/img/venco_education_sleep_apena_75d816ebee.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_sleep_apena_attachment_1_2ad942813d.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_sleep_apena_attachment_2_e8b50e6d6e.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_sleep_apena_attachment_3_825658c817.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_sleep_apena_attachment_4_041b7df398.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_sleep_apena_attachment_5_ff435382e3.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_sleep_apena_attachment_6_ce66b77ed3.jpg",
-      "https://img.venco.com.hk/uploads/venco_education_sleep_apena_attachment_7_b2ea799746.jpg"
+      "/assets/img/venco_education_sleep_apena_attachment_1_2ad942813d.jpg",
+      "/assets/img/venco_education_sleep_apena_attachment_2_e8b50e6d6e.jpg",
+      "/assets/img/venco_education_sleep_apena_attachment_3_825658c817.jpg",
+      "/assets/img/venco_education_sleep_apena_attachment_4_041b7df398.jpg",
+      "/assets/img/venco_education_sleep_apena_attachment_5_ff435382e3.jpg",
+      "/assets/img/venco_education_sleep_apena_attachment_6_ce66b77ed3.jpg",
+      "/assets/img/venco_education_sleep_apena_attachment_7_b2ea799746.jpg"
     ],
     "body": [],
     "videos": [
@@ -1164,7 +1164,7 @@
     ],
     "doctorName": "余慧鈴醫生",
     "doctorEnglish": "Dr. Yu Wai Ling Michelle",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_yu_wai_ling_72dd4381b9.png",
+    "doctorPortrait": "/assets/img/venco_doctor_yu_wai_ling_72dd4381b9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/sleep-apnea/",
@@ -1177,10 +1177,10 @@
     "lead": "飲食失調是嚴重的心理健康疾病，會影響個體的飲食行為和對自身身體的認知。",
     "date": "2026年7月28日",
     "tag": "心理學",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_sleep_program_for_children_25876f43f6.png",
+    "cover": "/assets/img/venco_education_sleep_program_for_children_25876f43f6.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_sleep_program_for_children_attachment_2_9e03f6fa48.png",
-      "https://img.venco.com.hk/uploads/venco_education_sleep_program_for_children_attachment_3_2d945a7e9d.png"
+      "/assets/img/venco_education_sleep_program_for_children_attachment_2_9e03f6fa48.png",
+      "/assets/img/venco_education_sleep_program_for_children_attachment_3_2d945a7e9d.png"
     ],
     "body": [
       "快樂成長健康睡眠，為孩子打造最佳睡眠",
@@ -1219,7 +1219,7 @@
     "videos": [],
     "doctorName": "余慧鈴醫生",
     "doctorEnglish": "Dr. Yu Wai Ling Michelle",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_yu_wai_ling_72dd4381b9.png",
+    "doctorPortrait": "/assets/img/venco_doctor_yu_wai_ling_72dd4381b9.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/sleep-program-for-children/",
@@ -1232,9 +1232,9 @@
     "lead": "剪脷筋, 剪脷筋手術, 剪脷筋醫生, 嬰兒黐脷筋, 嬰兒黐脷筋, bb 黐脷筋, 小朋友 黐脷筋",
     "date": "2026年7月28日",
     "tag": "小兒外科",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_tongue_tie_baby_c3a0c747ad.jpg",
+    "cover": "/assets/img/venco_education_tongue_tie_baby_c3a0c747ad.jpg",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_tongue_tie_baby_attachment_1_2df7cb15ac.jpg"
+      "/assets/img/venco_education_tongue_tie_baby_attachment_1_2df7cb15ac.jpg"
     ],
     "body": [
       "我的寶寶吃奶吃得不好，是否因為黐脷筋呢？",
@@ -1257,7 +1257,7 @@
     "videos": [],
     "doctorName": "張承德醫生",
     "doctorEnglish": "Dr. Cheung Sing Tak Gloria",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_cheung_sing_tak_63d1f5807c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_cheung_sing_tak_63d1f5807c.png",
     "doctorWhatsapp": "https://wa.me/85290837327",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/tongue-tie-baby/",
@@ -1270,9 +1270,9 @@
     "lead": "衞生防護中心表示，百日咳感染個案在全球有上升趨勢，建議孕婦在懷孕期間或產後接種疫苗，減低嬰兒感染機會。",
     "date": "2026年7月28日",
     "tag": "流感",
-    "cover": "https://img.venco.com.hk/uploads/venco_education_whooping_cough_vaccine_6fb2bbf2c3.png",
+    "cover": "/assets/img/venco_education_whooping_cough_vaccine_6fb2bbf2c3.png",
     "images": [
-      "https://img.venco.com.hk/uploads/venco_education_whooping_cough_vaccine_6fb2bbf2c3.png"
+      "/assets/img/venco_education_whooping_cough_vaccine_6fb2bbf2c3.png"
     ],
     "body": [
       "百日咳可透過飛沫傳播，現時本港有「兒童免疫接種計劃」，嬰兒出生後會分階段接種共三針包括百日咳的混合疫苗，成長階段再有三次補種疫苗加強劑。",
@@ -1291,7 +1291,7 @@
     ],
     "doctorName": "劉成志醫生",
     "doctorEnglish": "Dr. Lau Shing Chi Steve",
-    "doctorPortrait": "https://img.venco.com.hk/uploads/venco_doctor_lau_shing_chi_2914bdc87c.png",
+    "doctorPortrait": "/assets/img/venco_doctor_lau_shing_chi_2914bdc87c.png",
     "doctorWhatsapp": "https://wa.me/85263931069",
     "related": [],
     "sourceUrl": "https://venco.com.hk/zh/education/whooping-cough-vaccine/",

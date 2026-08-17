@@ -3,6 +3,11 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import site from '../../../data/site.json';
 
 const locations = site.locations;
+// 每段介紹配一張診所實景，避免整頁白底純文字。
+const aboutRows = (site.about || []).map((text, i) => ({
+  text,
+  ...(site.aboutBlocks?.[i] || {}),
+}));
 ---
 <BaseLayout title={`關於榛怡 | ${site.name}`} description={site.about?.[0]}>
   <section class="hero" style={site.contactHero ? `--hero:url(${site.contactHero})` : undefined}>
@@ -16,7 +21,19 @@ const locations = site.locations;
     <div class="container">
       <h2>關於榛怡</h2>
       <div class="about">
-        {(site.about || []).map((p) => <p>{p}</p>)}
+        {aboutRows.map((row, i) => (
+          <article class:list={['about-row', { flip: i % 2 === 1 }]}>
+            <div class="about-copy">
+              {row.heading && <h3>{row.heading}</h3>}
+              <p>{row.text}</p>
+            </div>
+            {row.image && (
+              <div class="about-media">
+                <img src={row.image} alt={row.alt || ''} loading="lazy" decoding="async" />
+              </div>
+            )}
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -92,8 +109,26 @@ const locations = site.locations;
   .env { background: var(--soft); }
   #about, #environment { scroll-margin-top: 88px; }
   h2 { margin: 0 0 16px; font-size: clamp(1.4rem, 3vw, 1.85rem); }
-  .about { max-width: 760px; }
-  .about p { margin: 0 0 14px; color: #333; line-height: 1.8; font-size: 16px; }
+  .about { display: grid; gap: 20px; }
+  .about-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 28px;
+    padding: 24px;
+    background: var(--soft);
+    border-radius: 20px;
+  }
+  .about-row.flip .about-copy { order: 2; }
+  .about-copy h3 { margin: 0 0 10px; font-size: 1.2rem; color: var(--cyan-hover); }
+  .about-copy p { margin: 0; color: #333; line-height: 1.8; font-size: 16px; }
+  .about-media {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #eef3f5;
+    aspect-ratio: 16 / 10;
+  }
+  .about-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .env-lead { margin: -4px 0 28px; color: var(--muted); }
   .clinic-block {
     display: grid;
@@ -157,6 +192,9 @@ const locations = site.locations;
   @media (max-width: 800px) {
     .hero { padding: 44px 0 32px; }
     .page, .env { padding: 32px 0; }
+    .about-row { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+    .about-row .about-copy,
+    .about-row.flip .about-copy { order: 2; }
     .clinic-block { grid-template-columns: 1fr; padding: 18px; }
     .map-grid { grid-template-columns: 1fr; }
     .map-card img { height: 200px; }

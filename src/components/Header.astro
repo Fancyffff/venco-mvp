@@ -229,9 +229,14 @@ const eduGroups = educationCategories
       </button>
     </div>
   </div>
+</header>
 
-  <div class="mobile-backdrop" data-mobile-backdrop hidden></div>
-  <aside class="mobile-panel" data-mobile-drawer hidden>
+<!--
+  抽屉与遮罩必须放在 <header> 外面：header 上有 backdrop-filter，
+  会成为其内部 position:fixed 子元素的定位参照，放在里面会被压成顶栏那么高的一条。
+-->
+<div class="mobile-backdrop" data-mobile-backdrop hidden></div>
+<aside class="mobile-panel" data-mobile-drawer hidden>
     <div class="mobile-panel-top">
       <a class="logo" href={lp()} aria-label={ui.home}>
         <img src="/assets/logo.png" alt={locale === 'en' ? site.nameEn : site.name} />
@@ -295,8 +300,7 @@ const eduGroups = educationCategories
       <img src="/assets/whatsapp.svg" alt="" />
       {ui.bookWhatsapp}
     </a>
-  </aside>
-</header>
+</aside>
 
 <style>
   .header {
@@ -555,7 +559,7 @@ const eduGroups = educationCategories
     font-size: 26px;
     line-height: 1;
   }
-  .mobile-nav { display: grid; gap: 6px; flex: 1 1 auto; }
+  .mobile-nav { display: grid; align-content: start; gap: 6px; flex: 1 1 auto; }
   .m-link, .m-acc > summary {
     display: block;
     padding: 14px 16px;

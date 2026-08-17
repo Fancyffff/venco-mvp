@@ -3,7 +3,7 @@
     "id": "general",
     "title": "一般兒科疾病",
     "desc": "常見兒科疾病診斷、快速測試及健康篩檢。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_general_icon_service_general_v2_6d97bc8606.png",
+    "icon": "/assets/img/venco_service_general_icon_service_general_v2_6d97bc8606.png",
     "items": [
       {
         "id": "general-virus-strep-rapid-test",
@@ -61,7 +61,7 @@
     "id": "vaccine",
     "title": "兒童疫苗接種",
     "desc": "兒童疫苗計劃、接種安排及注射後護理。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_vaccine_icon_service_vaccine_v2_0b617800c8.png",
+    "icon": "/assets/img/venco_service_vaccine_icon_service_vaccine_v2_0b617800c8.png",
     "items": [
       {
         "id": "vaccine-childhood-vaccination",
@@ -77,7 +77,7 @@
     "id": "respiratory",
     "title": "兒科呼吸系統",
     "desc": "咳嗽、哮喘與睡眠呼吸問題。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_respiratory_icon_service_respiratory_v2_6cbd7c4a49.png",
+    "icon": "/assets/img/venco_service_respiratory_icon_service_respiratory_v2_6cbd7c4a49.png",
     "items": [
       {
         "id": "respiratory-infant-lung-function",
@@ -160,7 +160,7 @@
     "id": "endocrine",
     "title": "兒童內分泌科",
     "desc": "生長、青春期與荷爾蒙狀況。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_endocrine_icon_service_endocrine_v2_438b992234.png",
+    "icon": "/assets/img/venco_service_endocrine_icon_service_endocrine_v2_438b992234.png",
     "items": [
       {
         "id": "endocrine-development-screening",
@@ -223,7 +223,7 @@
     "id": "allergy",
     "title": "兒童過敏服務",
     "desc": "過敏測試與治療跟進。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_allergy_icon_service_allergy_v2_73f3bc3cc9.png",
+    "icon": "/assets/img/venco_service_allergy_icon_service_allergy_v2_73f3bc3cc9.png",
     "items": [
       {
         "id": "allergy-skin-prick-test",
@@ -269,7 +269,7 @@
     "id": "surgery",
     "title": "兒童外科服務",
     "desc": "兒科外科評估與說明。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_surgery_icon_service_surgery_v2_d334c942a4.png",
+    "icon": "/assets/img/venco_service_surgery_icon_service_surgery_v2_d334c942a4.png",
     "items": [
       {
         "id": "surgery-anal-fistula",
@@ -350,7 +350,7 @@
     "id": "genetics",
     "title": "臨床遺傳科",
     "desc": "基因檢測與家庭諮詢。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_genetics_icon_service_genetics_v2_cf2f3cdb13.png",
+    "icon": "/assets/img/venco_service_genetics_icon_service_genetics_v2_cf2f3cdb13.png",
     "items": [
       {
         "id": "genetics-genetic-evaluation",
@@ -402,7 +402,7 @@
     "id": "telemedicine",
     "title": "遙距視像診症",
     "desc": "適合覆診與病情跟進。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_telemedicine_icon_service_telemedicine_v2_3048b35f35.png",
+    "icon": "/assets/img/venco_service_telemedicine_icon_service_telemedicine_v2_3048b35f35.png",
     "items": [
       {
         "id": "telemedicine-telemedicine-consult",
@@ -430,7 +430,7 @@
     "id": "neuro",
     "title": "兒童腦神經",
     "desc": "兒童神經系統專科服務。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_neuro_icon_service_neuro_v2_5b4c1b1507.png",
+    "icon": "/assets/img/venco_service_neuro_icon_service_neuro_v2_5b4c1b1507.png",
     "items": [],
     "doctors": [
       "吳瑞芬醫生"
@@ -443,7 +443,7 @@
     "id": "psychology",
     "title": "兒童心理科",
     "desc": "兒童情緒、行為及心理健康支援。",
-    "icon": "https://img.venco.com.hk/uploads/venco_service_psychology_icon_service_psychology_v2_94d6673757.png",
+    "icon": "/assets/img/venco_service_psychology_icon_service_psychology_v2_94d6673757.png",
     "items": [],
     "doctors": [
       "勞靄晞女士"

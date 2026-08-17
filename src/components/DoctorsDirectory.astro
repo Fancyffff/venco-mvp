@@ -1,0 +1,108 @@
+---
+import doctors from '../data/doctors.json';
+
+interface Props { lang?: 'zh' | 'en'; }
+
+const { lang = 'zh' } = Astro.props;
+const isEn = lang === 'en';
+const doctorTeam = doctors.filter((doctor) => doctor.group === '醫生團隊');
+const careTeam = doctors.filter((doctor) => doctor.group === '醫護團隊');
+const prefix = isEn ? '/en' : '';
+const copy = isEn
+  ? { heading: 'Professional Doctor Team', lead: 'Experienced paediatric specialists and care professionals, all in one place.', doctors: 'Doctors', care: 'Care Team', details: 'View profile', booking: 'WhatsApp booking' }
+  : { heading: '專業的醫生團隊', lead: '由經驗豐富的兒科醫生與護理團隊細心照顧。', doctors: '醫生團隊', care: '醫護團隊', details: '查看資料', booking: 'WhatsApp 預約' };
+const doctorHref = (doctor) => `${prefix}/doctors/${doctor.department}/#${doctor.id}`;
+const accents = ['#afd4f5', '#fbebb1', '#d8dfc8', '#d4d8f1', '#f0d5db'];
+---
+
+<section class="team-hero">
+  <div class="container hero-inner">
+    <div><h1>{copy.heading}</h1><p>{copy.lead}</p></div>
+    <div class="hero-faces" aria-hidden="true">
+      {doctorTeam.slice(0, 4).map((doctor) => <img src={doctor.image} alt="" />)}
+    </div>
+  </div>
+</section>
+
+<main class="container directory">
+  {[{ title: copy.doctors, list: doctorTeam }, { title: copy.care, list: careTeam }].map((group, groupIndex) => (
+    <section class:list={{ 'care-section': groupIndex === 1 }}>
+      <div class="section-title"><h2>{group.title}</h2><span>{group.list.length}</span></div>
+      <div class:list={['doctor-grid', { 'care-grid': groupIndex === 1 }]}>
+        {group.list.map((doctor, index) => (
+          <article class="doctor-card" style={`--accent:${groupIndex === 1 ? ['#f4b68b', '#bbe1dd'][index % 2] : accents[index % accents.length]}`}>
+            <div class="portrait-wrap">
+              <a href={doctorHref(doctor)} aria-label={`${doctor.name} ${copy.details}`}><img class="portrait" src={doctor.image} alt={isEn ? doctor.english : doctor.name} /></a>
+              <a class="contact" href={doctor.whatsapp} target="_blank" rel="noreferrer" aria-label={`${doctor.name} ${copy.booking}`}><img src="/assets/whatsapp.svg" alt="" /></a>
+            </div>
+            <div class="card-body">
+              <h3><a href={doctorHref(doctor)}>{isEn ? doctor.english : doctor.name}</a></h3>
+              <p class="secondary">{isEn ? doctor.name : doctor.english}</p>
+              <p class="badge">{doctor.title}</p>
+              {doctor.role && <p class="role">{doctor.role}</p>}
+              <ul>{doctor.creds.slice(0, 6).map((credential) => <li>{credential}</li>)}</ul>
+              <a class="profile-link" href={doctorHref(doctor)}>{copy.details} →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+</main>
+
+<style>
+  .team-hero { overflow: hidden; background: linear-gradient(105deg, #e8f7f9 0%, #f8fbfc 58%, #fff 100%); border-bottom: 1px solid var(--line); }
+  .hero-inner { min-height: 330px; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+  .team-hero h1 { margin: 0; font-size: clamp(2.1rem, 4.5vw, 3.4rem); }
+  .team-hero p { margin: 18px 0 0; color: #555; font-size: 18px; line-height: 1.7; }
+  .hero-faces { display: flex; align-items: end; padding-right: 3%; }
+  .hero-faces img { width: clamp(105px, 11vw, 165px); aspect-ratio: 1; object-fit: cover; border-radius: 50%; background: #fff; border: 7px solid #fff; box-shadow: 0 12px 32px rgba(0,70,80,.12); }
+  .hero-faces img + img { margin-left: -26px; }
+  .directory { padding-top: 64px; padding-bottom: 88px; }
+  .care-section { margin-top: 72px; }
+  .section-title { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .section-title h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.25rem); }
+  .section-title span { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; background: #dff4f6; color: var(--cyan-hover); font-weight: 700; }
+  .doctor-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  .care-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; }
+  .doctor-card { overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 8px 24px rgba(0,50,60,.06); transition: transform .18s ease, box-shadow .18s ease; }
+  .doctor-card:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(0,50,60,.12); }
+  .portrait-wrap { position: relative; padding: 24px 24px 0; background: linear-gradient(180deg, var(--accent), #fff 96%); }
+  .portrait-wrap > a:first-child { display: block; }
+  .portrait { display: block; width: 100%; aspect-ratio: 1.13; object-fit: contain; object-position: center bottom; }
+  .contact { position: absolute; right: 20px; bottom: 10px; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #fff; box-shadow: 0 5px 18px rgba(0,50,60,.18); }
+  .contact img { width: 25px; height: 25px; }
+  .card-body { padding: 19px 22px 24px; }
+  .card-body h3 { margin: 0; font-size: 21px; line-height: 1.35; }
+  .card-body h3 a:hover { color: var(--cyan-hover); }
+  .secondary { margin: 5px 0 0; color: var(--muted); font-size: 14px; }
+  .badge { display: inline-flex; margin: 14px 0 0; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 65%, white); font-size: 13px; font-weight: 700; }
+  .role { min-height: 42px; margin: 13px 0 0; color: #555; font-size: 13px; line-height: 1.55; }
+  ul { margin: 16px 0 0; padding: 16px 0 0 18px; border-top: 1px solid var(--line); color: #555; }
+  li { margin: 5px 0; font-size: 12px; line-height: 1.45; }
+  .profile-link { display: inline-block; margin-top: 16px; color: var(--cyan-hover); font-size: 13px; font-weight: 700; }
+  @media (max-width: 960px) { .doctor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero-faces img:nth-child(n+4) { display: none; } }
+  @media (max-width: 700px) {
+    .hero-inner { min-height: 280px; display: block; padding-top: 48px; padding-bottom: 0; text-align: center; }
+    .team-hero p { margin-top: 12px; font-size: 15px; }
+    .hero-faces { justify-content: center; margin-top: 25px; padding: 0; }
+    .hero-faces img { width: 92px; border-width: 4px; }
+    .directory { padding-top: 42px; padding-bottom: 64px; }
+    .care-section { margin-top: 52px; }
+    .section-title { margin-bottom: 18px; }
+    .doctor-grid, .care-grid { grid-template-columns: 1fr; gap: 16px; max-width: none; }
+    .doctor-card { display: grid; grid-template-columns: 132px 1fr; border-radius: 18px; }
+    .portrait-wrap { padding: 12px 8px 0; }
+    .portrait { aspect-ratio: auto; height: 180px; }
+    .contact { right: 8px; bottom: 8px; width: 40px; height: 40px; }
+    .contact img { width: 22px; height: 22px; }
+    .card-body { padding: 17px 16px 18px; }
+    .card-body h3 { font-size: 17px; }
+    .secondary { font-size: 12px; }
+    .badge { margin-top: 10px; padding: 5px 9px; font-size: 11px; }
+    .role { min-height: 0; margin-top: 9px; font-size: 11px; }
+    ul { display: none; }
+    .profile-link { margin-top: 12px; }
+  }
+  @media (max-width: 400px) { .doctor-card { grid-template-columns: 112px 1fr; } .portrait { height: 168px; } }
+</style>

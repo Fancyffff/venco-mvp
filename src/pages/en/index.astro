@@ -3,14 +3,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import services from '../../data/services.json';
 import doctors from '../../data/doctors.json';
 import site from '../../data/site.json';
+import education from '../../data/education.json';
 import { t, serviceTitle, serviceDesc } from '../../lib/i18n';
 
 const ui = t('en');
 const featuredDoctors = doctors.slice(0, 8);
 const homeLead = site.homeLeadEn || site.homeLead;
+const videoArticleHrefs = new Set(
+  education.filter((article) => article.videos?.length).map((article) => `/education/${article.category}/${article.slug}/`),
+);
 const educationCards = site.education.map((e) => ({
   ...e,
   href: `/en${e.href}`,
+  hasVideo: videoArticleHrefs.has(e.href),
 }));
 ---
 <BaseLayout title={`${site.nameEn} | Home`} description={ui.siteDesc}>
@@ -96,6 +101,7 @@ const educationCards = site.education.map((e) => ({
             <div class="edu-media">
               <img src={e.image} alt="" />
               <span class="tag">{e.tag}</span>
+              {e.hasVideo && <span class="play" aria-hidden="true">▶</span>}
             </div>
             <div class="edu-body">
               <h3>{e.title}</h3>
@@ -369,6 +375,26 @@ const educationCards = site.education.map((e) => ({
     color: var(--cyan-hover);
     font-size: 12px;
     font-weight: 600;
+  }
+  .edu-media .play {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    padding-left: 3px;
+    border-radius: 50%;
+    background: rgba(20, 20, 20, .62);
+    color: #fff;
+    font-size: 21px;
+    transform: translate(-50%, -50%);
+    transition: transform .16s ease, background .16s ease;
+  }
+  .edu-card:hover .play,
+  .edu-card:focus-visible .play {
+    background: rgba(0, 174, 190, .9);
+    transform: translate(-50%, -50%) scale(1.08);
   }
   .edu-body { padding: 16px 18px 18px; }
   .edu-body h3 { margin: 0 0 8px; font-size: 16px; line-height: 1.4; }

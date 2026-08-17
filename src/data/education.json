@@ -99,7 +99,7 @@
     "body": [],
     "videos": [
       {
-        "src": "https://www.youtube.com/embed/BvC9KPuelz8?origin=https%3A%2F%2Fplyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1",
+        "src": "https://www.youtube.com/embed/BvC9KPuelz8?rel=0&playsinline=1",
         "title": "鼻敏感 Allergic Rhinitis"
       }
     ],
@@ -1158,7 +1158,7 @@
     "body": [],
     "videos": [
       {
-        "src": "https://www.youtube.com/embed/ei3idxOuBQY?origin=https%3A%2F%2Fplyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1",
+        "src": "https://www.youtube.com/embed/ei3idxOuBQY?rel=0&playsinline=1",
         "title": "睡眠窒息症 OBSTRUCTIVE SLEEP APNEA"
       }
     ],

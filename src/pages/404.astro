@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+
+// A static 404 can't know which language the visitor wanted, so show both.
+---
+<BaseLayout title={`找不到頁面 Page not found | ${site.name}`} description="找不到頁面 Page not found" noindex>
+  <section class="nf">
+    <div class="container">
+      <p class="code">404</p>
+
+      <div class="pair">
+        <div class="col">
+          <h1>找不到這個頁面</h1>
+          <p>頁面可能已經搬遷或網址輸入有誤。</p>
+          <div class="acts">
+            <a class="btn primary" href="/zh/">回首頁</a>
+            <a class="btn" href="/zh/search/">搜尋</a>
+            <a class="btn" href="/zh/contact/">聯絡我們</a>
+          </div>
+        </div>
+
+        <div class="col">
+          <h1>Page not found</h1>
+          <p>This page may have moved, or the address was mistyped.</p>
+          <div class="acts">
+            <a class="btn primary" href="/en/">Home</a>
+            <a class="btn" href="/en/search/">Search</a>
+            <a class="btn" href="/en/contact/">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf { padding: 72px 0 96px; }
+  .code {
+    margin: 0 0 8px;
+    font-size: clamp(3.5rem, 12vw, 6rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--cyan-soft);
+    letter-spacing: -0.02em;
+  }
+  .pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .col {
+    padding: 28px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+  }
+  .col h1 { margin: 0 0 10px; font-size: clamp(1.3rem, 3vw, 1.7rem); }
+  .col p { margin: 0 0 20px; color: #444; line-height: 1.7; font-size: 15px; }
+  .acts { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .btn:hover { border-color: var(--cyan); color: var(--cyan-hover); }
+  .btn.primary {
+    border-color: transparent;
+    background: var(--cyan);
+    color: #fff;
+  }
+  .btn.primary:hover { background: var(--cyan-hover); color: #fff; }
+  @media (max-width: 760px) {
+    .nf { padding: 48px 0 64px; }
+    .pair { grid-template-columns: 1fr; }
+    .col { padding: 20px; }
+  }
+</style>

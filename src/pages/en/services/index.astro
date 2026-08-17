@@ -8,7 +8,7 @@ import { t, serviceTitle, serviceDesc } from '../../../lib/i18n';
 const ui = t('en');
 ---
 <BaseLayout title={`${ui.servicesHeadline} | ${site.nameEn}`} description={ui.servicesLead}>
-  <section class="page-hero" style={`background-image:linear-gradient(90deg,rgba(255,255,255,.94),rgba(255,255,255,.35)),url(${site.servicesHero})`}>
+  <section class="page-hero" style={`--hero:url(${site.servicesHero})`}>
     <div class="container">
       <h1>{ui.servicesHeadline}</h1>
       <p>{ui.servicesLead}. Choose a specialty to view service items and related doctors.</p>
@@ -66,8 +66,9 @@ const ui = t('en');
 <style>
   .page-hero {
     padding: 80px 0 64px;
-    background-size: cover;
-    background-position: center right;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.94), rgba(255,255,255,.35)),
+      var(--hero, none) center right / cover no-repeat;
   }
   .page-hero h1 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); }
   .page-hero p { margin: 14px 0 0; max-width: 560px; color: #333; font-size: 16px; line-height: 1.7; }
@@ -128,11 +129,16 @@ const ui = t('en');
   .file-list li:last-child { border-bottom: 0; padding-bottom: 0; }
   .file-list a { color: var(--cyan); font-weight: 700; font-size: 14px; }
   @media (max-width: 700px) {
+    /* Same warm palette as the mobile homepage hero; a pure white hero here
+       blends into the white list below and reads as one big empty gap. */
     .page-hero {
       padding: 44px 0 36px;
-      background-position: 70% center;
-      background-image: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.92)) !important;
+      background:
+        linear-gradient(180deg, rgba(247,234,223,.62) 0%, rgba(247,234,223,.93) 100%),
+        var(--hero, none) 70% center / cover no-repeat;
+      border-bottom: 1px solid var(--warm-deep);
     }
+    .page-hero p { color: var(--warm-ink); }
     .page-hero h1 { font-size: 1.75rem; }
     .page-hero p { font-size: 14px; }
     .catalog { padding: 28px 0 56px; }

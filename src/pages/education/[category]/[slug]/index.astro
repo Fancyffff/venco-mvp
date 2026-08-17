@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../../../../layouts/BaseLayout.astro';
-import education from '../../../../../data/education.json';
-import doctors from '../../../../../data/doctors.json';
-import site from '../../../../../data/site.json';
-import { blocksFromBody } from '../../../../../lib/education-body';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import education from '../../../../data/education.json';
+import doctors from '../../../../data/doctors.json';
+import site from '../../../../data/site.json';
+import { blocksFromBody } from '../../../../lib/education-body';
 
 export function getStaticPaths() {
   return education.map((article) => ({
@@ -20,16 +20,16 @@ const paperImages = article.images.filter((src) => src.includes('attachment') ||
 const showPaper = paperImages.length > 0 && article.body.length < 8;
 const articleDoctor = doctors.find((d) => d.name === article.doctorName);
 const doctorHref = articleDoctor
-  ? `/zh/doctors/${articleDoctor.department}/#${articleDoctor.id}`
-  : '/zh/doctors/';
-const categoryHref = `/zh/education/${article.category}/`;
+  ? `/doctors/${articleDoctor.department}/#${articleDoctor.id}`
+  : '/doctors/';
+const categoryHref = `/education/${article.category}/`;
 const bodyBlocks = blocksFromBody(article.body || []);
 ---
 <BaseLayout title={`${article.title} | ${site.name}`} description={article.lead || article.title}>
   <article class="page">
     <div class="container">
       <p class="crumb">
-        <a href="/zh/education/">兒科教育</a>
+        <a href="/education/">兒科教育</a>
         <span>/</span>
         <a href={categoryHref}>{article.categoryTitle || article.tag}</a>
         <span>/</span>
@@ -111,7 +111,7 @@ const bodyBlocks = blocksFromBody(article.body || []);
           <h2>相關文章</h2>
           <div class="rel-grid">
             {related.map((e) => (
-              <a href={`/zh/education/${e.category}/${e.slug}/`}>
+              <a href={`/education/${e.category}/${e.slug}/`}>
                 {e.cover && <img src={e.cover} alt="" loading="lazy" />}
                 <span>{e.title}</span>
               </a>

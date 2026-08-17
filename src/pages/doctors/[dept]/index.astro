@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import doctors from '../../../../data/doctors.json';
-import services from '../../../../data/services.json';
-import site from '../../../../data/site.json';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import doctors from '../../../data/doctors.json';
+import services from '../../../data/services.json';
+import site from '../../../data/site.json';
 
 const departmentOrder = [
   'general',
@@ -46,7 +46,7 @@ const siblings = departmentOrder
 ---
 <BaseLayout title={`${department.title} | 醫生團隊 | ${site.name}`} description={`${department.title}專科團隊介紹與預約。`}>
   <section class="crumb container">
-    <a href="/zh/doctors/">醫生團隊</a>
+    <a href="/doctors/">醫生團隊</a>
     <span>/</span>
     <strong>{department.title}</strong>
   </section>
@@ -59,7 +59,7 @@ const siblings = departmentOrder
         本頁共 {department.doctors.length} 位成員。
       </p>
       {relatedService && (
-        <a class="service-link" href={`/zh/services/${relatedService.id}/`}>查看{relatedService.title}服務 →</a>
+        <a class="service-link" href={`/services/${relatedService.id}/`}>查看{relatedService.title}服務 →</a>
       )}
     </div>
   </section>
@@ -87,13 +87,13 @@ const siblings = departmentOrder
   </div>
 
   <section class="container more">
-    <a class="back" href="/zh/doctors/">← 返回科室總覽</a>
+    <a class="back" href="/doctors/">← 返回科室總覽</a>
     {siblings.length > 0 && (
       <>
         <h2>其他科室</h2>
         <div class="more-grid">
           {siblings.map((s) => (
-            <a href={`/zh/doctors/${s.id}/`}>
+            <a href={`/doctors/${s.id}/`}>
               <strong>{s.title}</strong>
               <span>{s.count} 位成員</span>
             </a>

@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import services from '../../../../data/services.json';
-import doctors from '../../../../data/doctors.json';
-import site from '../../../../data/site.json';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import services from '../../../data/services.json';
+import doctors from '../../../data/doctors.json';
+import site from '../../../data/site.json';
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { slug: s.id }, props: { service: s } }));
@@ -15,7 +15,7 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
 ---
 <BaseLayout title={`${service.title} | ${site.name}`} description={service.desc}>
   <section class="crumb container">
-    <a href="/zh/services/">兒科服務</a>
+    <a href="/services/">兒科服務</a>
     <span>/</span>
     <strong>{service.title}</strong>
   </section>
@@ -53,7 +53,7 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
       </div>
       <div class="doctors">
         {related.map((d) => (
-          <a class="doctor" href={`/zh/doctors/${d.department}/#${d.id}`}>
+          <a class="doctor" href={`/doctors/${d.department}/#${d.id}`}>
             <img src={d.image} alt={d.name} />
             <div>
               <strong>{d.name}</strong>
@@ -69,14 +69,14 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
     <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
       <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約
     </a>
-    <a class="back" href="/zh/services/">← 返回服務總覽</a>
+    <a class="back" href="/services/">← 返回服務總覽</a>
   </section>
 
   <section class="container more">
     <h2>其他專科</h2>
     <div class="more-grid">
       {siblings.map((s) => (
-        <a href={`/zh/services/${s.id}/`}>
+        <a href={`/services/${s.id}/`}>
           <img src={s.icon} alt="" />
           <span>{s.title}</span>
         </a>

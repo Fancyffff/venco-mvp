@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import services from '../../../data/services.json';
-import site from '../../../data/site.json';
-import documents from '../../../data/documents.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import services from '../../data/services.json';
+import site from '../../data/site.json';
+import documents from '../../data/documents.json';
 ---
 <BaseLayout title={`全面的兒科服務 | ${site.name}`} description="涵蓋診療、預防與健康管理，守護孩子成長。">
   <section class="page-hero" style={`--hero:url(${site.servicesHero})`}>
@@ -19,7 +19,7 @@ import documents from '../../../data/documents.json';
     </div>
     <div class="grid">
       {services.map((s) => (
-        <a class="card" href={`/zh/services/${s.id}/`}>
+        <a class="card" href={`/services/${s.id}/`}>
           <img src={s.icon} alt="" />
           <div>
             <h3>{s.title}</h3>

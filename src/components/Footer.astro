@@ -15,49 +15,35 @@ const locations = locale === 'en' && site.locationsEn
 ---
 <footer class="footer">
   <div class="container footer-grid">
-    <div>
+    <div class="footer-brand">
+      <img src="/assets/logo.png" alt={locale === 'en' ? site.nameEn : site.name} />
+    </div>
+    <div class="footer-links">
       <h3>{ui.quickLinks}</h3>
       <a href={lp()}>{ui.home}</a>
       <a href={lp('services')}>{ui.services}</a>
       <a href={lp('doctors')}>{ui.doctors}</a>
       <a href={lp('education')}>{ui.education}</a>
       <a href={lp('about')}>{ui.about}</a>
-      <a href={lp('contact')}>{ui.contactNav}</a>
     </div>
-    <div>
+    <div class="footer-hours">
       <h3>{ui.contactUs}</h3>
       <p class="label">{ui.hours}</p>
-      {locations.map((loc, i) => {
-        const rows = locale === 'en'
-          ? (site.locations[i]?.hoursRowsEn || site.locations[i]?.hoursRows)
-          : site.locations[i]?.hoursRows;
-        return (
-          <p>
-            <strong>{loc.name}</strong><br />
-            {(rows || []).map((row) => (
-              <>{row.days} {row.time}<br /></>
-            ))}
-          </p>
-        );
-      })}
-      <p class="label">{ui.address}</p>
+      {(locale === 'en'
+        ? (site.locations[0]?.hoursRowsEn || site.locations[0]?.hoursRows)
+        : site.locations[0]?.hoursRows
+      )?.map((row) => <p>{row.days} {row.time}</p>)}
+    </div>
+    <div class="footer-addresses">
+      <h3>{ui.address}</h3>
       {locations.map((loc) => (
-        <p>
-          <strong>{loc.name}</strong><br />
-          {loc.address}<br />
-          {loc.phone}
-        </p>
+        <p>{loc.address}<br /><a href={`tel:${loc.phone.replace(/[^\d+]/g, '')}`}>{loc.phone}</a></p>
       ))}
     </div>
-    <div class="cta">
-      <h3>{ui.contactCta}</h3>
-      <p>{ui.contactCtaLead}</p>
-      <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
-        <img src="/assets/whatsapp.svg" alt="" />
-        {ui.bookWhatsapp}
-      </a>
+    <div class="follow">
       {site.qrCode && (
         <div class="qr">
+          <h3>{locale === 'en' ? 'Follow us' : '關注我們'}</h3>
           <img src={site.qrCode} alt="WeChat QR" />
           <span>{ui.wechatQr}</span>
         </div>
@@ -67,7 +53,8 @@ const locations = locale === 'en' && site.locationsEn
   <div class="container copy">
     <span>© 2026 {locale === 'en' ? site.nameEn : site.name}</span>
     <nav aria-label={locale === 'en' ? 'Legal' : '法律資訊'}>
-      <a href={lp('disclaimer')}>{locale === 'en' ? 'Disclaimer & Privacy' : '免責聲明及私隱政策'}</a>
+      <a href={lp('disclaimer')}>{ui.terms}</a>
+      <a href={lp('disclaimer')}>{ui.privacy}</a>
     </nav>
   </div>
 </footer>
@@ -77,36 +64,50 @@ const locations = locale === 'en' && site.locationsEn
     margin-top: 0;
     background: var(--cyan);
     color: #fff;
-    padding: 52px 0 28px;
+    padding: 92px 0 28px;
   }
   .footer-grid {
     display: grid;
-    grid-template-columns: 1fr 1.4fr 1fr;
-    gap: 36px;
+    grid-template-columns: 1.05fr .75fr 1.15fr 2.35fr .85fr;
+    gap: clamp(24px, 3vw, 48px);
+    align-items: start;
   }
-  .footer h3 { margin: 0 0 14px; font-size: 16px; font-weight: 700; }
-  .footer a, .footer p { display: block; margin: 0 0 10px; font-size: 14px; line-height: 1.55; opacity: .96; }
+  .footer > .container { width: min(1420px, calc(100% - 64px)); }
+  .footer-brand { align-self: center; }
+  .footer-brand img {
+    width: 170px;
+    filter: brightness(0) invert(1);
+  }
+  .footer h3 { margin: 0 0 22px; font-size: 16px; font-weight: 700; }
+  .footer a, .footer p { display: block; margin: 0 0 12px; font-size: 14px; line-height: 1.65; opacity: .96; }
   .footer a:hover { opacity: 1; text-decoration: underline; }
   .label {
-    margin: 14px 0 6px !important;
-    font-size: 12px !important;
+    margin: 0 0 16px !important;
+    font-size: 14px !important;
     letter-spacing: .04em;
     opacity: .75 !important;
     font-weight: 600;
   }
-  .label:first-of-type { margin-top: 0 !important; }
-  .cta .wa-btn { margin-top: 10px; color: #111; }
+  .footer-addresses p { margin-bottom: 16px; }
+  .footer-addresses p a { display: inline-block; margin: 3px 0 0; }
+  .follow {
+    padding: 18px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.86);
+    color: var(--ink);
+    text-align: center;
+  }
   .qr {
-    display: flex; align-items: center; gap: 12px;
-    margin-top: 16px;
+    display: flex; flex-direction: column; align-items: center;
   }
+  .qr h3 { margin-bottom: 14px; }
   .qr img {
-    width: 72px; height: 72px; border-radius: 10px; background: #fff; object-fit: cover;
+    width: 112px; height: 112px; border-radius: 10px; background: #fff; object-fit: cover;
   }
-  .qr span { font-size: 13px; opacity: .9; max-width: 8em; line-height: 1.4; }
+  .qr span { margin-top: 12px; font-size: 12px; color: #748286; opacity: 1; line-height: 1.4; }
   .copy {
-    margin-top: 32px;
-    padding-top: 18px;
+    margin-top: 56px;
+    padding-top: 24px;
     border-top: 1px solid rgba(255,255,255,.25);
     font-size: 13px;
     opacity: .9;
@@ -118,9 +119,19 @@ const locations = locale === 'en' && site.locationsEn
   }
   .copy nav { display: flex; gap: 16px; }
   .copy a { margin: 0; opacity: .9; }
-  @media (max-width: 800px) {
-    .footer { padding: 40px 0 24px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-    .cta .wa-btn { width: 100%; }
+  @media (max-width: 1050px) {
+    .footer-grid { grid-template-columns: 1fr 1fr 1.4fr; }
+    .footer-brand { grid-row: span 2; }
+    .follow { grid-column: 3; }
+  }
+  @media (max-width: 700px) {
+    .footer { padding: 56px 0 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
+    .footer > .container { width: calc(100% - 28px); }
+    .footer-brand { grid-column: 1 / -1; grid-row: auto; }
+    .footer-brand img { width: 155px; }
+    .footer-addresses { grid-column: 1 / -1; }
+    .follow { grid-column: 1 / -1; max-width: 180px; }
+    .copy { margin-top: 38px; }
   }
 </style>

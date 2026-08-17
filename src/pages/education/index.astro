@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import education from '../../../data/education.json';
-import categories from '../../../data/education-categories.json';
-import site from '../../../data/site.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import education from '../../data/education.json';
+import categories from '../../data/education-categories.json';
+import site from '../../data/site.json';
 
 const catalog = categories.map((c) => {
   const articles = education.filter((a) => a.category === c.id);
@@ -29,7 +29,7 @@ const catalog = categories.map((c) => {
     </div>
     <div class="grid">
       {catalog.map((c) => (
-        <a class="card" href={`/zh/education/${c.id}/`}>
+        <a class="card" href={`/education/${c.id}/`}>
           <div class="media">
             {c.cover ? <img src={c.cover} alt="" loading="lazy" /> : <div class="ph" />}
             <span>{c.count} 篇</span>

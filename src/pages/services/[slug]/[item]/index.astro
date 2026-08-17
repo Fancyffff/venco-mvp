@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../../../../layouts/BaseLayout.astro';
-import services from '../../../../../data/services.json';
-import doctors from '../../../../../data/doctors.json';
-import education from '../../../../../data/education.json';
-import site from '../../../../../data/site.json';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import services from '../../../../data/services.json';
+import doctors from '../../../../data/doctors.json';
+import education from '../../../../data/education.json';
+import site from '../../../../data/site.json';
 
 export function getStaticPaths() {
   return services.flatMap((s) =>
@@ -24,9 +24,9 @@ const relatedEdu = (item.relatedEducation || [])
 ---
 <BaseLayout title={`${item.text} | ${service.title} | ${site.name}`} description={`${service.title}：${item.text}`}>
   <section class="crumb container">
-    <a href="/zh/services/">兒科服務</a>
+    <a href="/services/">兒科服務</a>
     <span>/</span>
-    <a href={`/zh/services/${service.id}/`}>{service.title}</a>
+    <a href={`/services/${service.id}/`}>{service.title}</a>
     <span>/</span>
     <strong>{item.text}</strong>
   </section>
@@ -48,7 +48,7 @@ const relatedEdu = (item.relatedEducation || [])
       <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
         <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約此服務
       </a>
-      <a class="ghost" href={`/zh/services/${service.id}/`}>返回 {service.title}</a>
+      <a class="ghost" href={`/services/${service.id}/`}>返回 {service.title}</a>
     </div>
   </section>
 
@@ -57,7 +57,7 @@ const relatedEdu = (item.relatedEducation || [])
       <h2>可預約醫生</h2>
       <div class="doctors">
         {related.map((d) => (
-          <a class="doctor" href={`/zh/doctors/${d.department}/#${d.id}`}>
+          <a class="doctor" href={`/doctors/${d.department}/#${d.id}`}>
             <img src={d.image} alt={d.name} />
             <div>
               <strong>{d.name}</strong>
@@ -74,7 +74,7 @@ const relatedEdu = (item.relatedEducation || [])
       <h2>相關兒科教育</h2>
       <div class="edu">
         {relatedEdu.map((e) => (
-          <a href={`/zh/education/${e.category}/${e.slug}/`}>
+          <a href={`/education/${e.category}/${e.slug}/`}>
             {e.cover && <img src={e.cover} alt="" />}
             <span>{e.title}</span>
           </a>
@@ -88,7 +88,7 @@ const relatedEdu = (item.relatedEducation || [])
       <h2>同專科其他細項</h2>
       <div class="others">
         {otherItems.map((x) => (
-          <a href={`/zh/services/${service.id}/${x.slug}/`}>{x.text}</a>
+          <a href={`/services/${service.id}/${x.slug}/`}>{x.text}</a>
         ))}
       </div>
     </section>

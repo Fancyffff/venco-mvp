@@ -4,22 +4,21 @@ export function getLocale(pathname: string): Locale {
   return pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'zh';
 }
 
-/** Swap /zh/... ↔ /en/... while preserving the rest of the path. */
+/** Swap the unprefixed Traditional Chinese route ↔ /en/... */
 export function switchLocalePath(pathname: string, to: Locale): string {
   const path = pathname.split('?')[0].split('#')[0];
-  let rest = path;
-  if (rest === '/zh' || rest.startsWith('/zh/')) rest = rest.replace(/^\/zh\/?/, '');
-  else if (rest === '/en' || rest.startsWith('/en/')) rest = rest.replace(/^\/en\/?/, '');
-  else rest = '';
+  let rest = path === '/en' || path.startsWith('/en/')
+    ? path.replace(/^\/en\/?/, '')
+    : path;
   rest = rest.replace(/^\/+|\/+$/g, '');
-  const base = to === 'en' ? '/en' : '/zh';
-  return rest ? `${base}/${rest}/` : `${base}/`;
+  if (to === 'en') return rest ? `/en/${rest}/` : '/en/';
+  return rest ? `/${rest}/` : '/';
 }
 
 export function localePath(locale: Locale, path = ''): string {
   const rest = path.replace(/^\/+/, '').replace(/\/+$/, '');
-  const base = locale === 'en' ? '/en' : '/zh';
-  return rest ? `${base}/${rest}/` : `${base}/`;
+  if (locale === 'en') return rest ? `/en/${rest}/` : '/en/';
+  return rest ? `/${rest}/` : '/';
 }
 
 const uiZh = {

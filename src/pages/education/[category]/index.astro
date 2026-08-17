@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import education from '../../../../data/education.json';
-import categories from '../../../../data/education-categories.json';
-import site from '../../../../data/site.json';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import education from '../../../data/education.json';
+import categories from '../../../data/education-categories.json';
+import site from '../../../data/site.json';
 
 export function getStaticPaths() {
   return categories.map((category) => {
@@ -26,7 +26,7 @@ const siblings = categories
 ---
 <BaseLayout title={`${category.title} | 兒科教育 | ${site.name}`} description={category.desc}>
   <section class="crumb container">
-    <a href="/zh/education/">兒科教育</a>
+    <a href="/education/">兒科教育</a>
     <span>/</span>
     <strong>{category.title}</strong>
   </section>
@@ -40,7 +40,7 @@ const siblings = categories
   <section class="container list-wrap">
     <div class="grid">
       {articles.map((e) => (
-        <a class="card" href={`/zh/education/${category.id}/${e.slug}/`}>
+        <a class="card" href={`/education/${category.id}/${e.slug}/`}>
           <div class="media">
             {e.cover ? <img src={e.cover} alt="" loading="lazy" /> : <div class="ph" />}
           </div>
@@ -58,13 +58,13 @@ const siblings = categories
   </section>
 
   <section class="container more">
-    <a class="back" href="/zh/education/">← 返回主題總覽</a>
+    <a class="back" href="/education/">← 返回主題總覽</a>
     {siblings.length > 0 && (
       <>
         <h2>其他主題</h2>
         <div class="more-grid">
           {siblings.map((s) => (
-            <a href={`/zh/education/${s.id}/`}>
+            <a href={`/education/${s.id}/`}>
               <strong>{s.title}</strong>
               <span>{s.count} 篇文章</span>
             </a>

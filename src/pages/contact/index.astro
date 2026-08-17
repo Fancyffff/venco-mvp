@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import site from '../../../data/site.json';
-import doctors from '../../../data/doctors.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import site from '../../data/site.json';
+import doctors from '../../data/doctors.json';
 ---
 <BaseLayout title={`聯絡我們 | ${site.name}`} description="榛怡醫務中心聯絡方式、工作時間與門診地址。">
   <section class="hero" style={site.contactHero ? `--hero:url(${site.contactHero})` : undefined}>

@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import doctors from '../../../data/doctors.json';
-import services from '../../../data/services.json';
-import site from '../../../data/site.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import doctors from '../../data/doctors.json';
+import services from '../../data/services.json';
+import site from '../../data/site.json';
 
 const departmentOrder = [
   'general',
@@ -49,7 +49,7 @@ const departments = departmentOrder
     </div>
     <div class="grid">
       {departments.map((d) => (
-        <a class="card" href={`/zh/doctors/${d.id}/`}>
+        <a class="card" href={`/doctors/${d.id}/`}>
           {d.icon && <img src={d.icon} alt="" />}
           <div>
             <h3>{d.title}</h3>

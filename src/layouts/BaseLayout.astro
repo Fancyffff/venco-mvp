@@ -21,10 +21,11 @@ const origin = Astro.site ?? new URL('https://vencokids.com');
 const abs = (p: string) => new URL(p, origin).href;
 const path = Astro.url.pathname;
 const canonical = abs(path);
-// The 404 page lives outside /zh and /en, so it has no language counterpart.
+// Error pages have no language counterpart. All regular pages do: Traditional
+// Chinese is unprefixed and English lives under /en/.
 const hasLocalePair =
   !noindex &&
-  (path === '/zh' || path === '/en' || path.startsWith('/zh/') || path.startsWith('/en/'));
+  path !== '/404';
 const ogImage = abs(site.homeHero);
 ---
 <!doctype html>

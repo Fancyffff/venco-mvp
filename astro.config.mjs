@@ -8,29 +8,37 @@ const categoryIds = new Set(categories.map((c) => c.id));
 
 /** Old flat article URLs → category/article paths (skip when slug equals a category id). */
 const educationRedirects = Object.fromEntries(
-  ['zh', 'en'].flatMap((locale) =>
+  ['', 'en'].flatMap((locale) => {
+    const base = locale ? `/${locale}` : '';
+    return (
     education
       .filter((a) => !categoryIds.has(a.slug))
-      .flatMap((a) => [
-        [`/${locale}/education/${a.slug}`, `/${locale}/education/${a.category}/${a.slug}/`],
-        [`/${locale}/education/${a.slug}/`, `/${locale}/education/${a.category}/${a.slug}/`],
+      .map((a) => [
+        `${base}/education/${a.slug}`,
+        `${base}/education/${a.category}/${a.slug}/`,
       ])
-  )
+    );
+  })
 );
 
 /** Typo fix: sleep-apena → sleep-apnea */
 const sleepApneaRedirects = Object.fromEntries(
-  ['zh', 'en'].flatMap((locale) => [
-    [`/${locale}/education/sleep-apnea/sleep-apena`, `/${locale}/education/sleep-apnea/sleep-apnea/`],
-    [`/${locale}/education/sleep-apnea/sleep-apena/`, `/${locale}/education/sleep-apnea/sleep-apnea/`],
-    [`/${locale}/education/sleep-apena`, `/${locale}/education/sleep-apnea/sleep-apnea/`],
-    [`/${locale}/education/sleep-apena/`, `/${locale}/education/sleep-apnea/sleep-apnea/`],
-  ])
+  ['', 'en'].flatMap((locale) => {
+    const base = locale ? `/${locale}` : '';
+    return [
+      [`${base}/education/sleep-apnea/sleep-apena`, `${base}/education/sleep-apnea/sleep-apnea/`],
+      [`${base}/education/sleep-apena`, `${base}/education/sleep-apnea/sleep-apnea/`],
+    ];
+  })
 );
 
 const redirects = {
   ...educationRedirects,
   ...sleepApneaRedirects,
+};
+
+const cloudflareAssetRedirects = {
+  ...redirects,
 };
 
 /**
@@ -46,9 +54,16 @@ function cloudflareRedirects() {
     hooks: {
       'astro:build:done': async ({ dir, logger }) => {
         // Trailing-slash variants collapse to the same rule, hence the Set.
-        const lines = [...new Set(
-          Object.entries(redirects).map(([from, to]) => `${from.replace(/\/$/, '')} ${to} 301`),
-        )];
+        const lines = [
+          '/zh / 301',
+          '/zh/* /:splat 301',
+          ...new Set(
+          Object.entries(cloudflareAssetRedirects).map(([from, to]) => {
+            const source = from === '/' ? '/' : from.replace(/\/$/, '');
+            return `${source} ${to} 301`;
+          }),
+          ),
+        ];
         await writeFile(new URL('_redirects', dir), lines.join('\n') + '\n');
         logger.info(`wrote _redirects (${lines.length} rules)`);
       },

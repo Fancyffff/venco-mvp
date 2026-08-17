@@ -452,22 +452,53 @@ const educationCards = site.education.map((e) => ({
   @media (max-width: 700px) {
     .hero {
       min-height: auto;
-      align-items: flex-end;
+      align-items: center;
+      text-align: center;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.82) 52%, #fff 100%),
-        var(--hero) 68% center / cover no-repeat;
+        linear-gradient(180deg, rgba(247,234,223,.52) 0%, rgba(247,234,223,.9) 30%, rgba(247,234,223,.93) 72%, rgba(247,234,223,.99) 100%),
+        var(--hero) 72% center / cover no-repeat;
+      border-bottom: 1px solid var(--warm-deep);
     }
-    .hero-inner { padding: 130px 0 28px; }
+    .hero-inner { padding: 44px 14px 40px; }
     .hero-copy {
-      background: rgba(255,255,255,.96);
-      border-radius: 18px;
-      padding: 20px 16px;
-      box-shadow: var(--shadow);
+      max-width: none;
+      background: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
     }
-    .hero p { font-size: 14px; }
-    .hero-actions { gap: 8px; }
+    .hero h1 {
+      font-size: clamp(1.85rem, 8vw, 2.3rem);
+      text-shadow: 0 1px 0 rgba(255,255,255,.6);
+    }
+    .hero p {
+      font-size: 14.5px;
+      color: var(--warm-ink);
+      margin-top: 12px;
+    }
+    .hero-actions {
+      gap: 10px;
+      margin-top: 24px;
+      justify-content: center;
+    }
     .hero-actions .wa-btn,
-    .hero-actions .ghost { flex: 1 1 auto; }
+    .hero-actions .ghost {
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 50px;
+      font-size: 14.5px;
+      font-weight: 700;
+      padding: 0 12px;
+    }
+    .hero-actions .wa-btn {
+      box-shadow: 0 6px 18px rgba(0, 150, 170, .28);
+    }
+    .hero-actions .ghost {
+      background: rgba(255,255,255,.62);
+      border: 1px solid var(--warm-line);
+      color: var(--warm-ink);
+      box-shadow: 0 4px 14px rgba(140, 105, 70, .12);
+    }
     .section { padding: 44px 0; }
     .section-head { flex-direction: column; align-items: start; gap: 10px; margin-bottom: 18px; }
     .service-grid { grid-template-columns: 1fr 1fr; gap: 10px; }

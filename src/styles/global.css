@@ -8,6 +8,10 @@
   --bg: #ffffff;
   --panel: #ffffff;
   --soft: #f5fafb;
+  --warm: #f7eadf;
+  --warm-deep: #f0dcc9;
+  --warm-line: rgba(190, 155, 120, 0.32);
+  --warm-ink: #4a3f36;
   --action: linear-gradient(90deg, #50dde4 0%, #c7f0ff 100%);
   --shadow: 0 10px 30px rgba(0, 40, 50, 0.08);
   --radius: 14px;

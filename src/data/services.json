@@ -48,13 +48,8 @@
     "doctorIds": [
       "doctor-lau-shing-chi",
       "doctor-li-nga-wai",
-      "doctor-but-wai-man",
-      "doctor-yu-wai-ling",
       "doctor-lau-ka-fai",
-      "doctor-lau-tze-kin",
-      "doctor-lo-fai-man",
-      "doctor-ng-sui-fun",
-      "doctor-cheung-sing-tak"
+      "doctor-yu-wai-ling"
     ]
   },
   {
@@ -395,7 +390,8 @@
     ],
     "doctorIds": [
       "doctor-lo-fai-man",
-      "doctor-chu-wing-yiu"
+      "doctor-chu-wing-yiu",
+      "doctor-lau-tze-kin"
     ]
   },
   {

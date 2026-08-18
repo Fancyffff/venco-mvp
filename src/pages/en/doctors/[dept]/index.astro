@@ -1,38 +1,23 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import doctors from '../../../../data/doctors.json';
 import services from '../../../../data/services.json';
 import site from '../../../../data/site.json';
 import { t, deptTitleEn, serviceDesc } from '../../../../lib/i18n';
+import { activeDepartments, departmentOrder, deptTitleZh, doctorsInDept } from '../../../../lib/departments';
 
 const ui = t('en');
 
-const departmentOrder = [
-  'general',
-  'respiratory',
-  'endocrine',
-  'genetics',
-  'surgery',
-  'neuro',
-  'obstetrics',
-  'psychology',
-];
-
 export function getStaticPaths() {
-  const ids = [...new Set(doctors.map((d) => d.department))];
-  return ids.map((dept) => {
-    const list = doctors.filter((d) => d.department === dept);
-    return {
-      params: { dept },
-      props: {
-        department: {
-          id: dept,
-          title: list[0].departmentTitle,
-          doctors: list,
-        },
+  return activeDepartments().map(({ id, doctors: list }) => ({
+    params: { dept: id },
+    props: {
+      department: {
+        id,
+        title: deptTitleZh(id),
+        doctors: list,
       },
-    };
-  });
+    },
+  }));
 }
 
 const { department } = Astro.props;
@@ -41,9 +26,9 @@ const relatedService = services.find((s) => s.id === department.id);
 const siblings = departmentOrder
   .filter((id) => id !== department.id)
   .map((id) => {
-    const list = doctors.filter((d) => d.department === id);
+    const list = doctorsInDept(id);
     if (!list.length) return null;
-    return { id, title: deptTitleEn[id] || list[0].departmentTitle, count: list.length };
+    return { id, title: deptTitleEn[id] || deptTitleZh(id), count: list.length };
   })
   .filter(Boolean)
   .slice(0, 6);

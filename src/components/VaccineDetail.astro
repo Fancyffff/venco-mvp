@@ -72,6 +72,29 @@ const kindLabel = { check: '健康檢查', shot: '注射疫苗', oral: '口服�
             </tbody>
           </table>
         </div>
+
+        {/* 手機上表格會被切掉，改成按月齡拆開的卡片，一眼看得全，不用左右滑 */}
+        <div class="plan-cards">
+          {p.ages.map((age, ci) => {
+            const hits = p.rows.filter((r) => r.cells[ci]);
+            return (
+              <div class="pc">
+                <p class="pc-age">{age}</p>
+                {hits.length > 0 ? (
+                  <ul>
+                    {hits.map((r) => (
+                      <li>
+                        <span class:list={['dot', `is-${r.cells[ci]}`]} aria-hidden="true"></span>
+                        <span>{r.item}</span>
+                        <em>{kindLabel[r.cells[ci]]}</em>
+                      </li>
+                    ))}
+                  </ul>
+                ) : <p class="pc-none">此階段沒有安排</p>}
+              </div>
+            );
+          })}
+        </div>
       </div>
     ))}
   </div>
@@ -89,7 +112,9 @@ const kindLabel = { check: '健康檢查', shot: '注射疫苗', oral: '口服�
 <section class="v-block" id="diseases">
   <h2>{data.diseases.title}</h2>
   <p class="lead">{data.diseases.lead}</p>
-  <div class="t-scroll">
+  <details class="fold">
+    <summary>{`查看全部 ${data.diseases.rows.length} 種傳染病與對應疫苗`}</summary>
+    <div class="t-scroll">
     <table class="disease">
       <thead>
         <tr><th scope="col">傳染病</th><th scope="col">後果</th><th scope="col">疫苗針</th></tr>
@@ -104,7 +129,8 @@ const kindLabel = { check: '健康檢查', shot: '注射疫苗', oral: '口服�
         ))}
       </tbody>
     </table>
-  </div>
+    </div>
+  </details>
 </section>
 
 <section class="v-block" id="aftercare">
@@ -127,8 +153,9 @@ const kindLabel = { check: '健康檢查', shot: '注射疫苗', oral: '口服�
   <h2>{data.schedule.title}</h2>
   <p class="lead">{data.schedule.lead}</p>
 
-  <h3 class="sub">{data.schedule.gov.title}</h3>
-  <div class="t-scroll">
+  <details class="fold">
+    <summary>{data.schedule.gov.title}</summary>
+    <div class="t-scroll">
     <table class="sched">
       <thead><tr><th scope="col">年齡</th><th scope="col">接種疫苗</th></tr></thead>
       <tbody>
@@ -137,10 +164,12 @@ const kindLabel = { check: '健康檢查', shot: '注射疫苗', oral: '口服�
         ))}
       </tbody>
     </table>
-  </div>
+    </div>
+  </details>
 
-  <h3 class="sub">{data.schedule.private.title}</h3>
-  <div class="t-scroll">
+  <details class="fold">
+    <summary>{data.schedule.private.title}</summary>
+    <div class="t-scroll">
     <table class="sched">
       <thead>
         <tr>
@@ -168,7 +197,8 @@ const kindLabel = { check: '健康檢查', shot: '注射疫苗', oral: '口服�
         ))}
       </tbody>
     </table>
-  </div>
+    </div>
+  </details>
 
   <p class="disclaimer">{data.disclaimer}</p>
 </section>
@@ -229,27 +259,49 @@ const kindLabel = { check: '健康檢查', shot: '注射疫苗', oral: '口服�
   .is-shot .dot, .dot.is-shot { background: #35b37e; }
   .is-oral .dot, .dot.is-oral { background: #e0559a; }
 
+  .plan-cards { display: none; }
+  .pc {
+    border: 1px solid var(--line); border-radius: 14px;
+    background: #fff; padding: 12px 14px;
+  }
+  .pc-age {
+    margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--cyan-hover);
+  }
+  .pc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+  .pc li { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #223; }
+  .pc li em { margin-left: auto; font-style: normal; font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .pc-none { margin: 0; font-size: 13px; color: var(--muted); }
+
   .legend { display: flex; flex-wrap: wrap; gap: 16px; list-style: none; margin: 14px 0 10px; padding: 0; }
   .legend li { display: flex; align-items: center; gap: 7px; font-size: 13.5px; color: #445; }
   .notes { margin: 0; padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+
+  details.fold { margin-bottom: 12px; }
+  details.fold .t-scroll { border: 0; border-radius: 0; border-top: 1px solid var(--line); }
 
   .disease .vx { color: var(--cyan-hover); font-weight: 600; }
   .disease td { line-height: 1.7; }
 
   .acc { display: grid; gap: 10px; }
-  .acc details { border: 1px solid var(--line); border-radius: 16px; background: #fff; overflow: hidden; }
-  .acc summary {
+  .acc details,
+  details.fold { border: 1px solid var(--line); border-radius: 16px; background: #fff; overflow: hidden; }
+  .acc summary,
+  details.fold > summary {
     list-style: none; cursor: pointer;
     padding: 15px 44px 15px 18px; position: relative;
     font-size: 15.5px; font-weight: 600; color: #223;
   }
-  .acc summary::-webkit-details-marker { display: none; }
-  .acc summary::after {
+  .acc summary::-webkit-details-marker,
+  details.fold > summary::-webkit-details-marker { display: none; }
+  .acc summary::after,
+  details.fold > summary::after {
     content: "＋"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
     color: var(--cyan); font-size: 17px;
   }
-  .acc details[open] summary { background: var(--cyan-soft); color: var(--cyan-hover); }
-  .acc details[open] summary::after { content: "－"; }
+  .acc details[open] summary,
+  details.fold[open] > summary { background: var(--cyan-soft); color: var(--cyan-hover); }
+  .acc details[open] summary::after,
+  details.fold[open] > summary::after { content: "－"; }
   .acc-body { padding: 14px 18px 18px; }
   .acc-body p { margin: 0 0 10px; color: #445; font-size: 14px; line-height: 1.7; }
   .acc-body ol { margin: 0; padding-left: 22px; }
@@ -273,9 +325,14 @@ const kindLabel = { check: '健康檢查', shot: '注射疫苗', oral: '口服�
     .v-intro { padding: 16px; }
     .v-intro p { font-size: 14.5px; }
     .v-block { margin-bottom: 36px; }
+    /* 三張計劃表在手機上一律用卡片，不用被切掉的寬表格 */
+    .tab-panel .t-scroll { display: none; }
+    .plan-cards { display: grid; gap: 10px; }
+
     th, td { padding: 9px 10px; }
     table { font-size: 13px; }
-    .acc summary { font-size: 14.5px; padding: 13px 40px 13px 14px; }
+    .acc summary,
+    details.fold > summary { font-size: 14.5px; padding: 13px 40px 13px 14px; }
     .acc-body { padding: 12px 14px 16px; }
   }
 </style>

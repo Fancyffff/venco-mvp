@@ -17,7 +17,8 @@
       "卡迪夫大學實用皮膚科深造文憑"
     ],
     "department": "general",
-    "departmentTitle": "一般兒科"
+    "departmentTitle": "一般兒科",
+    "alsoIn": []
   },
   {
     "id": "doctor-lau-ka-fai",
@@ -39,7 +40,10 @@
       "香港醫學專科學院院士（兒科）"
     ],
     "department": "respiratory",
-    "departmentTitle": "兒科呼吸系統"
+    "departmentTitle": "兒科呼吸系統",
+    "alsoIn": [
+      "general"
+    ]
   },
   {
     "id": "doctor-but-wai-man",
@@ -59,7 +63,8 @@
       "愛爾蘭皇家醫學院兒科文憑"
     ],
     "department": "endocrine",
-    "departmentTitle": "兒童內分泌科"
+    "departmentTitle": "兒童內分泌科",
+    "alsoIn": []
   },
   {
     "id": "doctor-yu-wai-ling",
@@ -77,7 +82,10 @@
       "香港醫學專科學院院士（兒科）"
     ],
     "department": "respiratory",
-    "departmentTitle": "兒科呼吸系統"
+    "departmentTitle": "兒科呼吸系統",
+    "alsoIn": [
+      "general"
+    ]
   },
   {
     "id": "doctor-lau-tze-kin",
@@ -96,8 +104,9 @@
       "英國皇家婦產科學院院士",
       "香港醫學專科學院院士（婦產科）"
     ],
-    "department": "obstetrics",
-    "departmentTitle": "婦產科"
+    "department": "genetics",
+    "departmentTitle": "臨床遺傳科",
+    "alsoIn": []
   },
   {
     "id": "doctor-li-nga-wai",
@@ -116,7 +125,8 @@
       "香港醫學專科學院院士（兒科）"
     ],
     "department": "general",
-    "departmentTitle": "一般兒科"
+    "departmentTitle": "一般兒科",
+    "alsoIn": []
   },
   {
     "id": "doctor-lo-fai-man",
@@ -135,7 +145,8 @@
       "香港醫學專科學院院士（兒科）"
     ],
     "department": "genetics",
-    "departmentTitle": "臨床遺傳科"
+    "departmentTitle": "臨床遺傳科",
+    "alsoIn": []
   },
   {
     "id": "doctor-ng-sui-fun",
@@ -155,7 +166,8 @@
       "愛爾蘭皇家醫學院兒科文憑"
     ],
     "department": "neuro",
-    "departmentTitle": "兒童腦神經"
+    "departmentTitle": "兒童腦神經",
+    "alsoIn": []
   },
   {
     "id": "doctor-cheung-sing-tak",
@@ -173,7 +185,8 @@
       "香港醫學專科學院院士(外科)"
     ],
     "department": "surgery",
-    "departmentTitle": "兒童外科"
+    "departmentTitle": "兒童外科",
+    "alsoIn": []
   },
   {
     "id": "doctor-chu-wing-yiu",
@@ -189,7 +202,8 @@
       "FHGSA (Genetic Counselling)"
     ],
     "department": "genetics",
-    "departmentTitle": "臨床遺傳科"
+    "departmentTitle": "臨床遺傳科",
+    "alsoIn": []
   },
   {
     "id": "doctor-heiki-lo",
@@ -210,6 +224,7 @@
       "香港社會科學心理學學士"
     ],
     "department": "psychology",
-    "departmentTitle": "兒童心理科"
+    "departmentTitle": "兒童心理科",
+    "alsoIn": []
   }
 ]

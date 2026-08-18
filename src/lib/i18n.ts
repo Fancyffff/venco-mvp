@@ -187,7 +187,6 @@ export const deptTitleEn: Record<string, string> = {
   genetics: 'Clinical Genetics',
   surgery: 'Paediatric Surgery',
   neuro: 'Neurology',
-  obstetrics: 'Obstetrics & Gynaecology',
   psychology: 'Child Psychology',
 };
 

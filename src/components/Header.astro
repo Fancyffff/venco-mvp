@@ -4,6 +4,7 @@ import doctors from '../data/doctors.json';
 import education from '../data/education.json';
 import educationCategories from '../data/education-categories.json';
 import site from '../data/site.json';
+import { activeDepartments, deptTitleZh } from '../lib/departments';
 import {
   getLocale,
   t,
@@ -21,24 +22,11 @@ const lp = (p = '') => localePath(locale, p);
 const otherLocale = locale === 'en' ? 'zh' : 'en';
 const otherHref = switchLocalePath(path, otherLocale);
 const isHome = path === lp() || path === lp().replace(/\/$/, '');
-const departmentOrder = [
-  'general',
-  'respiratory',
-  'endocrine',
-  'genetics',
-  'surgery',
-  'neuro',
-  'obstetrics',
-  'psychology',
-];
-const doctorGroups = departmentOrder
-  .map((id) => {
-    const list = doctors.filter((d) => d.department === id);
-    if (!list.length) return null;
-    const title = locale === 'en' ? (deptTitleEn[id] || list[0].departmentTitle) : list[0].departmentTitle;
-    return { id, title, doctors: list };
-  })
-  .filter(Boolean);
+const doctorGroups = activeDepartments().map(({ id, doctors: list }) => ({
+  id,
+  title: locale === 'en' ? deptTitleEn[id] || deptTitleZh(id) : deptTitleZh(id),
+  doctors: list,
+}));
 
 const eduGroups = educationCategories
   .map((c) => {
@@ -49,7 +37,7 @@ const eduGroups = educationCategories
   })
   .filter(Boolean);
 ---
-<header class="header">
+<header class:list={['header', `locale-${locale}`]}>
   <div class="container header-inner">
     <a class="logo" href={lp()} aria-label={locale === 'en' ? site.nameEn : site.name}>
       <img src="/assets/logo.png" alt={locale === 'en' ? site.nameEn : site.name} />
@@ -328,7 +316,7 @@ const eduGroups = educationCategories
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    min-width: 0;
+    flex-shrink: 0;
     gap: 0;
     margin-left: auto;
     margin-right: 8px;
@@ -338,9 +326,9 @@ const eduGroups = educationCategories
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 10px 11px;
+    padding: 10px clamp(5px, calc(1.1vw - 3.5px), 11px);
     color: #444;
-    font-size: 15px;
+    font-size: clamp(13px, calc(0.6vw + 7px), 15px);
     font-weight: 500;
     white-space: nowrap;
     flex-shrink: 0;
@@ -351,8 +339,8 @@ const eduGroups = educationCategories
   .nav-link.active::after {
     content: "";
     position: absolute;
-    left: 11px;
-    right: 11px;
+    left: clamp(5px, calc(1.1vw - 3.5px), 11px);
+    right: clamp(5px, calc(1.1vw - 3.5px), 11px);
     bottom: 2px;
     height: 3px;
     border-radius: 999px;
@@ -482,7 +470,7 @@ const eduGroups = educationCategories
     padding: 6px 10px 6px 6px; border-radius: 999px; background: #f4fafb; font-size: 13px;
   }
   .l3-doctor-list img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
-  .actions { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+  .actions { display: flex; align-items: center; gap: clamp(6px, 0.8vw, 10px); flex: 0 0 auto; }
   .search-btn {
     display: inline-flex;
     align-items: center;
@@ -501,7 +489,7 @@ const eduGroups = educationCategories
     display: inline-flex;
     align-items: center;
     min-height: 36px;
-    padding: 4px 14px;
+    padding: 4px clamp(8px, 1vw, 14px);
     border-radius: 999px;
     border: 1px solid var(--line);
     background: #f7fafb;
@@ -511,7 +499,7 @@ const eduGroups = educationCategories
   }
   .lang-trigger:hover { border-color: var(--cyan); color: var(--cyan-hover); }
   .lang-swap { color: var(--muted); font-weight: 500; }
-  .header-wa { min-height: 48px; padding-inline: 28px; }
+  .header-wa { min-height: 48px; padding-inline: clamp(12px, 2vw, 28px); }
   .mobile-toggle {
     display: none;
     border: 1px solid var(--line);
@@ -637,21 +625,25 @@ const eduGroups = educationCategories
     flex: 0 0 auto;
   }
 
-  /* 窄屏笔记本（含 1366 屏开 125% 缩放）先收紧桌面顶栏，而不是直接切手机菜单 */
+  /* 窄屏笔记本（含 1366 屏开 125% 缩放）先收紧桌面顶栏，而不是直接切手机菜单。
+     字号与内距用 clamp() 平滑收缩，这里只放不能平滑处理的开关。 */
   @media (max-width: 1280px) {
     .header-inner { padding-left: 12px; }
-    .nav-link { padding: 9px 8px; font-size: 14px; }
-    .nav-link.active::after { left: 8px; right: 8px; }
     .lang-swap { display: none; }
-    .header-wa { padding-inline: 18px; }
   }
-  @media (max-width: 1120px) {
-    .nav-link { padding: 8px 6px; font-size: 13.5px; }
-    .nav-link.active::after { left: 6px; right: 6px; }
+  @media (max-width: 1180px) {
     .search-text { display: none; }
     .search-btn { width: 36px; height: 36px; min-height: 36px; padding: 0; justify-content: center; border-radius: 12px; }
-    .lang-trigger { padding: 4px 10px; }
-    .header-wa { padding-inline: 14px; font-size: 13px; }
+  }
+
+  /* 英文菜单文字比中文长得多，1140px 以下就换手机抽屉；中文能撑到 1000px。 */
+  @media (max-width: 1140px) {
+    .header.locale-en .header-inner { width: min(1180px, calc(100% - 40px)); min-height: var(--header-h); padding-left: 0; }
+    .header.locale-en .nav,
+    .header.locale-en .lang-desk { display: none; }
+    .header.locale-en .mobile-toggle { display: inline-flex; }
+    .header.locale-en .logo img { height: 36px; }
+    .header.locale-en .header-wa { min-width: 0; padding: 0 12px; }
   }
 
   @media (max-width: 1000px) {

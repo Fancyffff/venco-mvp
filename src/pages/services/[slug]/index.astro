@@ -35,7 +35,9 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
     </section>
   )}
 
-  {service.items.length > 0 ? (
+  {/* 疫苗頁的細項只有「兒童疫苗接種」一項，和頁面標題重複，上面的疫苗計劃已經說得更清楚，所以不顯示。
+      其他專科（呼吸系統 10 項、外科 10 項等）仍然要顯示。 */}
+  {service.items.length > 0 && service.id !== 'vaccine' ? (
     <section class="container block">
       <div class="block-head">
         <h2>服務細項</h2>

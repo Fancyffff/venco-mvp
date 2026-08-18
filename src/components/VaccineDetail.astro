@@ -242,6 +242,14 @@ for (const row of data.diseases.rows) {
    * 每個板塊認領一個顏色，底色一律壓到 8-14% 透明度當淺底，深色只用在標題與圓點。
    * 紅色刻意不用——醫療頁面上紅色會被讀成「警告」。
    */
+  /*
+   * ══ B 版調色盤 ══
+   * 客戶的 logo 刻意做成五彩，所以這裡讓幾個顏色平起平坐，不是只拿青色當主色。
+   * 顏色值取樣自 public/assets/logo.png，用 R,G,B 三個數字寫（要配 rgba() 調透明度）。
+   *
+   * 想換某一塊的顏色：把下面「板塊認領」裡那一行的 --l-xxx 換成別的就行，
+   * 深色文字 --accent-deep 記得跟著換（要夠深才看得清）。
+   */
   .theme-b {
     --l-cyan: 0, 168, 192;
     --l-blue: 168, 216, 240;
@@ -249,6 +257,7 @@ for (const row of data.diseases.rows) {
     --l-green: 0, 132, 96;
     --l-orange: 240, 132, 24;
   }
+  /* ── 板塊認領：一塊一個顏色 ── */
   .theme-b #plans {
     --accent: rgb(var(--l-cyan));
     --accent-deep: #00707f;
@@ -297,9 +306,17 @@ for (const row of data.diseases.rows) {
   }
   .theme-b .lead { color: #4a5a5e; }
 
+  /* 開場白這塊單獨一個顏色，換 --intro-rgb 就整塊變色 */
   .theme-b .v-intro {
-    background: linear-gradient(135deg, rgba(var(--l-cyan), .20), rgba(var(--l-blue), .55) 55%, rgba(var(--l-green), .14));
-    border: 1px solid rgba(var(--l-cyan), .22);
+    /* 想換開場白的顏色，只改這兩行：
+       可選 --l-cyan / --l-blue / --l-yellow / --l-green / --l-orange，
+       strength 是濃度，淡色（blue/yellow）可以到 .55，深色（green/cyan）建議 .16 以內 */
+    --intro-rgb: var(--l-yellow);
+    --intro-strength: .30;
+    background: linear-gradient(135deg,
+      rgba(var(--intro-rgb), calc(var(--intro-strength) * .45)),
+      rgba(var(--intro-rgb), var(--intro-strength)));
+    border: 1px solid rgba(var(--intro-rgb), calc(var(--intro-strength) * .55));
   }
 
   /* 跳轉按鈕直接染成各自板塊的顏色，不用等滑鼠移上去 */

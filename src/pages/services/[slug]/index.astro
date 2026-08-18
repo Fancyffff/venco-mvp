@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import services from '../../../data/services.json';
 import doctors from '../../../data/doctors.json';
 import site from '../../../data/site.json';
+import VaccineDetail from '../../../components/VaccineDetail.astro';
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { slug: s.id }, props: { service: s } }));
@@ -27,6 +28,12 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
       <p>{service.desc}</p>
     </div>
   </section>
+
+  {service.id === 'vaccine' && (
+    <section class="container block">
+      <VaccineDetail />
+    </section>
+  )}
 
   {service.items.length > 0 ? (
     <section class="container block">

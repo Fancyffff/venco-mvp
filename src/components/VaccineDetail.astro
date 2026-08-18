@@ -1,0 +1,303 @@
+---
+/**
+ * 兒童疫苗接種頁的專屬內容。只有 services/[slug] 的 vaccine 這一頁會用到。
+ * 所有文字逐字來自診所《強健寶寶 防疫注射》單張，存在 src/data/vaccine.json，
+ * 改內容請改 json，不要在這裡寫死。
+ */
+import data from '../data/vaccine.json';
+
+const kindLabel = { check: '健康檢查', shot: '注射疫苗', oral: '口服疫苗' };
+---
+<nav class="jump" aria-label="本頁內容">
+  <a href="#plans">疫苗計劃</a>
+  <a href="#diseases">可預防的傳染病</a>
+  <a href="#aftercare">注射後護理</a>
+  <a href="#schedule">接種時間表</a>
+</nav>
+
+<section class="v-intro">
+  <p>{data.intro}</p>
+</section>
+
+<section class="v-block" id="plans">
+  <h2>{data.plans.title}</h2>
+  <p class="lead">{data.plans.lead}</p>
+
+  <div class="plan-tabs" data-plan-tabs>
+    <div class="tab-row" role="tablist" aria-label={data.plans.title}>
+      {data.plans.list.map((p, i) => (
+        <button
+          type="button"
+          role="tab"
+          class:list={['tab', { on: i === 0 }]}
+          data-tab={p.id}
+          id={`tab-${p.id}`}
+          aria-controls={`panel-${p.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+        >{p.name}</button>
+      ))}
+    </div>
+
+    {data.plans.list.map((p, i) => (
+      <div
+        class:list={['tab-panel', { on: i === 0 }]}
+        data-plan-panel={p.id}
+        id={`panel-${p.id}`}
+        role="tabpanel"
+        aria-labelledby={`tab-${p.id}`}
+        hidden={i !== 0}
+      >
+        <div class="t-scroll">
+          <table class="plan">
+            <caption class="sr-only">{p.name}</caption>
+            <thead>
+              <tr>
+                <th scope="col">年齡</th>
+                {p.ages.map((a) => <th scope="col">{a}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {p.rows.map((r) => (
+                <tr>
+                  <th scope="row">{r.item}</th>
+                  {r.cells.map((c, ci) => (
+                    <td class:list={[c && `is-${c}`]}>
+                      {c ? <span class="dot" title={`${p.ages[ci]}：${kindLabel[c]}`}>
+                        <span class="sr-only">{`${p.ages[ci]}　${kindLabel[c]}`}</span>
+                      </span> : <span class="sr-only">—</span>}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <ul class="legend">
+    {data.plans.legend.map((l) => (
+      <li><span class:list={['dot', `is-${l.kind}`]}></span>{l.label}</li>
+    ))}
+  </ul>
+  <ul class="notes">
+    {data.plans.footnotes.map((f) => <li>{f}</li>)}
+  </ul>
+</section>
+
+<section class="v-block" id="diseases">
+  <h2>{data.diseases.title}</h2>
+  <p class="lead">{data.diseases.lead}</p>
+  <div class="t-scroll">
+    <table class="disease">
+      <thead>
+        <tr><th scope="col">傳染病</th><th scope="col">後果</th><th scope="col">疫苗針</th></tr>
+      </thead>
+      <tbody>
+        {data.diseases.rows.map((r) => (
+          <tr>
+            <th scope="row">{r.disease}</th>
+            <td>{r.effect}</td>
+            <td class="vx">{r.vaccine}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="v-block" id="aftercare">
+  <h2>{data.aftercare.title}</h2>
+  <p class="lead">{data.aftercare.lead}</p>
+  <div class="acc">
+    {data.aftercare.groups.map((g, i) => (
+      <details open={i === 0}>
+        <summary>{g.name}</summary>
+        <div class="acc-body">
+          <p>{g.intro}</p>
+          <ol>{g.points.map((pt) => <li>{pt}</li>)}</ol>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<section class="v-block" id="schedule">
+  <h2>{data.schedule.title}</h2>
+  <p class="lead">{data.schedule.lead}</p>
+
+  <h3 class="sub">{data.schedule.gov.title}</h3>
+  <div class="t-scroll">
+    <table class="sched">
+      <thead><tr><th scope="col">年齡</th><th scope="col">接種疫苗</th></tr></thead>
+      <tbody>
+        {data.schedule.gov.rows.map((r) => (
+          <tr><th scope="row">{r.age}</th><td>{r.text ? r.text.split('\n').map((l, i) => <span class="ln">{l}</span>) : <span class="none">—</span>}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub">{data.schedule.private.title}</h3>
+  <div class="t-scroll">
+    <table class="sched">
+      <thead>
+        <tr>
+          <th scope="col">年齡</th>
+          {data.schedule.private.columns.map((c) => <th scope="col">{c}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {data.schedule.private.rows.map((r) => (
+          <>
+            {r.flexible || r.simple ? (
+              <tr>
+                <th scope="row" rowspan={r.both ? 2 : 1}>{r.age}</th>
+                <td>{(r.flexible || '').split('\n').map((l) => <span class="ln">{l}</span>)}</td>
+                <td>{(r.simple || '').split('\n').map((l) => <span class="ln">{l}</span>)}</td>
+              </tr>
+            ) : null}
+            {r.both ? (
+              <tr>
+                {!(r.flexible || r.simple) && <th scope="row">{r.age}</th>}
+                <td colspan="2" class="span">{r.both.split('\n').map((l) => <span class="ln">{l}</span>)}</td>
+              </tr>
+            ) : null}
+          </>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="disclaimer">{data.disclaimer}</p>
+</section>
+
+<style>
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .jump {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 0 0 28px; padding-bottom: 20px; border-bottom: 1px solid var(--line);
+  }
+  .jump a {
+    display: inline-flex; align-items: center; min-height: 38px; padding: 0 15px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: #fff; color: #334; font-size: 14px; font-weight: 600;
+  }
+  .jump a:hover { border-color: var(--cyan); color: var(--cyan-hover); background: var(--cyan-soft); }
+
+  .v-intro {
+    margin: 0 0 36px; padding: 20px 22px;
+    background: var(--cyan-soft); border-radius: 18px;
+  }
+  .v-intro p { margin: 0; color: #33474b; line-height: 1.9; font-size: 15.5px; }
+
+  .v-block { margin: 0 0 48px; scroll-margin-top: 96px; }
+  .v-block h2 { margin: 0 0 8px; font-size: clamp(1.3rem, 2.6vw, 1.6rem); }
+  .lead { margin: 0 0 18px; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
+  .sub { margin: 28px 0 10px; font-size: 15px; color: var(--cyan-hover); }
+
+  .tab-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .tab {
+    min-height: 42px; padding: 0 20px; border-radius: 999px;
+    border: 1px solid var(--line); background: #fff;
+    font-size: 14.5px; font-weight: 600; color: #334;
+  }
+  .tab:hover { border-color: var(--cyan); color: var(--cyan-hover); }
+  .tab.on { background: var(--cyan); border-color: var(--cyan); color: #fff; }
+  .tab-panel[hidden] { display: none; }
+
+  /* 表格較寬，讓它自己橫向捲動，不要撐破頁面 */
+  .t-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 16px; border: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; background: #fff; font-size: 14px; }
+  caption { text-align: left; }
+  th, td { padding: 10px 12px; border-bottom: 1px solid #eef3f5; text-align: left; vertical-align: top; }
+  thead th { background: var(--soft); font-size: 13px; color: #445; white-space: nowrap; position: sticky; top: 0; }
+  tbody th { font-weight: 600; color: #223; white-space: nowrap; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+
+  .plan td { text-align: center; }
+  .plan thead th:not(:first-child) { text-align: center; }
+  .dot {
+    display: inline-block; width: 15px; height: 15px; border-radius: 50%;
+    background: #dfe8ea;
+  }
+  .is-check .dot, .dot.is-check { background: var(--cyan); }
+  .is-shot .dot, .dot.is-shot { background: #35b37e; }
+  .is-oral .dot, .dot.is-oral { background: #e0559a; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; list-style: none; margin: 14px 0 10px; padding: 0; }
+  .legend li { display: flex; align-items: center; gap: 7px; font-size: 13.5px; color: #445; }
+  .notes { margin: 0; padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+
+  .disease .vx { color: var(--cyan-hover); font-weight: 600; }
+  .disease td { line-height: 1.7; }
+
+  .acc { display: grid; gap: 10px; }
+  .acc details { border: 1px solid var(--line); border-radius: 16px; background: #fff; overflow: hidden; }
+  .acc summary {
+    list-style: none; cursor: pointer;
+    padding: 15px 44px 15px 18px; position: relative;
+    font-size: 15.5px; font-weight: 600; color: #223;
+  }
+  .acc summary::-webkit-details-marker { display: none; }
+  .acc summary::after {
+    content: "＋"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+    color: var(--cyan); font-size: 17px;
+  }
+  .acc details[open] summary { background: var(--cyan-soft); color: var(--cyan-hover); }
+  .acc details[open] summary::after { content: "－"; }
+  .acc-body { padding: 14px 18px 18px; }
+  .acc-body p { margin: 0 0 10px; color: #445; font-size: 14px; line-height: 1.7; }
+  .acc-body ol { margin: 0; padding-left: 22px; }
+  .acc-body li { margin-bottom: 8px; color: #334; font-size: 14px; line-height: 1.8; }
+
+  .sched .ln { display: block; }
+  .sched .ln + .ln { margin-top: 3px; }
+  .sched .none { color: #b9c6c9; }
+  .sched .span { background: #fbfdfd; }
+
+  .disclaimer {
+    margin: 20px 0 0; padding: 14px 16px;
+    background: var(--soft); border-left: 3px solid var(--cyan);
+    border-radius: 0 12px 12px 0;
+    color: var(--muted); font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 700px) {
+    .jump { gap: 6px; }
+    .jump a { min-height: 34px; padding: 0 12px; font-size: 13px; }
+    .v-intro { padding: 16px; }
+    .v-intro p { font-size: 14.5px; }
+    .v-block { margin-bottom: 36px; }
+    th, td { padding: 9px 10px; }
+    table { font-size: 13px; }
+    .acc summary { font-size: 14.5px; padding: 13px 40px 13px 14px; }
+    .acc-body { padding: 12px 14px 16px; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-plan-tabs]').forEach((wrap) => {
+    const tabs = [...wrap.querySelectorAll('[data-tab]')];
+    const panels = [...wrap.querySelectorAll('[data-plan-panel]')];
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const id = tab.getAttribute('data-tab');
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.classList.toggle('on', on);
+          t.setAttribute('aria-selected', String(on));
+        });
+        panels.forEach((p) => {
+          const on = p.getAttribute('data-plan-panel') === id;
+          p.classList.toggle('on', on);
+          p.toggleAttribute('hidden', !on);
+        });
+      });
+    });
+  });
+</script>

@@ -312,6 +312,7 @@ const eduGroups = educationCategories
     border-bottom: 1px solid rgba(217, 232, 236, 0.8);
   }
   .header-inner {
+    position: relative;
     width: min(1360px, calc(100% - 40px));
     padding-left: 30px;
     min-height: 82px;
@@ -322,12 +323,12 @@ const eduGroups = educationCategories
     flex-wrap: nowrap;
   }
   .logo { flex: 0 1 auto; min-width: 0; }
-  .logo img { height: 60px; width: auto; max-width: min(280px, 48vw); object-fit: contain; }
+  .logo img { height: clamp(40px, 4.2vw, 60px); width: auto; max-width: min(280px, 48vw, 100%); object-fit: contain; }
   .nav {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    flex-shrink: 0;
+    min-width: 0;
     gap: 0;
     margin-left: auto;
     margin-right: 8px;
@@ -364,14 +365,17 @@ const eduGroups = educationCategories
     border-top: 5px solid currentColor;
     opacity: .65;
   }
-  .nav-item { position: relative; flex-shrink: 0; }
+  /* 大菜单宽 860px，挂在单个菜单项上时窄屏笔记本会被裁掉，改挂在 .header-inner 上。
+     首页那个小菜单只有 240px，仍然挂在自己的菜单项上（.nav 的第一项）。 */
+  .nav-item { position: static; flex-shrink: 0; }
+  .nav-item:first-child { position: relative; }
   .mega {
     display: none;
     position: absolute;
     top: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-35%);
-    width: min(860px, calc(100vw - 32px));
+    right: 0;
+    left: auto;
+    width: min(860px, 100%);
     background: #fff;
     border: 1px solid var(--line);
     border-radius: 20px;
@@ -443,7 +447,8 @@ const eduGroups = educationCategories
   }
   .mega-simple {
     width: min(240px, calc(100vw - 32px));
-    transform: translateX(-20%);
+    right: auto;
+    left: 0;
     padding: 10px;
     display: none;
     grid-template-columns: 1fr;
@@ -632,7 +637,24 @@ const eduGroups = educationCategories
     flex: 0 0 auto;
   }
 
-  @media (max-width: 980px) {
+  /* 窄屏笔记本（含 1366 屏开 125% 缩放）先收紧桌面顶栏，而不是直接切手机菜单 */
+  @media (max-width: 1280px) {
+    .header-inner { padding-left: 12px; }
+    .nav-link { padding: 9px 8px; font-size: 14px; }
+    .nav-link.active::after { left: 8px; right: 8px; }
+    .lang-swap { display: none; }
+    .header-wa { padding-inline: 18px; }
+  }
+  @media (max-width: 1120px) {
+    .nav-link { padding: 8px 6px; font-size: 13.5px; }
+    .nav-link.active::after { left: 6px; right: 6px; }
+    .search-text { display: none; }
+    .search-btn { width: 36px; height: 36px; min-height: 36px; padding: 0; justify-content: center; border-radius: 12px; }
+    .lang-trigger { padding: 4px 10px; }
+    .header-wa { padding-inline: 14px; font-size: 13px; }
+  }
+
+  @media (max-width: 1000px) {
     .header-inner { width: min(1180px, calc(100% - 40px)); min-height: var(--header-h); padding-left: 0; }
     .nav { display: none; }
     .lang-desk { display: none; }

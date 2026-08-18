@@ -251,44 +251,110 @@ for (const row of data.diseases.rows) {
   }
   .theme-b #plans {
     --accent: rgb(var(--l-cyan));
-    --accent-deep: #007f92;
+    --accent-deep: #00707f;
     --accent-soft: rgba(var(--l-cyan), .10);
-    --accent-line: rgba(var(--l-cyan), .28);
+    --accent-wash: rgba(var(--l-cyan), .16);
+    --accent-line: rgba(var(--l-cyan), .34);
   }
   .theme-b #diseases {
     --accent: rgb(var(--l-green));
-    --accent-deep: #00684b;
+    --accent-deep: #005c43;
     --accent-soft: rgba(var(--l-green), .09);
-    --accent-line: rgba(var(--l-green), .24);
+    --accent-wash: rgba(var(--l-green), .14);
+    --accent-line: rgba(var(--l-green), .30);
   }
   .theme-b #aftercare {
     --accent: rgb(var(--l-orange));
-    --accent-deep: #b85f07;
+    --accent-deep: #a85606;
     --accent-soft: rgba(var(--l-orange), .11);
-    --accent-line: rgba(var(--l-orange), .26);
+    --accent-wash: rgba(var(--l-orange), .18);
+    --accent-line: rgba(var(--l-orange), .34);
   }
   .theme-b #schedule {
     --accent: #3d9ad4;
-    --accent-deep: #2f7ba9;
+    --accent-deep: #26688f;
     --accent-soft: rgba(var(--l-blue), .30);
-    --accent-line: rgba(61, 154, 212, .28);
+    --accent-wash: rgba(var(--l-blue), .45);
+    --accent-line: rgba(61, 154, 212, .36);
   }
-  /* 三種標記也換成 logo 色：檢查=青、注射=綠、口服=黃 */
   .theme-b { --oral: rgb(var(--l-yellow)); --shot: rgb(var(--l-green)); }
-  .theme-b .v-intro {
-    background: linear-gradient(135deg, rgba(var(--l-cyan), .12), rgba(var(--l-blue), .30));
+
+  /* 每個板塊整塊上色，顏色成片出現，而不是只描邊 */
+  .theme-b .v-block {
+    padding: 24px 22px 26px;
+    border-radius: 24px;
+    background: linear-gradient(170deg, var(--accent-wash) 0%, var(--accent-soft) 42%, #fff 100%);
+    border: 1px solid var(--accent-line);
   }
   .theme-b .v-block > h2 {
-    padding-left: 12px;
-    border-left: 4px solid var(--accent);
-    line-height: 1.35;
+    display: flex; align-items: center; gap: 10px;
+    color: var(--accent-deep);
   }
-  .theme-b .jump a:nth-child(1):hover { border-color: rgb(var(--l-cyan)); color: #007f92; background: rgba(var(--l-cyan), .10); }
-  .theme-b .jump a:nth-child(2):hover { border-color: rgb(var(--l-green)); color: #00684b; background: rgba(var(--l-green), .09); }
-  .theme-b .jump a:nth-child(3):hover { border-color: rgb(var(--l-orange)); color: #b85f07; background: rgba(var(--l-orange), .11); }
-  .theme-b .jump a:nth-child(4):hover { border-color: #3d9ad4; color: #2f7ba9; background: rgba(var(--l-blue), .30); }
-  .theme-b .pc { background: linear-gradient(160deg, var(--accent-soft), #fff 70%); border-color: var(--accent-line); }
-  .theme-b .disclaimer { background: rgba(var(--l-yellow), .12); border-left-color: rgb(var(--l-yellow)); }
+  .theme-b .v-block > h2::before {
+    content: ""; flex: 0 0 auto;
+    width: 10px; height: 26px; border-radius: 4px;
+    background: var(--accent);
+  }
+  .theme-b .lead { color: #4a5a5e; }
+
+  .theme-b .v-intro {
+    background: linear-gradient(135deg, rgba(var(--l-cyan), .20), rgba(var(--l-blue), .55) 55%, rgba(var(--l-green), .14));
+    border: 1px solid rgba(var(--l-cyan), .22);
+  }
+
+  /* 跳轉按鈕直接染成各自板塊的顏色，不用等滑鼠移上去 */
+  .theme-b .jump { border-bottom-color: rgba(var(--l-cyan), .22); }
+  .theme-b .jump a { border-width: 1.5px; font-weight: 700; }
+  .theme-b .jump a:nth-child(1) { border-color: rgba(var(--l-cyan), .45); color: #00707f; background: rgba(var(--l-cyan), .12); }
+  .theme-b .jump a:nth-child(2) { border-color: rgba(var(--l-green), .40); color: #005c43; background: rgba(var(--l-green), .10); }
+  .theme-b .jump a:nth-child(3) { border-color: rgba(var(--l-orange), .45); color: #a85606; background: rgba(var(--l-orange), .13); }
+  .theme-b .jump a:nth-child(4) { border-color: rgba(61, 154, 212, .45); color: #26688f; background: rgba(var(--l-blue), .40); }
+  .theme-b .jump a:nth-child(1):hover { background: rgba(var(--l-cyan), .24); }
+  .theme-b .jump a:nth-child(2):hover { background: rgba(var(--l-green), .20); }
+  .theme-b .jump a:nth-child(3):hover { background: rgba(var(--l-orange), .26); }
+  .theme-b .jump a:nth-child(4):hover { background: rgba(var(--l-blue), .70); }
+
+  /* 沒選中的分頁也帶淺色，選中的填滿 */
+  .theme-b .tab { background: rgba(255,255,255,.75); border-color: var(--accent-line); color: var(--accent-deep); }
+  .theme-b .tab.on { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 4px 14px var(--accent-soft); }
+
+  /* 折疊條收起時就有底色，不再是一排白盒子 */
+  .theme-b .acc details,
+  .theme-b details.fold {
+    background: rgba(255,255,255,.72);
+    border-color: var(--accent-line);
+  }
+  .theme-b .acc summary,
+  .theme-b details.fold > summary { color: var(--accent-deep); }
+  .theme-b .acc details[open],
+  .theme-b details.fold[open] { border-color: var(--accent); }
+  .theme-b .acc.inner { background: var(--accent-soft); }
+  .theme-b .vx-tags em { background: var(--accent-wash); color: var(--accent-deep); font-weight: 600; }
+  .theme-b .acc details[open] .vx-tags em { background: #fff; }
+
+  /* 月齡卡：標題掛一條色塊，一眼分得出段落 */
+  .theme-b .pc {
+    background: rgba(255,255,255,.86);
+    border-color: var(--accent-line);
+  }
+  .theme-b .pc-age {
+    display: inline-block;
+    padding: 4px 12px; margin-bottom: 10px;
+    border-radius: 999px;
+    background: var(--accent); color: #fff; font-size: 13px;
+  }
+  .theme-b thead th { background: var(--accent-wash); color: var(--accent-deep); }
+  .theme-b tbody th { color: #223; }
+  .theme-b .t-scroll { border-color: var(--accent-line); }
+  .theme-b .disclaimer {
+    background: rgba(var(--l-yellow), .20);
+    border-left-color: rgb(var(--l-yellow));
+    color: #6b5a2a;
+  }
+
+  @media (max-width: 700px) {
+    .theme-b .v-block { padding: 18px 14px 20px; border-radius: 20px; }
+  }
 
   .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;

@@ -22,7 +22,12 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-html, body { overflow-x: hidden; }
+/* body 用 clip 而不是 hidden：hidden 会让 body 变成一个滚动容器，
+   顶栏的 position: sticky 就跟着失效，长页面滚动时顶栏会整条滑走。 */
+html { overflow-x: hidden; }
+body { overflow-x: clip; }
+/* 页内锚点跳转时给固定顶栏留出空间，别把标题藏到顶栏底下。 */
+html { scroll-padding-top: calc(var(--header-h) + 24px); }
 body {
   margin: 0;
   font-family: var(--font);

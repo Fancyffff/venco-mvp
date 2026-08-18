@@ -32,9 +32,18 @@ const sleepApneaRedirects = Object.fromEntries(
   })
 );
 
+/** 婦產科科室已取消，刘子建医生改归臨床遺傳科，旧的科室页地址要接过去。 */
+const obstetricsRedirects = Object.fromEntries(
+  ['', 'en'].map((locale) => {
+    const base = locale ? `/${locale}` : '';
+    return [`${base}/doctors/obstetrics`, `${base}/doctors/genetics/`];
+  })
+);
+
 const redirects = {
   ...educationRedirects,
   ...sleepApneaRedirects,
+  ...obstetricsRedirects,
 };
 
 const cloudflareAssetRedirects = {

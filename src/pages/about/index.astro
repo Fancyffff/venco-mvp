@@ -50,6 +50,11 @@ const aboutRows = (site.about || []).map((text, i) => ({
             <p>{loc.address}</p>
             <p class="phone">{loc.phone}</p>
             {loc.fax && <p>傳真 {loc.fax}</p>}
+            {loc.whatsapp && (
+              <a class="wa-btn loc-wa" href={loc.whatsapp} target="_blank" rel="noreferrer">
+                <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約（{loc.whatsappDisplay}）
+              </a>
+            )}
             {loc.hoursRows && (
               <ul class="hours">
                 {loc.hoursRows.map((row) => (

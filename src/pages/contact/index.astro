@@ -51,14 +51,15 @@ import doctors from '../../data/doctors.json';
               <p>地址：{loc.address}</p>
               <p class="phone">電話：{loc.phone}</p>
               {loc.fax && <p>傳真：{loc.fax}</p>}
+              {loc.whatsapp && (
+                <a class="wa-btn loc-wa" href={loc.whatsapp} target="_blank" rel="noreferrer">
+                  <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約（{loc.whatsappDisplay}）
+                </a>
+              )}
             </div>
           </article>
         ))}
       </div>
-
-      <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
-        <img src="/assets/whatsapp.svg" alt="" /> WhatsApp 預約
-      </a>
     </div>
   </section>
 </BaseLayout>

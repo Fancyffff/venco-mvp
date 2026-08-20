@@ -59,14 +59,15 @@ const locations = site.locations.map((loc, i) => ({
               <p>Address: {loc.address}</p>
               <p class="phone">Tel: {loc.phone}</p>
               {loc.fax && <p>Fax: {loc.fax}</p>}
+              {loc.whatsapp && (
+                <a class="wa-btn loc-wa" href={loc.whatsapp} target="_blank" rel="noreferrer">
+                  <img src="/assets/whatsapp.svg" alt="" /> WhatsApp ({loc.whatsappDisplay})
+                </a>
+              )}
             </div>
           </article>
         ))}
       </div>
-
-      <a class="wa-btn" href={site.whatsapp} target="_blank" rel="noreferrer">
-        <img src="/assets/whatsapp.svg" alt="" /> {ui.bookWhatsapp}
-      </a>
     </div>
   </section>
 </BaseLayout>

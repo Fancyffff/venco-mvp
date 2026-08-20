@@ -26,15 +26,35 @@
       ],
       "receptionImage": "/assets/img/venco_clinic_mira_place_clinic_reception_v2_3c3b8c18c4.jpeg",
       "hoursRows": [
-        { "days": "星期一至五", "time": "10:00-18:30" },
-        { "days": "星期六", "time": "10:00-15:00" },
-        { "days": "星期日及公眾假期", "time": "休息" }
+        {
+          "days": "星期一至五",
+          "time": "10:00-18:30"
+        },
+        {
+          "days": "星期六",
+          "time": "10:00-15:00"
+        },
+        {
+          "days": "星期日及公眾假期",
+          "time": "休息"
+        }
       ],
       "hoursRowsEn": [
-        { "days": "Mon–Fri", "time": "10:00-18:30" },
-        { "days": "Saturday", "time": "10:00-15:00" },
-        { "days": "Sun & public holidays", "time": "Closed" }
-      ]
+        {
+          "days": "Mon–Fri",
+          "time": "10:00-18:30"
+        },
+        {
+          "days": "Saturday",
+          "time": "10:00-15:00"
+        },
+        {
+          "days": "Sun & public holidays",
+          "time": "Closed"
+        }
+      ],
+      "whatsapp": "https://wa.me/85263931069",
+      "whatsappDisplay": "6393 1069"
     },
     {
       "name": "海洋中心",
@@ -49,15 +69,35 @@
         "/assets/img/00d59a73-f113-47b4-b6ae-dd7fc5c12bdc---4.jpeg"
       ],
       "hoursRows": [
-        { "days": "星期一至五", "time": "10:00-18:30" },
-        { "days": "星期六", "time": "10:00-15:00" },
-        { "days": "星期日及公眾假期", "time": "休息" }
+        {
+          "days": "星期一至五",
+          "time": "10:00-18:30"
+        },
+        {
+          "days": "星期六",
+          "time": "10:00-15:00"
+        },
+        {
+          "days": "星期日及公眾假期",
+          "time": "休息"
+        }
       ],
       "hoursRowsEn": [
-        { "days": "Mon–Fri", "time": "10:00-18:30" },
-        { "days": "Saturday", "time": "10:00-15:00" },
-        { "days": "Sun & public holidays", "time": "Closed" }
-      ]
+        {
+          "days": "Mon–Fri",
+          "time": "10:00-18:30"
+        },
+        {
+          "days": "Saturday",
+          "time": "10:00-15:00"
+        },
+        {
+          "days": "Sun & public holidays",
+          "time": "Closed"
+        }
+      ],
+      "whatsapp": "https://wa.me/85290837327",
+      "whatsappDisplay": "9083 7327"
     }
   ],
   "education": [
@@ -84,9 +124,9 @@
     }
   ],
   "about": [
-    "榛怡醫務中心致力為兒童及家庭提供全面的兒科專科服務。除診治常見及複雜的兒科疾病外，我們亦重視兒童健康管理與疾病預防，務求以細緻、安心的方式守護每位孩子的成長。",
-    "中心由經驗豐富的兒科專科醫生及醫護團隊組成，提供一般兒科、呼吸系統、內分泌、過敏、外科、臨床遺傳、腦神經、腎科、心理輔導、疫苗接種及遙距診症等服務。診室環境溫馨童趣，讓家長與孩子在舒適的空間接受照顧。",
-    "我們重視清晰溝通，讓家長充分了解孩子的情況，並與專科團隊一起作出安心選擇。"
+    "榛怡醫務中心於尖沙咀設有兩個服務據點，分別位於美麗華廣場及海洋中心，為兒童及家庭提供一站式兒科內外專科醫療服務。",
+    "中心涵蓋多個兒科專科範疇，包括兒童呼吸科、內分泌科、腎科、腦神經科及遺傳科，提供專業的評估、檢查及診斷。團隊同時配備心理學家及語言治療專家，就兒童發展、教育及家庭層面提供全面支援，照顧孩子醫療與發展上的不同需要。",
+    "我們十分重視與家長之間清晰透明的溝通，詳細解釋孩子的成長及健康狀況，讓家長掌握完整資訊，從而作出安心、合適的決定，陪伴孩子健康成長。"
   ],
   "aboutBlocks": [
     {
@@ -120,9 +160,9 @@
     "Warm clinic spaces and attentive care for every child’s healthy growth."
   ],
   "aboutEn": [
-    "Venco Medical Centre provides comprehensive specialist paediatric care for children and families. Beyond treating common and complex childhood conditions, we emphasise prevention and ongoing health management, so every child can grow with attentive, reassuring care.",
-    "Our team of experienced paediatricians and clinicians offers general paediatrics, respiratory, endocrine, allergy, surgical, genetic, neurology, nephrology, counselling, vaccination, and telemedicine services in a warm, child-friendly clinic setting.",
-    "We value clear communication so parents understand their child’s situation and can make confident decisions with our specialist team."
+    "Venco Medical Centre operates two clinics in Tsim Sha Tsui, at Mira Place and Ocean Centre, providing one-stop paediatric medical and surgical specialist care for children and families.",
+    "The centre covers a wide range of paediatric subspecialties, including respiratory medicine, endocrinology, nephrology, neurology and clinical genetics, offering professional assessment, examination and diagnosis. The team also includes psychologists and speech therapists, providing comprehensive support across child development, education and family needs.",
+    "We place great importance on clear and transparent communication with parents, explaining each child's growth and health in detail, so families have complete information to make confident and well-suited decisions as their children grow."
   ],
   "hoursEn": "Mon–Fri 10:00–18:30｜Sat 10:00–15:00｜Sun & public holidays closed",
   "locationsEn": [

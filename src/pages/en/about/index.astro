@@ -59,7 +59,7 @@ const aboutRows = about.map((text, i) => {
             {loc.fax && <p>Fax {loc.fax}</p>}
             {loc.whatsapp && (
               <a class="wa-btn loc-wa" href={loc.whatsapp} target="_blank" rel="noreferrer">
-                <img src="/assets/whatsapp.svg" alt="" /> WhatsApp ({loc.whatsappDisplay})
+                <img src="/assets/whatsapp.svg" alt="" /> WhatsApp {loc.whatsappDisplay}
               </a>
             )}
             {loc.hoursRows && (

@@ -5,6 +5,7 @@ import doctors from '../../../../data/doctors.json';
 import education from '../../../../data/education.json';
 import site from '../../../../data/site.json';
 import AsthmaDetail from '../../../../components/AsthmaDetail.astro';
+import SleepApneaDetail from '../../../../components/SleepApneaDetail.astro';
 
 export function getStaticPaths() {
   return services.flatMap((s) =>
@@ -23,10 +24,11 @@ const relatedEdu = (item.relatedEducation || [])
   .map((r) => education.find((e) => e.slug === r.slug))
   .filter(Boolean);
 const isAsthma = service.id === 'respiratory' && item.slug === 'asthma-care';
+const isSleepApnea = service.id === 'respiratory' && item.slug === 'pediatric-sleep-apnea';
 ---
 <BaseLayout
   title={`${item.text} | ${service.title} | ${site.name}`}
-  description={isAsthma ? '認識兒童哮喘的病徵、成因、診斷、呼氣一氧化氮測試與日常治療管理。' : `${service.title}：${item.text}`}
+  description={isAsthma ? '認識兒童哮喘的病徵、成因、診斷、呼氣一氧化氮測試與日常治療管理。' : isSleepApnea ? '認識兒童阻塞性睡眠窒息症的成因、日夜病徵、併發症、睡眠測試確診及治療方法。' : `${service.title}：${item.text}`}
 >
   <section class="crumb container">
     <a href="/services/">兒科服務</a>
@@ -45,6 +47,12 @@ const isAsthma = service.id === 'respiratory' && item.slug === 'asthma-care';
   {isAsthma && (
     <section class="container asthma-block">
       <AsthmaDetail />
+    </section>
+  )}
+
+  {isSleepApnea && (
+    <section class="container asthma-block">
+      <SleepApneaDetail />
     </section>
   )}
 

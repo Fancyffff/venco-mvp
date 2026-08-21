@@ -50,6 +50,13 @@
       "doctor-li-nga-wai",
       "doctor-lau-ka-fai",
       "doctor-yu-wai-ling"
+    ],
+    "relatedArticles": [
+      "fever-children",
+      "blog-bb-fever",
+      "children-gastroenteritis",
+      "measles",
+      "children-long-covid"
     ]
   },
   {
@@ -66,7 +73,14 @@
       }
     ],
     "doctors": [],
-    "doctorIds": []
+    "doctorIds": [],
+    "relatedArticles": [
+      "blog-flu-vaccine",
+      "whooping-cough-vaccine",
+      "measles",
+      "flu-meningococcus",
+      "shingles"
+    ]
   },
   {
     "id": "respiratory",
@@ -149,6 +163,12 @@
     "doctorIds": [
       "doctor-lau-ka-fai",
       "doctor-yu-wai-ling"
+    ],
+    "relatedArticles": [
+      "blog-chronic-cough",
+      "sleep-apnea",
+      "allergic-airway",
+      "respiratory-syncytial-virus"
     ]
   },
   {
@@ -212,6 +232,12 @@
     ],
     "doctorIds": [
       "doctor-but-wai-man"
+    ],
+    "relatedArticles": [
+      "growth-children",
+      "growth-hormone",
+      "blog-premature",
+      "obesity-metabolic-syndrome"
     ]
   },
   {
@@ -258,7 +284,11 @@
       }
     ],
     "doctors": [],
-    "doctorIds": []
+    "doctorIds": [],
+    "relatedArticles": [
+      "allergic-rhinitis",
+      "allergic-airway"
+    ]
   },
   {
     "id": "surgery",
@@ -339,6 +369,12 @@
     ],
     "doctorIds": [
       "doctor-cheung-sing-tak"
+    ],
+    "relatedArticles": [
+      "circumcision",
+      "circumcision-surgery",
+      "hernia",
+      "tongue-tie-baby"
     ]
   },
   {
@@ -392,6 +428,12 @@
       "doctor-lo-fai-man",
       "doctor-chu-wing-yiu",
       "doctor-lau-tze-kin"
+    ],
+    "relatedArticles": [
+      "genetic-disorders",
+      "paediatric-screening",
+      "adhd",
+      "autism"
     ]
   },
   {
@@ -420,7 +462,8 @@
       }
     ],
     "doctors": [],
-    "doctorIds": []
+    "doctorIds": [],
+    "relatedArticles": []
   },
   {
     "id": "neuro",
@@ -433,6 +476,11 @@
     ],
     "doctorIds": [
       "doctor-ng-sui-fun"
+    ],
+    "relatedArticles": [
+      "children-tics",
+      "adhd",
+      "autism"
     ]
   },
   {
@@ -446,6 +494,11 @@
     ],
     "doctorIds": [
       "doctor-heiki-lo"
+    ],
+    "relatedArticles": [
+      "eating-disorders-in-adolescents",
+      "sleep-program-for-children",
+      "adhd"
     ]
   },
   {
@@ -455,6 +508,7 @@
     "icon": "/assets/icon-nephrology.svg",
     "items": [],
     "doctors": [],
-    "doctorIds": []
+    "doctorIds": [],
+    "relatedArticles": []
   }
 ]

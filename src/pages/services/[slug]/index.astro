@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import services from '../../../data/services.json';
 import doctors from '../../../data/doctors.json';
 import site from '../../../data/site.json';
+import education from '../../../data/education.json';
 import VaccineDetail from '../../../components/VaccineDetail.astro';
 
 export function getStaticPaths() {
@@ -13,6 +14,8 @@ const { service } = Astro.props;
 const doctorMap = Object.fromEntries(doctors.map((d) => [d.id, d]));
 const related = service.doctorIds.map((id) => doctorMap[id]).filter(Boolean);
 const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
+const eduMap = Object.fromEntries(education.map((e) => [e.slug, e]));
+const relatedArticles = (service.relatedArticles || []).map((slug) => eduMap[slug]).filter(Boolean);
 ---
 <BaseLayout title={`${service.title} | ${site.name}`} description={service.desc}>
   <section class="crumb container">
@@ -67,6 +70,26 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
             <div>
               <strong>{d.name}</strong>
               <small>{d.title}</small>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {relatedArticles.length > 0 && (
+    <section class="container block">
+      <div class="block-head">
+        <h2>相關科普文章</h2>
+        <p>由本中心醫生撰寫或審閱的相關科普內容。</p>
+      </div>
+      <div class="edu-cards">
+        {relatedArticles.map((e) => (
+          <a class="edu-card" href={`/education/${e.category}/${e.slug}/`}>
+            {e.cover && <img src={e.cover} alt="" loading="lazy" />}
+            <div>
+              <strong>{e.title.split(',')[0].split('，')[0]}</strong>
+              {e.doctorName && <small>{e.doctorName}</small>}
             </div>
           </a>
         ))}
@@ -163,4 +186,10 @@ const siblings = services.filter((s) => s.id !== service.id).slice(0, 4);
     .cta { flex-direction: column; align-items: stretch; }
     .cta .wa-btn { width: 100%; }
   }
+  .edu-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .edu-card { display: flex; gap: 12px; align-items: center; padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+  .edu-card:hover { border-color: var(--cyan); }
+  .edu-card img { width: 72px; height: 54px; border-radius: 10px; object-fit: cover; background: #eef3f5; flex: 0 0 auto; }
+  .edu-card strong { display: block; font-size: 14px; line-height: 1.5; }
+  .edu-card small { color: var(--muted); font-size: 12px; }
 </style>

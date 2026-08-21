@@ -24,20 +24,33 @@ for (const row of data.diseases.rows) {
 }
 ---
 <div class:list={['vx-root', variant === 'b' && 'theme-b']}>
-<nav class="jump" aria-label="本頁內容">
-  <a href="#plans">疫苗計劃</a>
-  <a href="#diseases">可預防的傳染病</a>
-  <a href="#aftercare">注射後護理</a>
-  <a href="#schedule">接種時間表</a>
-</nav>
-
 <section class="v-intro">
-  <p>{data.intro}</p>
+  <div class="intro-copy">
+    <span class="intro-eyebrow">給寶寶安心、完整的疫苗保護</span>
+    <p>{data.intro}</p>
+  </div>
+  <img
+    class="intro-art"
+    src="/assets/img/venco_vaccine_character_legacy.png"
+    alt="口罩與疫苗針筒的兒童插畫"
+  />
 </section>
 
+<nav class="jump" aria-label="本頁內容">
+  <a href="#plans"><span aria-hidden="true">✓</span>疫苗計劃</a>
+  <a href="#diseases"><span aria-hidden="true">✦</span>可預防的傳染病</a>
+  <a href="#aftercare"><span aria-hidden="true">♡</span>注射後護理</a>
+  <a href="#schedule"><span aria-hidden="true">▦</span>接種時間表</a>
+</nav>
+
 <section class="v-block" id="plans">
-  <h2>{data.plans.title}</h2>
-  <p class="lead">{data.plans.lead}</p>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">✓</span>
+    <div>
+      <h2>{data.plans.title}</h2>
+      <p class="lead">{data.plans.lead}</p>
+    </div>
+  </div>
 
   <div class="plan-tabs" data-plan-tabs>
     <div class="tab-row" role="tablist" aria-label={data.plans.title}>
@@ -126,8 +139,13 @@ for (const row of data.diseases.rows) {
 </section>
 
 <section class="v-block" id="diseases">
-  <h2>{data.diseases.title}</h2>
-  <p class="lead">{data.diseases.lead}</p>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">✦</span>
+    <div>
+      <h2>{data.diseases.title}</h2>
+      <p class="lead">{data.diseases.lead}</p>
+    </div>
+  </div>
   <div class="acc">
     {byVaccine.map((g) => (
       <details>
@@ -151,8 +169,16 @@ for (const row of data.diseases.rows) {
 </section>
 
 <section class="v-block" id="aftercare">
-  <h2>{data.aftercare.title}</h2>
-  <p class="lead">{data.aftercare.lead}</p>
+  <div class="aftercare-heading">
+    <div class="section-heading">
+      <span class="section-icon" aria-hidden="true">♡</span>
+      <div>
+        <h2>{data.aftercare.title}</h2>
+        <p class="lead">{data.aftercare.lead}</p>
+      </div>
+    </div>
+    <img src="/assets/img/venco_vaccine_aftercare_legacy.png" alt="疫苗注射後護理插畫" />
+  </div>
   <details class="fold">
     <summary>{`查看 ${data.aftercare.groups.length} 類疫苗的注射後反應及護理`}</summary>
     <div class="acc inner">
@@ -170,8 +196,13 @@ for (const row of data.diseases.rows) {
 </section>
 
 <section class="v-block" id="schedule">
-  <h2>{data.schedule.title}</h2>
-  <p class="lead">{data.schedule.lead}</p>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">▦</span>
+    <div>
+      <h2>{data.schedule.title}</h2>
+      <p class="lead">{data.schedule.lead}</p>
+    </div>
+  </div>
 
   <details class="fold">
     <summary>{data.schedule.gov.title}</summary>
@@ -382,22 +413,60 @@ for (const row of data.diseases.rows) {
     margin: 0 0 28px; padding-bottom: 20px; border-bottom: 1px solid var(--line);
   }
   .jump a {
-    display: inline-flex; align-items: center; min-height: 38px; padding: 0 15px;
+    display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 0 15px;
     border: 1px solid var(--line); border-radius: 999px;
     background: #fff; color: #334; font-size: 14px; font-weight: 600;
+  }
+  .jump a span {
+    display: grid; place-items: center; width: 22px; height: 22px;
+    border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep);
+    font-size: 13px; font-weight: 800;
   }
   .jump a:hover { border-color: var(--accent); color: var(--accent-deep); background: var(--accent-soft); }
 
   .v-intro {
-    margin: 0 0 36px; padding: 20px 22px;
-    background: var(--cyan-soft); border-radius: 18px;
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 36%);
+    align-items: center; gap: 28px;
+    margin: 0 0 22px; padding: 28px 34px;
+    min-height: 250px; overflow: hidden;
+    background:
+      radial-gradient(circle at 88% 18%, rgba(255,255,255,.92), transparent 35%),
+      linear-gradient(135deg, #e9f9fb 0%, #f4fbfc 56%, #eef0ff 100%);
+    border: 1px solid #d7edf1; border-radius: 28px;
   }
-  .v-intro p { margin: 0; color: #33474b; line-height: 1.9; font-size: 15.5px; }
+  .intro-copy { position: relative; z-index: 1; }
+  .intro-eyebrow {
+    display: inline-block; margin-bottom: 13px; padding: 7px 12px;
+    border-radius: 999px; background: rgba(0,168,192,.12); color: var(--cyan-hover);
+    font-size: 13px; line-height: 1; font-weight: 700; letter-spacing: .02em;
+  }
+  .v-intro p { margin: 0; max-width: 650px; color: #33474b; line-height: 1.95; font-size: 16px; }
+  .intro-art {
+    display: block; width: min(100%, 340px); height: auto; justify-self: end;
+    filter: drop-shadow(0 14px 20px rgba(42,124,139,.08));
+  }
 
   .v-block { margin: 0 0 48px; scroll-margin-top: 96px; }
-  .v-block h2 { margin: 0 0 8px; font-size: clamp(1.3rem, 2.6vw, 1.6rem); }
-  .lead { margin: 0 0 18px; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
+  .section-heading { display: flex; align-items: flex-start; gap: 13px; margin: 0 0 18px; }
+  .section-icon {
+    display: grid; place-items: center; flex: 0 0 auto;
+    width: 42px; height: 42px; border-radius: 14px;
+    background: var(--accent-soft); border: 1px solid var(--accent-line);
+    color: var(--accent-deep); font-size: 20px; font-weight: 800;
+  }
+  .v-block h2 { margin: 0 0 6px; font-size: clamp(1.3rem, 2.6vw, 1.6rem); }
+  .lead { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
   .sub { margin: 28px 0 10px; font-size: 15px; color: var(--accent-deep); }
+
+  .aftercare-heading {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 42%);
+    align-items: center; gap: 18px; margin-bottom: 14px;
+    padding: 18px 22px 0; overflow: hidden;
+    border: 1px solid #d9eeee; border-radius: 22px;
+    background: linear-gradient(110deg, #f7ffff 0%, #effafa 58%, #fbfde9 100%);
+  }
+  .aftercare-heading .section-heading { margin-bottom: 18px; }
+  .aftercare-heading img { display: block; width: 100%; height: auto; align-self: end; }
 
   .tab-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
   .tab {
@@ -508,9 +577,18 @@ for (const row of data.diseases.rows) {
   @media (max-width: 700px) {
     .jump { gap: 6px; }
     .jump a { min-height: 34px; padding: 0 12px; font-size: 13px; }
-    .v-intro { padding: 16px; }
+    .jump a span { width: 19px; height: 19px; font-size: 11px; }
+    .v-intro {
+      grid-template-columns: 1fr; gap: 12px; min-height: 0;
+      padding: 20px 18px 0; border-radius: 22px;
+    }
     .v-intro p { font-size: 14.5px; }
+    .intro-art { width: min(78%, 280px); justify-self: center; }
     .v-block { margin-bottom: 36px; }
+    .section-heading { gap: 10px; }
+    .section-icon { width: 36px; height: 36px; border-radius: 12px; font-size: 17px; }
+    .aftercare-heading { grid-template-columns: 1fr; padding: 16px 14px 0; }
+    .aftercare-heading img { width: min(100%, 390px); justify-self: center; }
     /* 三張計劃表在手機上一律用卡片，不用被切掉的寬表格 */
     .tab-panel .t-scroll { display: none; }
     .plan-cards { display: grid; gap: 10px; }

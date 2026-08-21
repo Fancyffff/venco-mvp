@@ -4,6 +4,7 @@ import services from '../../../../data/services.json';
 import doctors from '../../../../data/doctors.json';
 import education from '../../../../data/education.json';
 import site from '../../../../data/site.json';
+import AsthmaDetail from '../../../../components/AsthmaDetail.astro';
 
 export function getStaticPaths() {
   return services.flatMap((s) =>
@@ -21,8 +22,12 @@ const otherItems = service.items.filter((x) => x.slug !== item.slug);
 const relatedEdu = (item.relatedEducation || [])
   .map((r) => education.find((e) => e.slug === r.slug))
   .filter(Boolean);
+const isAsthma = service.id === 'respiratory' && item.slug === 'asthma-care';
 ---
-<BaseLayout title={`${item.text} | ${service.title} | ${site.name}`} description={`${service.title}：${item.text}`}>
+<BaseLayout
+  title={`${item.text} | ${service.title} | ${site.name}`}
+  description={isAsthma ? '認識兒童哮喘的病徵、成因、診斷、呼氣一氧化氮測試與日常治療管理。' : `${service.title}：${item.text}`}
+>
   <section class="crumb container">
     <a href="/services/">兒科服務</a>
     <span>/</span>
@@ -36,6 +41,12 @@ const relatedEdu = (item.relatedEducation || [])
     <p class="parent">所屬專科：{service.title}</p>
     <p class="desc">{service.desc}</p>
   </section>
+
+  {isAsthma && (
+    <section class="container asthma-block">
+      <AsthmaDetail />
+    </section>
+  )}
 
   <section class="container panel">
     <h2>如何預約</h2>
@@ -108,6 +119,7 @@ const relatedEdu = (item.relatedEducation || [])
   .panel {
     margin: 20px 0; padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: 18px;
   }
+  .asthma-block { padding-bottom: 8px; }
   .panel h2 { margin: 0 0 12px; font-size: 18px; }
   .panel li { color: #444; line-height: 1.7; margin: 6px 0; }
   .panel ul { margin: 0; padding-left: 18px; }

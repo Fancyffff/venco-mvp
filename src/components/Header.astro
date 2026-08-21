@@ -45,10 +45,16 @@ const eduGroups = educationCategories
 
     <nav class="nav" aria-label={locale === 'en' ? 'Main' : '主導航'}>
       <div class="nav-item has-menu">
-        <a class:list={['nav-link', { active: isHome || path.includes('/about') }]} href={lp()}>
+        <button
+          class:list={['nav-link', { active: isHome || path.includes('/about') }]}
+          type="button"
+          data-mega-trigger
+          aria-expanded="false"
+          aria-controls="mega-home"
+        >
           {ui.home} <span class="caret" aria-hidden="true"></span>
-        </a>
-        <div class="mega mega-simple" role="menu" aria-label={ui.home}>
+        </button>
+        <div class="mega mega-simple" id="mega-home" aria-label={ui.home} hidden>
           <a href={lp()}>{ui.home}</a>
           <a href={`${lp('about')}#about`}>{ui.about}</a>
           <a href={`${lp('about')}#environment`}>{ui.clinicEnv}</a>
@@ -56,22 +62,29 @@ const eduGroups = educationCategories
       </div>
 
       <div class="nav-item has-menu">
-        <a class:list={['nav-link', { active: path.includes('/services') }]} href={lp("services")}>
+        <button
+          class:list={['nav-link', { active: path.includes('/services') }]}
+          type="button"
+          data-mega-trigger
+          aria-expanded="false"
+          aria-controls="mega-services"
+        >
           {ui.services} <span class="caret" aria-hidden="true"></span>
-        </a>
-        <div class="mega" role="menu" aria-label={ui.services}>
+        </button>
+        <div class="mega" id="mega-services" aria-label={ui.services} hidden>
           <div class="mega-cols">
             <div class="mega-l2">
               <p class="mega-label">{ui.serviceCategories}</p>
               {services.map((s, i) => (
-                <a
+                <button
                   class:list={['mega-l2-item', { 'is-active': i === 0 }]}
-                  href={lp(`services/${s.id}`)}
+                  type="button"
                   data-panel={s.id}
+                  aria-selected={i === 0 ? 'true' : 'false'}
                 >
                   <img src={s.icon} alt="" width="28" height="28" />
                   <span>{serviceTitle(locale, s.id, s.title)}</span>
-                </a>
+                </button>
               ))}
             </div>
             <div class="mega-l3">
@@ -115,21 +128,28 @@ const eduGroups = educationCategories
       </div>
 
       <div class="nav-item has-menu">
-        <a class:list={['nav-link', { active: path.includes('/doctors') }]} href={lp("doctors")}>
+        <button
+          class:list={['nav-link', { active: path.includes('/doctors') }]}
+          type="button"
+          data-mega-trigger
+          aria-expanded="false"
+          aria-controls="mega-doctors"
+        >
           {ui.doctors} <span class="caret" aria-hidden="true"></span>
-        </a>
-        <div class="mega mega-doctors" role="menu" aria-label={ui.doctors}>
+        </button>
+        <div class="mega mega-doctors" id="mega-doctors" aria-label={ui.doctors} hidden>
           <div class="mega-cols">
             <div class="mega-l2">
               <p class="mega-label">{ui.deptCategories}</p>
               {doctorGroups.map((g, i) => (
-                <a
+                <button
                   class:list={['mega-l2-item', { 'is-active': i === 0 }]}
-                  href={lp(`doctors/${g.id}`)}
+                  type="button"
                   data-panel={g.id}
+                  aria-selected={i === 0 ? 'true' : 'false'}
                 >
                   <span>{g.title}</span>
-                </a>
+                </button>
               ))}
             </div>
             <div class="mega-l3">
@@ -158,21 +178,28 @@ const eduGroups = educationCategories
       </div>
 
       <div class="nav-item has-menu">
-        <a class:list={['nav-link', { active: path.includes('/education') }]} href={lp("education")}>
+        <button
+          class:list={['nav-link', { active: path.includes('/education') }]}
+          type="button"
+          data-mega-trigger
+          aria-expanded="false"
+          aria-controls="mega-education"
+        >
           {ui.education} <span class="caret" aria-hidden="true"></span>
-        </a>
-        <div class="mega mega-edu" role="menu" aria-label={ui.education}>
+        </button>
+        <div class="mega mega-edu" id="mega-education" aria-label={ui.education} hidden>
           <div class="mega-cols">
             <div class="mega-l2">
               <p class="mega-label">{ui.eduTopics}</p>
               {eduGroups.map((g, i) => (
-                <a
+                <button
                   class:list={['mega-l2-item', { 'is-active': i === 0 }]}
-                  href={lp(`education/${g.id}`)}
+                  type="button"
                   data-panel={g.id}
+                  aria-selected={i === 0 ? 'true' : 'false'}
                 >
                   <span>{g.title}</span>
-                </a>
+                </button>
               ))}
             </div>
             <div class="mega-l3">
@@ -333,6 +360,10 @@ const eduGroups = educationCategories
     white-space: nowrap;
     flex-shrink: 0;
     transition: color .15s ease;
+    border: 0;
+    background: transparent;
+    font-family: inherit;
+    cursor: pointer;
   }
   .nav-link:hover { color: var(--cyan); }
   .nav-link.active { color: var(--cyan); font-weight: 600; }
@@ -378,8 +409,7 @@ const eduGroups = educationCategories
     right: 0;
     height: 12px;
   }
-  .nav-item:hover .mega,
-  .nav-item:focus-within .mega { display: block; }
+  .nav-item.is-open .mega { display: block; }
   .mega-cols { display: grid; grid-template-columns: 280px 1fr; gap: 14px; min-height: 340px; }
   .mega-label {
     margin: 0 0 10px;
@@ -395,6 +425,7 @@ const eduGroups = educationCategories
     overflow: auto;
   }
   .mega-l2-item {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -402,6 +433,11 @@ const eduGroups = educationCategories
     border-radius: 12px;
     font-size: 14px;
     color: #333;
+    border: 0;
+    background: transparent;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
   }
   .mega-l2-item img { width: 28px; height: 28px; object-fit: contain; }
   .mega-l2-item:hover,
@@ -442,8 +478,7 @@ const eduGroups = educationCategories
     grid-template-columns: 1fr;
     min-height: 0;
   }
-  .nav-item:hover .mega-simple,
-  .nav-item:focus-within .mega-simple { display: grid; }
+  .nav-item.is-open .mega-simple { display: grid; }
   .mega-simple a {
     display: block;
     padding: 10px 12px;
@@ -687,6 +722,52 @@ const eduGroups = educationCategories
   backdrop?.addEventListener('click', closeDrawer);
   drawer?.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeDrawer));
 
+  const menuItems = Array.from(document.querySelectorAll('.nav > .has-menu'));
+
+  const closeMenus = (returnFocus = false) => {
+    menuItems.forEach((navItem) => {
+      const trigger = navItem.querySelector('[data-mega-trigger]');
+      const menu = navItem.querySelector('.mega');
+      const wasOpen = navItem.classList.contains('is-open');
+      navItem.classList.remove('is-open');
+      trigger?.setAttribute('aria-expanded', 'false');
+      menu?.setAttribute('hidden', '');
+      if (returnFocus && wasOpen && trigger instanceof HTMLElement) trigger.focus();
+    });
+  };
+
+  menuItems.forEach((navItem) => {
+    const trigger = navItem.querySelector('[data-mega-trigger]');
+    const menu = navItem.querySelector('.mega');
+    if (!(trigger instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) return;
+
+    trigger.addEventListener('click', () => {
+      const shouldOpen = !navItem.classList.contains('is-open');
+      closeMenus();
+      if (!shouldOpen) return;
+      navItem.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      menu.removeAttribute('hidden');
+    });
+
+    trigger.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowDown') return;
+      event.preventDefault();
+      if (!navItem.classList.contains('is-open')) trigger.click();
+      menu.querySelector('a, button')?.focus();
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Node) || menuItems.some((item) => item.contains(target))) return;
+    closeMenus();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenus(true);
+  });
+
   document.querySelectorAll('.mega').forEach((mega) => {
     const items = mega.querySelectorAll('.mega-l2-item');
     const panels = mega.querySelectorAll('.l3-panel');
@@ -694,10 +775,18 @@ const eduGroups = educationCategories
       const activate = () => {
         const id = item.getAttribute('data-panel');
         items.forEach((x) => x.classList.toggle('is-active', x === item));
+        items.forEach((x) => x.setAttribute('aria-selected', x === item ? 'true' : 'false'));
         panels.forEach((p) => p.classList.toggle('show', p.getAttribute('data-l3') === id));
       };
-      item.addEventListener('mouseenter', activate);
+      item.addEventListener('click', activate);
       item.addEventListener('focus', activate);
+      item.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+        event.preventDefault();
+        const index = Array.from(items).indexOf(item);
+        const offset = event.key === 'ArrowDown' ? 1 : -1;
+        items[(index + offset + items.length) % items.length]?.focus();
+      });
     });
   });
 </script>

@@ -67,10 +67,13 @@ function cloudflareRedirects() {
           '/zh / 301',
           '/zh/* /:splat 301',
           ...new Set(
-          Object.entries(cloudflareAssetRedirects).map(([from, to]) => {
-            const source = from === '/' ? '/' : from.replace(/\/$/, '');
-            return `${source} ${to} 301`;
-          }),
+            Object.entries(cloudflareAssetRedirects).map(([from, to]) => {
+              if (from === '/') return `/ ${to} 301`;
+              // Keep only the canonical slash form so the file stays below
+              // Cloudflare's 100-rule limit. auto-trailing-slash normalizes the
+              // no-slash request first, then this rule performs the 301.
+              return `${from.replace(/\/$/, '')}/ ${to} 301`;
+            }),
           ),
         ];
         await writeFile(new URL('_redirects', dir), lines.join('\n') + '\n');

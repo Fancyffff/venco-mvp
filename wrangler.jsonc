@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "venco",
+  "name": "wenco",
   "compatibility_date": "2026-08-17",
 
   // 主地址用根域。www 没有 DNS 记录，也不绑——Cloudflare 的 _redirects
